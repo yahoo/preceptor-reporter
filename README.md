@@ -3,6 +3,52 @@ Preceptor-Reporter
 
 Reporting library for the preceptor test-runner and aggregator.
 
+[![Build Status](https://secure.travis-ci.org/yahoo/preceptor-reporter.png)](http://travis-ci.org/yahoo/preceptor-reporter)
+[![npm version](https://badge.fury.io/js/preceptor-reporter.svg)](http://badge.fury.io/js/preceptor-reporter)
+
+[![NPM](https://nodei.co/npm/preceptor-reporter.png?downloads=true)](https://nodei.co/npm/preceptor-reporter/)
+
+
+**Table of Contents**
+* [Usage](#usage)
+    * [Configuration](#configuration)
+* [Manager](#manager)
+* [Plugins](#plugins)
+    * [Reporter](#reporter)
+        * [Plugin management methods](#plugin-management-methods)
+        * [Common configuration](#common-configuration)
+        * [Dot](#dot)
+        * [Duration](#duration)
+        * [Event](#event)
+        * [JenkinsSauceLabs](#jenkinssaucelabs)
+        * [Json](#json)
+        * [Junit](#junit)
+        * [LineSummary](#linesummary)
+        * [list](#list)
+        * [Plain](#plain)
+        * [Preceptor](#preceptor)
+        * [Spec](#spec)
+        * [Summary](#summary)
+        * [Tap](#tap)
+        * [TeamCity](#teamcity)
+        * [Custom Plugin](#customplugin)
+    * [Listener](#listener)
+        * [Plugin management methods](#plugin-management-methods-1)
+        * [Common configuration](#common-configuration-1)
+        * [Preceptor](#preceptor-1)
+        * [TeamCity](#teamcity-1)
+        * [Custom Plugin](#customplugin-1)
+    * [Messenger](#messenger)
+        * [Common configuration](#common-configuration-2)
+        * [Example](#example)
+        * [Custom Plugin](#customplugin-2)
+    * [Hooks](#hooks)
+* [API-Documentation](#api-documentation)
+* [Tests](#tests)
+* [Third-party libraries](#third-party-libraries)
+* [License](#license)
+
+
 ##Usage
 
 This module is bundled with Preceptor by default and does not need to be included in the ```plugins``` list of the global configuration section in the Preceptor configuration file.
@@ -66,7 +112,7 @@ Here is a short summary of the methods available to access reporter plugins and 
 * ```addReporter``` - Creates a new instance of a specific reporter and adds it to the active-reporter list
 * ```addReporterRange``` - Creates a list of reporter and adds them all to the active-reporter list
 
-####Common Configuration
+####Common configuration
 All reporter have a common set of configuration options:
 * ```type``` - Type of reporter
 * ```path``` - Filesystem path to where the test-results should be exported. If none is given, then no filesystem output will be done.
@@ -456,7 +502,7 @@ Here is a short summary of the methods available to access listener plugins and 
 * ```addListener``` - Creates a new instance of a specific listener and adds it to the active-listener list
 * ```addListenerRange``` - Creates a list of listener and adds them all to the active-listener list
 
-####Common Configuration
+####Common configuration
 All listener have a common set of configuration options:
 * ```type``` - Type of listener
 * ```configuration``` - Custom configuration options for a specific reporter
@@ -523,7 +569,7 @@ The following messengers are available:
 
 It is important to note that these messengers have no consistent interface as they represent low-level objects. However, messengers trigger always an event on the messenger itself with the event-name ```message``` that is the exact message that is created for the external system.
 
-####Common Configuration
+####Common configuration
 All messenger have a common set of configuration options:
 * ```type``` - Type of messenger
 * ```configuration``` - Custom configuration options for a specific messenger
