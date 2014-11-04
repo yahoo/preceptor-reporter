@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "chai": "1.9.1",
+    "coveralls": "2.11.2",
     "istanbul": "0.3.2",
     "mocha": "1.21.4",
     "cucumber": "0.4.2",
