@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Preceptor-reporter : Reporting library for the preceptor test-runner and aggregator">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Preceptor-reporter</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/yahoo/preceptor-reporter">View on GitHub</a>
+
+          <h1 id="project_title">Preceptor-reporter</h1>
+          <h2 id="project_tagline">Reporting library for the preceptor test-runner and aggregator</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/yahoo/preceptor-reporter/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/yahoo/preceptor-reporter/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="preceptor-reporter" class="anchor" href="#preceptor-reporter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preceptor-Reporter</h1>
+
+<p>Reporting library for the preceptor test-runner and aggregator.</p>
+
+<p><a href="http://travis-ci.org/yahoo/preceptor-reporter"><img src="https://secure.travis-ci.org/yahoo/preceptor-reporter.png" alt="Build Status"></a>
+<a href="http://badge.fury.io/js/preceptor-reporter"><img src="https://badge.fury.io/js/preceptor-reporter.svg" alt="npm version"></a></p>
+
+<p><a href="https://nodei.co/npm/preceptor-reporter/"><img src="https://nodei.co/npm/preceptor-reporter.png?downloads=true" alt="NPM"></a></p>
+
+<p><strong>Table of Contents</strong></p>
+
+<ul>
+<li>
+<a href="#usage">Usage</a>
+
+<ul>
+<li><a href="#configuration">Configuration</a></li>
+</ul>
+</li>
+<li><a href="#manager">Manager</a></li>
+<li>
+<a href="#plugins">Plugins</a>
+
+<ul>
+<li>
+<a href="#reporter">Reporter</a>
+
+<ul>
+<li><a href="#plugin-management-methods">Plugin management methods</a></li>
+<li><a href="#common-configuration">Common configuration</a></li>
+<li><a href="#dot">Dot</a></li>
+<li><a href="#duration">Duration</a></li>
+<li><a href="#event">Event</a></li>
+<li><a href="#jenkinssaucelabs">JenkinsSauceLabs</a></li>
+<li><a href="#json">Json</a></li>
+<li><a href="#junit">Junit</a></li>
+<li><a href="#linesummary">LineSummary</a></li>
+<li><a href="#list">list</a></li>
+<li><a href="#plain">Plain</a></li>
+<li><a href="#preceptor">Preceptor</a></li>
+<li><a href="#spec">Spec</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#tap">Tap</a></li>
+<li><a href="#teamcity">TeamCity</a></li>
+<li><a href="#customplugin">Custom Plugin</a></li>
+</ul>
+</li>
+<li>
+<a href="#listener">Listener</a>
+
+<ul>
+<li><a href="#plugin-management-methods-1">Plugin management methods</a></li>
+<li><a href="#common-configuration-1">Common configuration</a></li>
+<li><a href="#preceptor-1">Preceptor</a></li>
+<li><a href="#teamcity-1">TeamCity</a></li>
+<li><a href="#customplugin-1">Custom Plugin</a></li>
+</ul>
+</li>
+<li>
+<a href="#messenger">Messenger</a>
+
+<ul>
+<li><a href="#common-configuration-2">Common configuration</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#customplugin-2">Custom Plugin</a></li>
+</ul>
+</li>
+<li><a href="#hooks">Hooks</a></li>
+</ul>
+</li>
+<li><a href="#api-documentation">API-Documentation</a></li>
+<li><a href="#tests">Tests</a></li>
+<li><a href="#third-party-libraries">Third-party libraries</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>This module is bundled with Preceptor by default and does not need to be included in the <code>plugins</code> list of the global configuration section in the Preceptor configuration file.
+However, you need to define the reporters that should be attached to the Preceptor test-events. You can add multiple reporters at the same time, all of which receive the same events from the Preceptor clients. Here is an example adding the <code>Junit</code>, the <code>List</code> and the <code>Spec</code> reporter plugin to the reporter list:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="s2">"configuration"</span><span class="o">:</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="s2">"reportManager"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"listener"</span><span class="o">:</span> <span class="p">[],</span>
+        <span class="s2">"reporter"</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"Spec"</span> <span class="p">},</span>
+            <span class="p">{</span> <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"List"</span><span class="p">,</span> <span class="s2">"progress"</span><span class="o">:</span> <span class="kc">false</span> <span class="p">},</span>
+            <span class="p">{</span> <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"Junit"</span><span class="p">,</span> <span class="s2">"path"</span><span class="o">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s2">"/test-results.xml"</span> <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h3>
+
+<p>The following configuration options are available for this module:</p>
+
+<ul>
+<li>
+<code>reporter</code> - List of reporters to activate (see above example)</li>
+<li>
+<code>listener</code> - List of listeners to activate</li>
+</ul>
+
+<h2>
+<a id="manager" class="anchor" href="#manager" aria-hidden="true"><span class="octicon octicon-link"></span></a>Manager</h2>
+
+<p>The Manager object is the main access-point to the reporting plugin. It gives access to the plugin management methods, to the defined test-framework hooks, the defined messengers, and all abstract objects for creating your own reporting plugins.</p>
+
+<h2>
+<a id="plugins" class="anchor" href="#plugins" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plugins</h2>
+
+<h3>
+<a id="reporter" class="anchor" href="#reporter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reporter</h3>
+
+<p>Reporter plugins are the core of this library and represent the plugins that can export events.</p>
+
+<p>The following reporter are available:</p>
+
+<ul>
+<li><code>Dot</code></li>
+<li><code>Duration</code></li>
+<li><code>Event</code></li>
+<li><code>JenkinsSauceLabs</code></li>
+<li><code>Json</code></li>
+<li><code>Junit</code></li>
+<li><code>LineSummary</code></li>
+<li><code>List</code></li>
+<li><code>Plain</code></li>
+<li><code>Preceptor</code></li>
+<li><code>Spec</code></li>
+<li><code>Summary</code></li>
+<li><code>Tap</code></li>
+<li><code>TeamCity</code></li>
+</ul>
+
+<h4>
+<a id="plugin-management-methods" class="anchor" href="#plugin-management-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plugin management methods</h4>
+
+<p>Here is a short summary of the methods available to access reporter plugins and instances thereof (see API documentation for more information):</p>
+
+<ul>
+<li>
+<code>getActiveReporter</code> - Gets a list of active reporter</li>
+<li>
+<code>getReporterList</code> - Gets a dictionary of all registered reporter</li>
+<li>
+<code>hasReporter</code> - Checks if a specific reporter is registered</li>
+<li>
+<code>getReporter</code> - Gets a specific reporter from the list of registered reporter. It will return the constructor of the reporter.</li>
+<li>
+<code>registerReporter</code> - Registers a new reporter by giving it an identifier and the reporter constructor</li>
+<li>
+<code>registerReporterRange</code> - Registers a list of new reporter with a dictionary of identifier and reporter constructor</li>
+<li>
+<code>addReporter</code> - Creates a new instance of a specific reporter and adds it to the active-reporter list</li>
+<li>
+<code>addReporterRange</code> - Creates a list of reporter and adds them all to the active-reporter list</li>
+</ul>
+
+<h4>
+<a id="common-configuration" class="anchor" href="#common-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common configuration</h4>
+
+<p>All reporter have a common set of configuration options:</p>
+
+<ul>
+<li>
+<code>type</code> - Type of reporter</li>
+<li>
+<code>path</code> - Filesystem path to where the test-results should be exported. If none is given, then no filesystem output will be done.</li>
+<li>
+<code>configuration</code> - Custom configuration options for a specific reporter</li>
+<li>
+<code>color</code> - Flag that determines if the output should be in color. (default: true)</li>
+<li>
+<code>output</code> - Flag that determines if there should be an output to the console. (default: undefined - leaving it to the reporter to decide)</li>
+<li>
+<code>progress</code> - Flag that determines if there should be a constant update when action states are changing. (default: undefined - leaving it to the reporter to decide)</li>
+</ul>
+
+<p>Generally, there are two modes a reporter can be in (and both at the same time):</p>
+
+<ul>
+<li>file-output</li>
+<li>screen-output</li>
+</ul>
+
+<p>Some of the reporters might want to prescribe how it should behave (like showing progress), but it can always be overwritten by the user.</p>
+
+<h4>
+<a id="dot" class="anchor" href="#dot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dot</h4>
+
+<p>This reporter prints a character for each test. The character will tell what the result of the test has been.</p>
+
+<ul>
+<li>
+<code>.</code> - Test has passed</li>
+<li>
+<code>F</code> - Test has failed</li>
+<li>
+<code>E</code> - Test had error</li>
+<li>
+<code>U</code> - Test is undefined</li>
+<li>
+<code>S</code> - Test was skipped</li>
+<li>
+<code>I</code> - Test is incomplete</li>
+</ul>
+
+<h4>
+<a id="duration" class="anchor" href="#duration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Duration</h4>
+
+<p>This reporter prints the total duration of all tests when all test had been finished.</p>
+
+<h4>
+<a id="event" class="anchor" href="#event" aria-hidden="true"><span class="octicon octicon-link"></span></a>Event</h4>
+
+<p>Every test-event is emitted by this reporter, and could pick-up by any listener that is attached to the object.</p>
+
+<p>For every test-event, the event reporter will trigger three individual event types, including sub-types:</p>
+
+<ul>
+<li>
+<code>message</code> - Generic message, giving the area-type, the message-type, and the message-data as an array of items</li>
+<li>
+
+<ul>
+<li>
+<code>admin</code> - Administration events, grouping messages of <code>start</code>, <code>stop</code>, <code>complete</code>
+</li>
+<li>
+<code>item</code> - Item events, grouping messages of <code>itemData</code> and <code>itemMessage</code>
+</li>
+<li>
+<code>suite</code> - Suite events, grouping messages of <code>suiteStart</code> and <code>suiteEnd</code>
+</li>
+<li>
+<code>test</code> - Test events, grouping messages of <code>testStart</code>, <code>testPassed</code>, <code>testError</code>, <code>testFailed</code>, <code>testUndefined</code>, <code>testSkipped</code>, and <code>testIncomplete</code>
+</li>
+</ul>
+</li>
+<li>
+
+<ul>
+<li>
+<code>start</code> - Start of Preceptor</li>
+<li>
+<code>stop</code> - End of Preceptor</li>
+<li>
+<code>complete</code> - Completion of all processing after <code>stop</code>
+</li>
+<li>
+<code>itemData</code> - Custom test-event data, giving the id of the test-action and the data as JSON string</li>
+<li>
+<code>itemMessage</code> - Custom test-event message, giving the id of the test-action and the message</li>
+<li>
+<code>suiteStart</code> - Start of a test-suite, giving the id of the test-action, the parent-id, and the suite-name</li>
+<li>
+<code>suiteEnd</code> - End of a test-suite, giving the id of the test-action</li>
+<li>
+<code>testStart</code> - Start of a test, giving the id of the test-action, the parent-id, and the test-name</li>
+<li>
+<code>testPassed</code> - Successful completion of test, giving the id of the test-action</li>
+<li>
+<code>testFailed</code> - Failed test, giving the id of the test-action, the message, and the reason of failing</li>
+<li>
+<code>testError</code> - Test with unexpected error, giving the id of the test-action, the message, and the reason of the error</li>
+<li>
+<code>testUndefined</code> - Test-case that hasn't been defined yet, giving the id of the test-action</li>
+<li>
+<code>testSkipped</code> - Skipped test-case, giving the id of the test-action and the reason of skipping</li>
+<li>
+<code>testIncomplete</code> - Test that is still WIP, giving the id of the test-action</li>
+</ul>
+</li>
+</ul>
+
+<h4>
+<a id="jenkinssaucelabs" class="anchor" href="#jenkinssaucelabs" aria-hidden="true"><span class="octicon octicon-link"></span></a>JenkinsSauceLabs</h4>
+
+<p>The reporter prints the job-name for a Selenium session, binding the job-name to the Selenium test-run.</p>
+
+<p>The session-id is determined by taking several steps in a row until a session-id is found. The following steps are taken in order:</p>
+
+<ul>
+<li>
+<code>sessionId</code> value in the test-root <code>itemData</code> property</li>
+<li>
+<code>sessionId</code> value of the <code>JenkinsSauceLabs</code> reporter configuration</li>
+<li>
+<code>SELENIUM_SESSION_ID</code> in the environment variables</li>
+</ul>
+
+<p>The job-name is determined by taking the following steps:</p>
+
+<ul>
+<li>
+<code>jobName</code> value in the test-root <code>itemData</code> property</li>
+<li>
+<code>jobName</code> value of the <code>JenkinsSauceLabs</code> reporter configuration</li>
+<li>
+<code>APP_NAME</code> and <code>BUILD_NUMBER</code> in the environment variables, combining in the format: "APP_NAME(#BUILD_NUMBER)"</li>
+</ul>
+
+<h4>
+<a id="json" class="anchor" href="#json" aria-hidden="true"><span class="octicon octicon-link"></span></a>Json</h4>
+
+<p>This reporter exports all test-data at once.</p>
+
+<h4>
+<a id="junit" class="anchor" href="#junit" aria-hidden="true"><span class="octicon octicon-link"></span></a>Junit</h4>
+
+<p>The JUnit reporter exports all test-data as an XML format.</p>
+
+<h4>
+<a id="linesummary" class="anchor" href="#linesummary" aria-hidden="true"><span class="octicon octicon-link"></span></a>LineSummary</h4>
+
+<p>With this reporter, the test results are summarized in one line when all the tests are completed.</p>
+
+<h4>
+<a id="list" class="anchor" href="#list" aria-hidden="true"><span class="octicon octicon-link"></span></a>List</h4>
+
+<p>The reporter lists-up all the issues which were reported during the test-runs.</p>
+
+<h4>
+<a id="plain" class="anchor" href="#plain" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plain</h4>
+
+<p>This reporter prints out all test events in a plain text-format. This reporter can be used for debugging purposes when creating a custom reporter, learning about all the test-events that are triggered.</p>
+
+<h4>
+<a id="preceptor" class="anchor" href="#preceptor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preceptor</h4>
+
+<p>The Preceptor reporter prints out one-to-one test-events so that a parent Preceptor instance could pick-up all the events, integrating it into the parent test-result data.</p>
+
+<h5>
+<a id="format" class="anchor" href="#format" aria-hidden="true"><span class="octicon octicon-link"></span></a>Format</h5>
+
+<p>The general Preceptor format is as follows:</p>
+
+<pre><code>#|#&lt;messageType&gt; &lt;data&gt;#|#\n
+</code></pre>
+
+<p>The protocol sends out the version identifier for this format before any other message is send out.
+<strong>Version</strong> - Version of data-format</p>
+
+<pre><code>#|#version 1#|#\n
+</code></pre>
+
+<p>Here is a full list of all the messages sent out. Please see the API documentation for more information.</p>
+
+<p><strong>ItemData</strong> - Custom data for test-action</p>
+
+<pre><code>#|#itemData [&lt;id&gt;, &lt;json&gt;]#|#\n
+</code></pre>
+
+<p><strong>ItemMessage</strong> - Custom message for test-action</p>
+
+<pre><code>#|#itemMessage [&lt;id&gt;, &lt;message&gt;]#|#\n
+</code></pre>
+
+<p><strong>SuiteStart</strong> - Start of a suite</p>
+
+<pre><code>#|#suiteStart [&lt;id&gt;, &lt;parentId&gt;, &lt;suiteName&gt;]#|#\n
+</code></pre>
+
+<p><strong>SuiteEnd</strong> - End of a suite</p>
+
+<pre><code>#|#suiteEnd [&lt;id&gt;]#|#\n
+</code></pre>
+
+<p><strong>TestStart</strong> - Start of a test</p>
+
+<pre><code>#|#testStart [&lt;id&gt;, &lt;parentId&gt;, &lt;testName&gt;]#|#\n
+</code></pre>
+
+<p><strong>TestPassed</strong> - End of test, marking test as passed</p>
+
+<pre><code>#|#testPassed [&lt;id&gt;]#|#\n
+</code></pre>
+
+<p><strong>TestFailed</strong> - End of test, marking test as failed</p>
+
+<pre><code>#|#testFailed [&lt;id&gt;, &lt;message&gt;, &lt;reason&gt;]#|#\n
+</code></pre>
+
+<p><strong>TestError</strong> - End of test, marking it as having an error</p>
+
+<pre><code>#|#testError [&lt;id&gt;, &lt;message&gt;, &lt;reason&gt;]#|#\n
+</code></pre>
+
+<p><strong>TestUndefined</strong> - End of test, marking it as undefined</p>
+
+<pre><code>#|#testUndefined [&lt;id&gt;]#|#\n
+</code></pre>
+
+<p><strong>TestSkipped</strong> - End of test. marking it as skipped</p>
+
+<pre><code>#|#testSkipped [&lt;id&gt;, &lt;reason&gt;]#|#\n
+</code></pre>
+
+<p><strong>TestIncomplete</strong> - End of test, marking it as incomplete</p>
+
+<pre><code>#|#testIncomplete [&lt;id&gt;]#|#\n
+</code></pre>
+
+<h4>
+<a id="spec" class="anchor" href="#spec" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spec</h4>
+
+<p>The Spec reporter will print all test-events in an ordered and consistent format. This reporter has a very similar output format as the "spec"-reporter from Mocha.</p>
+
+<h4>
+<a id="summary" class="anchor" href="#summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary</h4>
+
+<p>With this reporter, the test results are summarized with multiple lines when all the tests are completed.</p>
+
+<h4>
+<a id="tap" class="anchor" href="#tap" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tap</h4>
+
+<p>The TAP reporter exports the test-events in the <a href="http://testanything.org/tap-version-13-specification.html">TAP</a> format.</p>
+
+<h4>
+<a id="teamcity" class="anchor" href="#teamcity" aria-hidden="true"><span class="octicon octicon-link"></span></a>TeamCity</h4>
+
+<p>The TeamCity reporter exports the test-events in the <a href="https://confluence.jetbrains.com/display/TCD8/Build+Script+Interaction+with+TeamCity">TeamCity</a> format. All tools understanding this format should be able to pick-up the test results reported by this reporter. This includes the IntelliJ IDE.</p>
+
+<h4>
+<a id="custom-plugin" class="anchor" href="#custom-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Plugin</h4>
+
+<p>You can create your own reporter plugin by using the exposed <code>AbstractReporter</code> object that is a property on the manager object.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">ReportManager</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'preceptor-reporter'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">manager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ReportManager</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">CustomReporter</span> <span class="o">=</span> <span class="nx">ReportManager</span><span class="p">.</span><span class="nx">AbstractReporter</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="cm">/**</span>
+<span class="cm">         * Initializes the instance</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method initialize</span>
+<span class="cm">         */</span>
+        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+
+        <span class="cm">/**</span>
+<span class="cm">         * Called when reporting starts</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method start</span>
+<span class="cm">         */</span>
+        <span class="nx">start</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+        <span class="cm">/**</span>
+<span class="cm">         * Called when reporting stops</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method stop</span>
+<span class="cm">         */</span>
+        <span class="nx">stop</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+
+        <span class="cm">/**</span>
+<span class="cm">         * Called when suite starts</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method suiteStart</span>
+<span class="cm">         * @param {string} id</span>
+<span class="cm">         * @param {string} parentId</span>
+<span class="cm">         * @param {string} suiteName</span>
+<span class="cm">         */</span>
+        <span class="nx">suiteStart</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">parentId</span><span class="p">,</span> <span class="nx">suiteName</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+        <span class="cm">/**</span>
+<span class="cm">         * Called when suite ends</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method suiteEnd</span>
+<span class="cm">         * @param {string} id</span>
+<span class="cm">         */</span>
+        <span class="nx">suiteEnd</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+
+        <span class="cm">/**</span>
+<span class="cm">         * Called when any item has custom data</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method itemData</span>
+<span class="cm">         * @param {string} id</span>
+<span class="cm">         * @param {string} json JSON-data</span>
+<span class="cm">         */</span>
+        <span class="nx">itemData</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+        <span class="cm">/**</span>
+<span class="cm">         * Called when any item has a custom message</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method itemMessage</span>
+<span class="cm">         * @param {string} id</span>
+<span class="cm">         * @param {string} message</span>
+<span class="cm">         */</span>
+        <span class="nx">itemMessage</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+
+        <span class="cm">/**</span>
+<span class="cm">         * Called when test starts</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method testStart</span>
+<span class="cm">         * @param {string} id</span>
+<span class="cm">         * @param {string} parentId</span>
+<span class="cm">         * @param {string} testName</span>
+<span class="cm">         */</span>
+        <span class="nx">testStart</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">parentId</span><span class="p">,</span> <span class="nx">testName</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+
+        <span class="cm">/**</span>
+<span class="cm">         * Called when test fails</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method testFailed</span>
+<span class="cm">         * @param {string} id</span>
+<span class="cm">         * @param {string} [message]</span>
+<span class="cm">         * @param {string} [reason]</span>
+<span class="cm">         */</span>
+        <span class="nx">testFailed</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">message</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+        <span class="cm">/**</span>
+<span class="cm">         * Called when test has an error</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method testError</span>
+<span class="cm">         * @param {string} id</span>
+<span class="cm">         * @param {string} [message]</span>
+<span class="cm">         * @param {string} [reason]</span>
+<span class="cm">         */</span>
+        <span class="nx">testError</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">message</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+        <span class="cm">/**</span>
+<span class="cm">         * Called when test has passed</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method testPassed</span>
+<span class="cm">         * @param {string} id</span>
+<span class="cm">         */</span>
+        <span class="nx">testPassed</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+        <span class="cm">/**</span>
+<span class="cm">         * Called when test is undefined</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method testUndefined</span>
+<span class="cm">         * @param {string} id</span>
+<span class="cm">         */</span>
+        <span class="nx">testUndefined</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+        <span class="cm">/**</span>
+<span class="cm">         * Called when test is skipped</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method testSkipped</span>
+<span class="cm">         * @param {string} id</span>
+<span class="cm">         * @param {string} [reason]</span>
+<span class="cm">         */</span>
+        <span class="nx">testSkipped</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+        <span class="cm">/**</span>
+<span class="cm">         * Called when test is incomplete</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method testIncomplete</span>
+<span class="cm">         * @param {string} id</span>
+<span class="cm">         */</span>
+        <span class="nx">testIncomplete</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+
+        <span class="cm">/**</span>
+<span class="cm">         * Gets the collected output</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method getOutput</span>
+<span class="cm">         * @return {string}</span>
+<span class="cm">         */</span>
+        <span class="nx">getOutput</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_output</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="nx">manager</span><span class="p">.</span><span class="nx">registerReporter</span><span class="p">(</span><span class="s1">'custom1'</span><span class="p">,</span> <span class="nx">CustomReporter</span><span class="p">);</span>
+<span class="nx">manager</span><span class="p">.</span><span class="nx">addReporter</span><span class="p">(</span><span class="s1">'custom1'</span><span class="p">,</span> <span class="p">{</span> <span class="cm">/* Options */</span> <span class="p">});</span>
+</pre></div>
+
+<p>There are a couple of terms that might need clarification:</p>
+
+<ul>
+<li>action - There are three action-types available: the root-element of all test-results, any test-suite, and any tests.</li>
+<li>
+<code>itemMessage</code> - These are custom messages that can be attached to any test-action.</li>
+<li>
+<code>itemData</code> - This is an object that could be used to save custom data for any test-action.</li>
+</ul>
+
+<p><code>start</code> and <code>end</code> is called once before and after all the test-results respectively.</p>
+
+<p>In general, all actions have a start and end. For tests, however, there is a multitude of end methods, each defining a different end-result. The start methods take an ID that is given by the reporting instance and should be used again when the action is ended, finishing up the pending action. Should any action be still pending after all tests are completed, then the reporting manager will throw an exception since a testing-framework might possibly have been interrupted and some of the data might be missing.</p>
+
+<p>The <code>getOutput</code> method is called when all the collected data needs to be retrieved at once. This could be for saving the results to a file, or when printing the results at the end of the tests when <code>progress</code> is set to false.</p>
+
+<p>All test-results and actions are saved in the test-container object.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="k">this</span><span class="p">.</span><span class="nx">getContainer</span><span class="p">().</span><span class="nx">getAction</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">name</span>
+</pre></div>
+
+<p>The following items are saved for each action-type and can be accessed the same way as describe above:</p>
+
+<ul>
+<li>
+<code>id</code> - Identifier of action</li>
+<li>
+<code>startTime</code> - Start of action as an interger timestamp</li>
+<li>
+<code>pending</code> - Flag if action is pending or not</li>
+<li>
+<code>type</code> - Type of action. Possible values are: 'root', 'suite', 'test'</li>
+<li>
+<code>name</code> - Name of action</li>
+<li>
+<code>level</code> - Numeric depth-level starting with 0</li>
+<li>
+<code>parentId</code> - Parent action</li>
+</ul>
+
+<p>See the above mentioned plugins for examples.</p>
+
+<h3>
+<a id="listener" class="anchor" href="#listener" aria-hidden="true"><span class="octicon octicon-link"></span></a>Listener</h3>
+
+<p>Lister plugins are the opposite of Reporter plugins - these Listener plugins import data.</p>
+
+<p>The following listener are available:</p>
+
+<ul>
+<li><code>Preceptor</code></li>
+<li><code>TeamCity</code></li>
+</ul>
+
+<h4>
+<a id="plugin-management-methods-1" class="anchor" href="#plugin-management-methods-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plugin management methods</h4>
+
+<p>Here is a short summary of the methods available to access listener plugins and instances thereof (see API documentation for more information):</p>
+
+<ul>
+<li>
+<code>getActiveListener</code> - Gets a list of active listener</li>
+<li>
+<code>getListenerList</code> - Gets a dictionary of all registered listener</li>
+<li>
+<code>hasListener</code> - Checks if a specific listener is registered</li>
+<li>
+<code>getListener</code> - Gets a specific listener from the list of registered listener. It will return the constructor of the listener.</li>
+<li>
+<code>registerListener</code> - Registers a new listener by giving it an identifier and the listener constructor</li>
+<li>
+<code>registerListenerRange</code> - Registers a list of new listener with a dictionary of identifier and listener constructor</li>
+<li>
+<code>addListener</code> - Creates a new instance of a specific listener and adds it to the active-listener list</li>
+<li>
+<code>addListenerRange</code> - Creates a list of listener and adds them all to the active-listener list</li>
+</ul>
+
+<h4>
+<a id="common-configuration-1" class="anchor" href="#common-configuration-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common configuration</h4>
+
+<p>All listener have a common set of configuration options:</p>
+
+<ul>
+<li>
+<code>type</code> - Type of listener</li>
+<li>
+<code>configuration</code> - Custom configuration options for a specific reporter</li>
+<li>
+<code>placeholder</code> - List of placeholder given to the <code>parse</code> method when parsing the input (see section about custom listener plugin).</li>
+</ul>
+
+<h4>
+<a id="preceptor-1" class="anchor" href="#preceptor-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preceptor</h4>
+
+<p>The Preceptor listener can pick any information printed by a Preceptor process, integrating the processes result into its own results. See the reporter section above for more information about the data-format.</p>
+
+<h4>
+<a id="teamcity-1" class="anchor" href="#teamcity-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>TeamCity</h4>
+
+<p>The TeamCity listener can listen for any messages that were meant for TeamCity receivers, for example the IntelliJ IDE. Any testing-framework that can export test-results to IntelliJ (and their like) can also be used to send these test information a Preceptor instance.</p>
+
+<h5>
+<a id="configuration-1" class="anchor" href="#configuration-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h5>
+
+<p>This listener has the following configuration options:</p>
+
+<ul>
+<li>
+<code>parentId</code> {string} - Identifier of parent action</li>
+</ul>
+
+<h4>
+<a id="custom-plugin-1" class="anchor" href="#custom-plugin-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Plugin</h4>
+
+<p>You can create your own listener plugin by using the exposed <code>AbstractListener</code> object that is a property on the manager object.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">ReportManager</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'preceptor-reporter'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">manager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ReportManager</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">CustomListener</span> <span class="o">=</span> <span class="nx">ReportManager</span><span class="p">.</span><span class="nx">AbstractListener</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="cm">/**</span>
+<span class="cm">         * Initializes the instance</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method initialize</span>
+<span class="cm">         */</span>
+        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">},</span>
+
+
+        <span class="cm">/**</span>
+<span class="cm">         * Parses a string and extracts message information</span>
+<span class="cm">         *</span>
+<span class="cm">         * @method parse</span>
+<span class="cm">         * @param {string} text</span>
+<span class="cm">         * @param {object} [placeholder]</span>
+<span class="cm">         * @return {string}</span>
+<span class="cm">         */</span>
+        <span class="nx">parse</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">placeholder</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="nx">manager</span><span class="p">.</span><span class="nx">registerListener</span><span class="p">(</span><span class="s1">'custom1'</span><span class="p">,</span> <span class="nx">CustomListener</span><span class="p">);</span>
+<span class="nx">manager</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s1">'custom1'</span><span class="p">,</span> <span class="p">{</span> <span class="cm">/* Options */</span> <span class="p">});</span>
+</pre></div>
+
+<p>The parse method will be called with text that needs to be parsed. This is usually output of a process. The placeholder might have key-value pairs of text that needs to be replaced within the messages.</p>
+
+<p>See the above mentioned plugins for examples.</p>
+
+<h3>
+<a id="messenger" class="anchor" href="#messenger" aria-hidden="true"><span class="octicon octicon-link"></span></a>Messenger</h3>
+
+<p>Messenger plugins are objects that create low-level messages for external systems, and they can be used independently by other projects since they are exposed by the <code>getMessengers</code> method on the Manager object constructor.</p>
+
+<p>The following messengers are available:</p>
+
+<ul>
+<li>
+<code>JenkinsSauceLabs</code> - Object that prints Sauce-Labs job information to the Jenkins build log, letting the Jenkins SauceLabs plugin know about the job-name.</li>
+<li>
+<code>Preceptor</code> - Object that prints Preceptor event messages to the standard output.</li>
+<li>
+<code>TeamCity</code> - Object that prints Team-City event messages to the standard output. Most of the messenges can also be understood by the IntelliJ IDE.</li>
+</ul>
+
+<p>It is important to note that these messengers have no consistent interface as they represent low-level objects. However, messengers trigger always an event on the messenger itself with the event-name <code>message</code> that is the exact message that is created for the external system.</p>
+
+<h4>
+<a id="common-configuration-2" class="anchor" href="#common-configuration-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common configuration</h4>
+
+<p>All messenger have a common set of configuration options:</p>
+
+<ul>
+<li>
+<code>type</code> - Type of messenger</li>
+<li>
+<code>configuration</code> - Custom configuration options for a specific messenger</li>
+<li>
+<code>output</code> - Flag that determines if the events are printed to the console. (default: false)</li>
+</ul>
+
+<h4>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">messengers</span> <span class="o">=</span> <span class="nx">Preceptor</span><span class="p">.</span><span class="nx">getMessengers</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">teamCityMessenger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">messengers</span><span class="p">.</span><span class="nx">TeamCity</span><span class="p">();</span>
+
+<span class="nx">teamCityMessenger</span><span class="p">.</span><span class="nx">testSuiteStarted</span><span class="p">(</span><span class="s2">"Suite #1"</span><span class="p">);</span>
+
+<span class="nx">teamCityMessenger</span><span class="p">.</span><span class="nx">testStarted</span><span class="p">(</span><span class="s2">"Test #1"</span><span class="p">);</span>
+<span class="nx">teamCityMessenger</span><span class="p">.</span><span class="nx">testFinished</span><span class="p">(</span><span class="s2">"Test #1"</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+
+<span class="nx">teamCityMessenger</span><span class="p">.</span><span class="nx">testStarted</span><span class="p">(</span><span class="s2">"Test #2"</span><span class="p">);</span>
+<span class="nx">teamCityMessenger</span><span class="p">.</span><span class="nx">testFailed</span><span class="p">(</span><span class="s2">"Test #2"</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"Division by zero."</span><span class="p">,</span> <span class="s2">"..."</span><span class="p">);</span>
+
+<span class="nx">teamCityMessenger</span><span class="p">.</span><span class="nx">testSuiteFinished</span><span class="p">(</span><span class="s2">"Suite #1"</span><span class="p">);</span>
+</pre></div>
+
+<h4>
+<a id="custom-plugin-2" class="anchor" href="#custom-plugin-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Plugin</h4>
+
+<p>You can create your own messenger plugin by using the exposed <code>AbstractMessenger</code> object that is a property on the manager object.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">ReportManager</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'preceptor-reporter'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">CustomMessenger</span> <span class="o">=</span> <span class="nx">ReportManager</span><span class="p">.</span><span class="nx">AbstractMessenger</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+
+<p>See the above mentioned plugins for examples.</p>
+
+<h3>
+<a id="hooks" class="anchor" href="#hooks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hooks</h3>
+
+<p>Hooks are custom reporters for different testing frameworks, giving Preceptor access to different stages of the test lifecycle.</p>
+
+<p>The following hooks are available:</p>
+
+<ul>
+<li>
+<code>cucumber</code> - Cucumber hooks</li>
+<li>
+<code>mocha</code> - Mocha hooks</li>
+</ul>
+
+<h2>
+<a id="api-documentation" class="anchor" href="#api-documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>API-Documentation</h2>
+
+<p>Generate the documentation with following command:</p>
+
+<div class="highlight highlight-shell"><pre>npm run docs
+</pre></div>
+
+<p>The documentation will be generated in the <code>docs</code> folder of the module root.</p>
+
+<h2>
+<a id="tests" class="anchor" href="#tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tests</h2>
+
+<p>Run the tests with the following command:</p>
+
+<div class="highlight highlight-shell"><pre>npm run <span class="nb">test</span>
+</pre></div>
+
+<p>The code-coverage will be written to the <code>coverage</code> folder in the module root.</p>
+
+<h2>
+<a id="third-party-libraries" class="anchor" href="#third-party-libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Third-party libraries</h2>
+
+<p>The following third-party libraries are used by this module:</p>
+
+<h3>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h3>
+
+<ul>
+<li>preceptor-core: <a href="https://github.com/yahoo/preceptor-core">https://github.com/yahoo/preceptor-core</a>
+</li>
+<li>underscore: <a href="http://underscorejs.org">http://underscorejs.org</a>
+</li>
+<li>xmlbuilder: <a href="http://github.com/oozcitak/xmlbuilder-js">http://github.com/oozcitak/xmlbuilder-js</a>
+</li>
+</ul>
+
+<h3>
+<a id="dev-dependencies" class="anchor" href="#dev-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dev-Dependencies</h3>
+
+<ul>
+<li>chai: <a href="http://chaijs.com">http://chaijs.com</a>
+</li>
+<li>istanbul: <a href="https://github.com/gotwarlost/istanbul">https://github.com/gotwarlost/istanbul</a>
+</li>
+<li>mocha: <a href="https://github.com/visionmedia/mocha">https://github.com/visionmedia/mocha</a>
+</li>
+<li>yuidocjs: <a href="https://github.com/yui/yuidoc">https://github.com/yui/yuidoc</a>
+</li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>The MIT License</p>
+
+<p>Copyright 2014 Yahoo Inc.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Preceptor-reporter maintained by <a href="https://github.com/yahoo">yahoo</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-56408730-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
