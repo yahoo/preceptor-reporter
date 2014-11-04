@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/messenger/preceptor.js - preceptor-reporter</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="preceptor-reporter"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.9.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/AbstractListener.html">AbstractListener</a></li>
+            
+                <li><a href="../classes/AbstractMessenger.html">AbstractMessenger</a></li>
+            
+                <li><a href="../classes/AbstractReporter.html">AbstractReporter</a></li>
+            
+                <li><a href="../classes/DotReporter.html">DotReporter</a></li>
+            
+                <li><a href="../classes/DurationReporter.html">DurationReporter</a></li>
+            
+                <li><a href="../classes/EventReporter.html">EventReporter</a></li>
+            
+                <li><a href="../classes/Hooks.html">Hooks</a></li>
+            
+                <li><a href="../classes/Jenkins Sauce-Labs messenger.html">Jenkins Sauce-Labs messenger</a></li>
+            
+                <li><a href="../classes/JenkinsSauceLabsReporter.html">JenkinsSauceLabsReporter</a></li>
+            
+                <li><a href="../classes/JsonReporter.html">JsonReporter</a></li>
+            
+                <li><a href="../classes/JUnitReporter.html">JUnitReporter</a></li>
+            
+                <li><a href="../classes/LineSummaryReporter.html">LineSummaryReporter</a></li>
+            
+                <li><a href="../classes/ListReporter.html">ListReporter</a></li>
+            
+                <li><a href="../classes/PlainReporter.html">PlainReporter</a></li>
+            
+                <li><a href="../classes/PreceptorListener.html">PreceptorListener</a></li>
+            
+                <li><a href="../classes/PreceptorMessenger.html">PreceptorMessenger</a></li>
+            
+                <li><a href="../classes/PreceptorReporter.html">PreceptorReporter</a></li>
+            
+                <li><a href="../classes/ReportContainer.html">ReportContainer</a></li>
+            
+                <li><a href="../classes/ReportManager.html">ReportManager</a></li>
+            
+                <li><a href="../classes/SpecReporter.html">SpecReporter</a></li>
+            
+                <li><a href="../classes/SummaryReporter.html">SummaryReporter</a></li>
+            
+                <li><a href="../classes/TapReporter.html">TapReporter</a></li>
+            
+                <li><a href="../classes/TeamCity listener.html">TeamCity listener</a></li>
+            
+                <li><a href="../classes/TeamCity messenger.html">TeamCity messenger</a></li>
+            
+                <li><a href="../classes/TeamCityReporter.html">TeamCityReporter</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: lib/messenger/preceptor.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+// Copyright 2014, Yahoo! Inc.
+// Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
+
+var AbstractMessenger = require(&#x27;../abstractMessenger&#x27;);
+
+/**
+ * @class PreceptorMessenger
+ * @extends AbstractMessenger
+ * @constructor
+ */
+var PreceptorMessenger = AbstractMessenger.extend(
+
+	{
+		/**
+		 * Sends a message
+		 *
+		 * @method _send
+		 * @param {string} messageType
+		 * @param {*} data
+		 * @param {object} [options]
+		 * @private
+		 */
+		_send: function (messageType, data, options) {
+			this.trigger(&#x27;#|# &#x27; + messageType + &quot; &quot; + JSON.stringify(data) + &quot; #|#\n&quot;, options);
+		},
+
+
+		/**
+		 * Sends intro message
+		 *
+		 * @method _sendIntro
+		 * @param {object} [options]
+		 * @private
+		 */
+		_sendIntro: function (options) {
+			if (!this._introSent) {
+				this._introSent = true;
+				this.version(options);
+			}
+		},
+
+
+		/**
+		 * Sends the version as message
+		 *
+		 * @method version
+		 * @param {object} [options]
+		 */
+		version: function (options) {
+			this._sendIntro();
+			this._send(&quot;version&quot;, 1, options);
+		},
+
+
+		/**
+		 * Item has custom data
+		 *
+		 * @method itemData
+		 * @param {string} id
+		 * @param {string} json Data in JSON format
+		 * @param {object} [options]
+		 */
+		itemData: function (id, json, options) {
+			this._sendIntro();
+			this._send(&quot;itemData&quot;, [id, json], options);
+		},
+
+		/**
+		 * Item has a custom message
+		 *
+		 * @method itemMessage
+		 * @param {string} id
+		 * @param {string} message
+		 * @param {object} [options]
+		 */
+		itemMessage: function (id, message, options) {
+			this._sendIntro();
+			this._send(&quot;itemMessage&quot;, [id, message], options);
+		},
+
+
+		/**
+		 * Suite starts
+		 *
+		 * @method suiteStart
+		 * @param {string} id
+		 * @param {string} parentId
+		 * @param {string} suiteName
+		 * @param {object} [options]
+		 */
+		suiteStart: function (id, parentId, suiteName, options) {
+			this._sendIntro();
+			this._send(&quot;suiteStart&quot;, [id, parentId, suiteName], options);
+		},
+
+		/**
+		 * Suite ends
+		 *
+		 * @method suiteEnd
+		 * @param {string} id
+		 * @param {object} [options]
+		 */
+		suiteEnd: function (id, options) {
+			this._sendIntro();
+			this._send(&quot;suiteEnd&quot;, [id], options);
+		},
+
+
+		/**
+		 * Test starts
+		 *
+		 * @method testStart
+		 * @param {string} id
+		 * @param {string} parentId
+		 * @param {string} testName
+		 * @param {object} [options]
+		 */
+		testStart: function (id, parentId, testName, options) {
+			this._sendIntro();
+			this._send(&quot;testStart&quot;, [id, parentId, testName], options);
+		},
+
+
+		/**
+		 * Test fails
+		 *
+		 * @method testFailed
+		 * @param {string} id
+		 * @param {string} [message]
+		 * @param {string} [reason]
+		 * @param {object} [options]
+		 */
+		testFailed: function (id, message, reason, options) {
+			this._sendIntro();
+			this._send(&quot;testFailed&quot;, [id, message, reason], options);
+		},
+
+		/**
+		 * Test has an error
+		 *
+		 * @method testError
+		 * @param {string} id
+		 * @param {string} [message]
+		 * @param {string} [reason]
+		 * @param {object} [options]
+		 */
+		testError: function (id, message, reason, options) {
+			this._sendIntro();
+			this._send(&quot;testError&quot;, [id, message, reason], options);
+		},
+
+		/**
+		 * Test has passed
+		 *
+		 * @method testPassed
+		 * @param {string} id
+		 * @param {object} [options]
+		 */
+		testPassed: function (id, options) {
+			this._sendIntro();
+			this._send(&quot;testPassed&quot;, [id], options);
+		},
+
+		/**
+		 * Test is undefined
+		 *
+		 * @method testUndefined
+		 * @param {string} id
+		 * @param {object} [options]
+		 */
+		testUndefined: function (id, options) {
+			this._sendIntro();
+			this._send(&quot;testUndefined&quot;, [id], options);
+		},
+
+		/**
+		 * Test is skipped
+		 *
+		 * @method testSkipped
+		 * @param {string} id
+		 * @param {string} [reason]
+		 * @param {object} [options]
+		 */
+		testSkipped: function (id, reason, options) {
+			this._sendIntro();
+			this._send(&quot;testSkipped&quot;, [id, reason], options);
+		},
+
+		/**
+		 * Test is incomplete
+		 *
+		 * @method testIncomplete
+		 * @param {string} id
+		 * @param {object} [options]
+		 */
+		testIncomplete: function (id, options) {
+			this._sendIntro();
+			this._send(&quot;testIncomplete&quot;, [id], options);
+		}
+	});
+
+module.exports = PreceptorMessenger;
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

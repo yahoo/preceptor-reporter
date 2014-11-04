@@ -1,0 +1,4859 @@
+{
+    "project": {
+        "name": "preceptor-reporter",
+        "description": "Reporting library for the preceptor test-runner and aggregator",
+        "version": "0.9.0"
+    },
+    "files": {
+        "lib/listener/preceptor.js": {
+            "name": "lib/listener/preceptor.js",
+            "modules": {},
+            "classes": {
+                "PreceptorListener": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/listener/teamCity.js": {
+            "name": "lib/listener/teamCity.js",
+            "modules": {},
+            "classes": {
+                "TeamCity listener": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/messenger/jenkinsSauceLabs.js": {
+            "name": "lib/messenger/jenkinsSauceLabs.js",
+            "modules": {},
+            "classes": {
+                "Jenkins Sauce-Labs messenger": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/messenger/preceptor.js": {
+            "name": "lib/messenger/preceptor.js",
+            "modules": {},
+            "classes": {
+                "PreceptorMessenger": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/messenger/teamCity.js": {
+            "name": "lib/messenger/teamCity.js",
+            "modules": {},
+            "classes": {
+                "TeamCity messenger": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporter/dot.js": {
+            "name": "lib/reporter/dot.js",
+            "modules": {},
+            "classes": {
+                "DotReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporter/duration.js": {
+            "name": "lib/reporter/duration.js",
+            "modules": {},
+            "classes": {
+                "DurationReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporter/event.js": {
+            "name": "lib/reporter/event.js",
+            "modules": {},
+            "classes": {
+                "EventReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporter/jenkinsSauceLabs.js": {
+            "name": "lib/reporter/jenkinsSauceLabs.js",
+            "modules": {},
+            "classes": {
+                "JenkinsSauceLabsReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporter/json.js": {
+            "name": "lib/reporter/json.js",
+            "modules": {},
+            "classes": {
+                "JsonReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporter/junit.js": {
+            "name": "lib/reporter/junit.js",
+            "modules": {},
+            "classes": {
+                "JUnitReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporter/lineSummary.js": {
+            "name": "lib/reporter/lineSummary.js",
+            "modules": {},
+            "classes": {
+                "LineSummaryReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporter/list.js": {
+            "name": "lib/reporter/list.js",
+            "modules": {},
+            "classes": {
+                "ListReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporter/plain.js": {
+            "name": "lib/reporter/plain.js",
+            "modules": {},
+            "classes": {
+                "PlainReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporter/preceptor.js": {
+            "name": "lib/reporter/preceptor.js",
+            "modules": {},
+            "classes": {
+                "PreceptorReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporter/spec.js": {
+            "name": "lib/reporter/spec.js",
+            "modules": {},
+            "classes": {
+                "SpecReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporter/summary.js": {
+            "name": "lib/reporter/summary.js",
+            "modules": {},
+            "classes": {
+                "SummaryReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporter/tap.js": {
+            "name": "lib/reporter/tap.js",
+            "modules": {},
+            "classes": {
+                "TapReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporter/teamCity.js": {
+            "name": "lib/reporter/teamCity.js",
+            "modules": {},
+            "classes": {
+                "TeamCityReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporterHooks/cucumber.js": {
+            "name": "lib/reporterHooks/cucumber.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/reporterHooks/mocha.js": {
+            "name": "lib/reporterHooks/mocha.js",
+            "modules": {},
+            "classes": {
+                "Hooks": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/abstractListener.js": {
+            "name": "lib/abstractListener.js",
+            "modules": {},
+            "classes": {
+                "AbstractListener": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/abstractMessenger.js": {
+            "name": "lib/abstractMessenger.js",
+            "modules": {},
+            "classes": {
+                "AbstractMessenger": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/abstractReporter.js": {
+            "name": "lib/abstractReporter.js",
+            "modules": {},
+            "classes": {
+                "AbstractReporter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/container.js": {
+            "name": "lib/container.js",
+            "modules": {},
+            "classes": {
+                "ReportContainer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/manager.js": {
+            "name": "lib/manager.js",
+            "modules": {},
+            "classes": {
+                "ReportManager": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "PreceptorListener": {
+            "name": "PreceptorListener",
+            "shortname": "PreceptorListener",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/listener/preceptor.js",
+            "line": 6,
+            "extends": "AbstractListener",
+            "is_constructor": 1
+        },
+        "TeamCity listener": {
+            "name": "TeamCity listener",
+            "shortname": "TeamCity listener",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/listener/teamCity.js",
+            "line": 7,
+            "extends": "AbstractListener",
+            "is_constructor": 1
+        },
+        "Jenkins Sauce-Labs messenger": {
+            "name": "Jenkins Sauce-Labs messenger",
+            "shortname": "Jenkins Sauce-Labs messenger",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/messenger/jenkinsSauceLabs.js",
+            "line": 6,
+            "extends": "AbstractMessenger",
+            "is_constructor": 1
+        },
+        "PreceptorMessenger": {
+            "name": "PreceptorMessenger",
+            "shortname": "PreceptorMessenger",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/messenger/preceptor.js",
+            "line": 6,
+            "extends": "AbstractMessenger",
+            "is_constructor": 1
+        },
+        "TeamCity messenger": {
+            "name": "TeamCity messenger",
+            "shortname": "TeamCity messenger",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/messenger/teamCity.js",
+            "line": 7,
+            "extends": "AbstractMessenger",
+            "is_constructor": 1
+        },
+        "DotReporter": {
+            "name": "DotReporter",
+            "shortname": "DotReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporter/dot.js",
+            "line": 6,
+            "extends": "AbstractReporter",
+            "is_constructor": 1
+        },
+        "DurationReporter": {
+            "name": "DurationReporter",
+            "shortname": "DurationReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporter/duration.js",
+            "line": 6,
+            "extends": "AbstractReporter",
+            "is_constructor": 1
+        },
+        "EventReporter": {
+            "name": "EventReporter",
+            "shortname": "EventReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporter/event.js",
+            "line": 6,
+            "extends": "AbstractReporter",
+            "is_constructor": 1,
+            "itemtype": "event"
+        },
+        "JenkinsSauceLabsReporter": {
+            "name": "JenkinsSauceLabsReporter",
+            "shortname": "JenkinsSauceLabsReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporter/jenkinsSauceLabs.js",
+            "line": 7,
+            "extends": "AbstractReporter",
+            "is_constructor": 1,
+            "itemtype": "property",
+            "type": "JenkinsSauceLabsMessenger"
+        },
+        "JsonReporter": {
+            "name": "JsonReporter",
+            "shortname": "JsonReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporter/json.js",
+            "line": 6,
+            "extends": "AbstractReporter",
+            "is_constructor": 1
+        },
+        "JUnitReporter": {
+            "name": "JUnitReporter",
+            "shortname": "JUnitReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporter/junit.js",
+            "line": 9,
+            "extends": "AbstractReporter",
+            "is_constructor": 1
+        },
+        "LineSummaryReporter": {
+            "name": "LineSummaryReporter",
+            "shortname": "LineSummaryReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporter/lineSummary.js",
+            "line": 6,
+            "extends": "AbstractReporter",
+            "is_constructor": 1
+        },
+        "ListReporter": {
+            "name": "ListReporter",
+            "shortname": "ListReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporter/list.js",
+            "line": 7,
+            "extends": "AbstractReporter",
+            "is_constructor": 1,
+            "itemtype": "property",
+            "type": "Int"
+        },
+        "PlainReporter": {
+            "name": "PlainReporter",
+            "shortname": "PlainReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporter/plain.js",
+            "line": 7,
+            "extends": "AbstractReporter",
+            "is_constructor": 1
+        },
+        "PreceptorReporter": {
+            "name": "PreceptorReporter",
+            "shortname": "PreceptorReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporter/preceptor.js",
+            "line": 8,
+            "extends": "AbstractReporter",
+            "is_constructor": 1,
+            "itemtype": "property",
+            "type": "PreceptorMessenger"
+        },
+        "SpecReporter": {
+            "name": "SpecReporter",
+            "shortname": "SpecReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporter/spec.js",
+            "line": 6,
+            "extends": "AbstractReporter",
+            "is_constructor": 1,
+            "itemtype": "property",
+            "type": "Int"
+        },
+        "SummaryReporter": {
+            "name": "SummaryReporter",
+            "shortname": "SummaryReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporter/summary.js",
+            "line": 6,
+            "extends": "AbstractReporter",
+            "is_constructor": 1
+        },
+        "TapReporter": {
+            "name": "TapReporter",
+            "shortname": "TapReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporter/tap.js",
+            "line": 7,
+            "extends": "AbstractReporter",
+            "is_constructor": 1
+        },
+        "TeamCityReporter": {
+            "name": "TeamCityReporter",
+            "shortname": "TeamCityReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporter/teamCity.js",
+            "line": 7,
+            "extends": "AbstractReporter",
+            "is_constructor": 1,
+            "itemtype": "property",
+            "type": "TeamCityMessenger"
+        },
+        "Hooks": {
+            "name": "Hooks",
+            "shortname": "Hooks",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/reporterHooks/mocha.js",
+            "line": 4,
+            "description": "Reporter hook for mocha",
+            "itemtype": "method",
+            "params": [
+                {
+                    "name": "reportManager",
+                    "description": "",
+                    "type": "ReportManager"
+                },
+                {
+                    "name": "reportId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "finishedCallback",
+                    "description": "",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Function"
+            }
+        },
+        "AbstractListener": {
+            "name": "AbstractListener",
+            "shortname": "AbstractListener",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/abstractListener.js",
+            "line": 10,
+            "extends": "Base",
+            "itemtype": "event",
+            "type": "Object",
+            "params": [
+                {
+                    "name": "_manager",
+                    "description": "",
+                    "type": "ReportManager"
+                }
+            ]
+        },
+        "AbstractMessenger": {
+            "name": "AbstractMessenger",
+            "shortname": "AbstractMessenger",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/abstractMessenger.js",
+            "line": 9,
+            "description": "AbstractMessenger messenger",
+            "extends": "Base",
+            "itemtype": "event",
+            "type": "Object"
+        },
+        "AbstractReporter": {
+            "name": "AbstractReporter",
+            "shortname": "AbstractReporter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/abstractReporter.js",
+            "line": 11,
+            "extends": "Base",
+            "itemtype": "property",
+            "type": "ReportContainer"
+        },
+        "ReportContainer": {
+            "name": "ReportContainer",
+            "shortname": "ReportContainer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/container.js",
+            "line": 8,
+            "description": "This class manages the messages received and is used as data-source for the reporter instances.",
+            "extends": "Base",
+            "itemtype": "property",
+            "type": "Object[]"
+        },
+        "ReportManager": {
+            "name": "ReportManager",
+            "shortname": "ReportManager",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/manager.js",
+            "line": 16,
+            "extends": "Base",
+            "itemtype": "property",
+            "type": "Object",
+            "params": [
+                {
+                    "name": "_container",
+                    "description": "Report container",
+                    "type": "ReportContainer"
+                },
+                {
+                    "name": "_reporterList",
+                    "description": "Registered reporter",
+                    "type": "Object"
+                },
+                {
+                    "name": "_activeReporter",
+                    "description": "Active reporter list",
+                    "type": "AbstractReporter[]"
+                },
+                {
+                    "name": "_listenerList",
+                    "description": "Registered listener",
+                    "type": "Object"
+                },
+                {
+                    "name": "_activeListener",
+                    "description": "Active listener list",
+                    "type": "AbstractListener[]"
+                },
+                {
+                    "name": "_messageEvent",
+                    "description": "Convenience reporter to trigger messages",
+                    "type": "Event"
+                }
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib/listener/preceptor.js",
+            "line": 14,
+            "description": "Gets a list of relayed messages",
+            "itemtype": "method",
+            "name": "getRelayedMessages",
+            "return": {
+                "description": "",
+                "type": "String[]"
+            },
+            "class": "PreceptorListener"
+        },
+        {
+            "file": "lib/listener/preceptor.js",
+            "line": 36,
+            "description": "Parses a string and extracts message information",
+            "itemtype": "method",
+            "name": "parse",
+            "params": [
+                {
+                    "name": "text",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "placeholder",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "PreceptorListener"
+        },
+        {
+            "file": "lib/listener/teamCity.js",
+            "line": 15,
+            "description": "Gets the parent-id of the team-city root messages",
+            "itemtype": "method",
+            "name": "getParentId",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "TeamCity listener"
+        },
+        {
+            "file": "lib/listener/teamCity.js",
+            "line": 26,
+            "description": "Unescapes teamcity messages",
+            "itemtype": "method",
+            "name": "_unescape",
+            "params": [
+                {
+                    "name": "msg",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "TeamCity listener"
+        },
+        {
+            "file": "lib/listener/teamCity.js",
+            "line": 45,
+            "description": "Gets a list of relayed messages",
+            "itemtype": "method",
+            "name": "getRelayedMessages",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "TeamCity listener"
+        },
+        {
+            "file": "lib/listener/teamCity.js",
+            "line": 83,
+            "description": "Gets the mapping from TeamCity into Preceptor format",
+            "itemtype": "method",
+            "name": "getMessageMapping",
+            "return": {
+                "description": "",
+                "type": "Object[]"
+            },
+            "class": "TeamCity listener"
+        },
+        {
+            "file": "lib/listener/teamCity.js",
+            "line": 101,
+            "description": "Parses a string and extracts message information",
+            "itemtype": "method",
+            "name": "parse",
+            "params": [
+                {
+                    "name": "text",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "placeholder",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "TeamCity listener"
+        },
+        {
+            "file": "lib/listener/teamCity.js",
+            "line": 184,
+            "description": "Parses all attributes and returns a list of attributes in the correct order",
+            "itemtype": "method",
+            "name": "_parseAttributes",
+            "params": [
+                {
+                    "name": "attributes",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parameters",
+                    "description": "",
+                    "type": "Object[]"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "*[]"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "TeamCity listener"
+        },
+        {
+            "file": "lib/listener/teamCity.js",
+            "line": 207,
+            "description": "Parses a specific attribute",
+            "itemtype": "method",
+            "name": "_parseAttribute",
+            "params": [
+                {
+                    "name": "attributes",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "attributeName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "defaultValue",
+                    "description": "",
+                    "type": "*"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "*"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "TeamCity listener"
+        },
+        {
+            "file": "lib/listener/teamCity.js",
+            "line": 227,
+            "description": "Casts the attribute value to the correct data-type",
+            "itemtype": "method",
+            "name": "_castAttribute",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "type",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "*"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "TeamCity listener"
+        },
+        {
+            "file": "lib/messenger/jenkinsSauceLabs.js",
+            "line": 14,
+            "description": "Send the build info to jenkins",
+            "itemtype": "method",
+            "name": "sendBuildInfo",
+            "params": [
+                {
+                    "name": "sessionId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "jobName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "Jenkins Sauce-Labs messenger"
+        },
+        {
+            "file": "lib/messenger/preceptor.js",
+            "line": 14,
+            "description": "Sends a message",
+            "itemtype": "method",
+            "name": "_send",
+            "params": [
+                {
+                    "name": "messageType",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "*"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "PreceptorMessenger"
+        },
+        {
+            "file": "lib/messenger/preceptor.js",
+            "line": 28,
+            "description": "Sends intro message",
+            "itemtype": "method",
+            "name": "_sendIntro",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "PreceptorMessenger"
+        },
+        {
+            "file": "lib/messenger/preceptor.js",
+            "line": 43,
+            "description": "Sends the version as message",
+            "itemtype": "method",
+            "name": "version",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorMessenger"
+        },
+        {
+            "file": "lib/messenger/preceptor.js",
+            "line": 55,
+            "description": "Item has custom data",
+            "itemtype": "method",
+            "name": "itemData",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "json",
+                    "description": "Data in JSON format",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorMessenger"
+        },
+        {
+            "file": "lib/messenger/preceptor.js",
+            "line": 68,
+            "description": "Item has a custom message",
+            "itemtype": "method",
+            "name": "itemMessage",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorMessenger"
+        },
+        {
+            "file": "lib/messenger/preceptor.js",
+            "line": 82,
+            "description": "Suite starts",
+            "itemtype": "method",
+            "name": "suiteStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "suiteName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorMessenger"
+        },
+        {
+            "file": "lib/messenger/preceptor.js",
+            "line": 96,
+            "description": "Suite ends",
+            "itemtype": "method",
+            "name": "suiteEnd",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorMessenger"
+        },
+        {
+            "file": "lib/messenger/preceptor.js",
+            "line": 109,
+            "description": "Test starts",
+            "itemtype": "method",
+            "name": "testStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "testName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorMessenger"
+        },
+        {
+            "file": "lib/messenger/preceptor.js",
+            "line": 124,
+            "description": "Test fails",
+            "itemtype": "method",
+            "name": "testFailed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorMessenger"
+        },
+        {
+            "file": "lib/messenger/preceptor.js",
+            "line": 138,
+            "description": "Test has an error",
+            "itemtype": "method",
+            "name": "testError",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorMessenger"
+        },
+        {
+            "file": "lib/messenger/preceptor.js",
+            "line": 152,
+            "description": "Test has passed",
+            "itemtype": "method",
+            "name": "testPassed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorMessenger"
+        },
+        {
+            "file": "lib/messenger/preceptor.js",
+            "line": 164,
+            "description": "Test is undefined",
+            "itemtype": "method",
+            "name": "testUndefined",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorMessenger"
+        },
+        {
+            "file": "lib/messenger/preceptor.js",
+            "line": 176,
+            "description": "Test is skipped",
+            "itemtype": "method",
+            "name": "testSkipped",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorMessenger"
+        },
+        {
+            "file": "lib/messenger/preceptor.js",
+            "line": 189,
+            "description": "Test is incomplete",
+            "itemtype": "method",
+            "name": "testIncomplete",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorMessenger"
+        },
+        {
+            "file": "lib/messenger/teamCity.js",
+            "line": 15,
+            "description": "Escape teamcity message",
+            "itemtype": "method",
+            "name": "_escape",
+            "params": [
+                {
+                    "name": "msg",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "TeamCity messenger"
+        },
+        {
+            "file": "lib/messenger/teamCity.js",
+            "line": 33,
+            "description": "Sends a message",
+            "itemtype": "method",
+            "name": "_send",
+            "params": [
+                {
+                    "name": "messageType",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "TeamCity messenger"
+        },
+        {
+            "file": "lib/messenger/teamCity.js",
+            "line": 53,
+            "description": "Suite starts",
+            "itemtype": "method",
+            "name": "testSuiteStarted",
+            "params": [
+                {
+                    "name": "suiteName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "TeamCity messenger"
+        },
+        {
+            "file": "lib/messenger/teamCity.js",
+            "line": 64,
+            "description": "Suite ends",
+            "itemtype": "method",
+            "name": "testSuiteFinished",
+            "params": [
+                {
+                    "name": "suiteName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "TeamCity messenger"
+        },
+        {
+            "file": "lib/messenger/teamCity.js",
+            "line": 76,
+            "description": "Test starts",
+            "itemtype": "method",
+            "name": "testStarted",
+            "params": [
+                {
+                    "name": "testName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "TeamCity messenger"
+        },
+        {
+            "file": "lib/messenger/teamCity.js",
+            "line": 87,
+            "description": "Test starts",
+            "itemtype": "method",
+            "name": "testFinished",
+            "params": [
+                {
+                    "name": "testName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "duration",
+                    "description": "Duration in ms",
+                    "type": "Int"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "TeamCity messenger"
+        },
+        {
+            "file": "lib/messenger/teamCity.js",
+            "line": 100,
+            "description": "Test fails",
+            "itemtype": "method",
+            "name": "testFailed",
+            "params": [
+                {
+                    "name": "testName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "error",
+                    "description": "",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "details",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "TeamCity messenger"
+        },
+        {
+            "file": "lib/messenger/teamCity.js",
+            "line": 118,
+            "description": "Test is ignored",
+            "itemtype": "method",
+            "name": "testIgnored",
+            "params": [
+                {
+                    "name": "testName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "TeamCity messenger"
+        },
+        {
+            "file": "lib/reporter/dot.js",
+            "line": 14,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "DotReporter"
+        },
+        {
+            "file": "lib/reporter/dot.js",
+            "line": 31,
+            "description": "Called when reporting stops",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "DotReporter"
+        },
+        {
+            "file": "lib/reporter/dot.js",
+            "line": 42,
+            "description": "Called when test fails",
+            "itemtype": "method",
+            "name": "testFailed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "DotReporter"
+        },
+        {
+            "file": "lib/reporter/dot.js",
+            "line": 63,
+            "description": "Called when test has an error",
+            "itemtype": "method",
+            "name": "testError",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "DotReporter"
+        },
+        {
+            "file": "lib/reporter/dot.js",
+            "line": 84,
+            "description": "Called when test has passed",
+            "itemtype": "method",
+            "name": "testPassed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "DotReporter"
+        },
+        {
+            "file": "lib/reporter/dot.js",
+            "line": 103,
+            "description": "Called when test is undefined",
+            "itemtype": "method",
+            "name": "testUndefined",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "DotReporter"
+        },
+        {
+            "file": "lib/reporter/dot.js",
+            "line": 122,
+            "description": "Called when test is skipped",
+            "itemtype": "method",
+            "name": "testSkipped",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "DotReporter"
+        },
+        {
+            "file": "lib/reporter/dot.js",
+            "line": 142,
+            "description": "Called when test is incomplete",
+            "itemtype": "method",
+            "name": "testIncomplete",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "DotReporter"
+        },
+        {
+            "file": "lib/reporter/duration.js",
+            "line": 14,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "DurationReporter"
+        },
+        {
+            "file": "lib/reporter/duration.js",
+            "line": 31,
+            "description": "Called when reporting stops",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "DurationReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 38,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 53,
+            "description": "Called when reporting starts",
+            "itemtype": "method",
+            "name": "start",
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 62,
+            "description": "Called when reporting stops",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 72,
+            "description": "Reporting is completed",
+            "itemtype": "method",
+            "name": "complete",
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 82,
+            "description": "Called when any item has custom data",
+            "itemtype": "method",
+            "name": "itemData",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "json",
+                    "description": "JSON-data",
+                    "type": "String"
+                }
+            ],
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 94,
+            "description": "Called when any item has a custom message",
+            "itemtype": "method",
+            "name": "itemMessage",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 107,
+            "description": "Called when suite starts",
+            "itemtype": "method",
+            "name": "suiteStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "suiteName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 120,
+            "description": "Called when suite ends",
+            "itemtype": "method",
+            "name": "suiteEnd",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 132,
+            "description": "Called when test starts",
+            "itemtype": "method",
+            "name": "testStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "testName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 146,
+            "description": "Called when test fails",
+            "itemtype": "method",
+            "name": "testFailed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 159,
+            "description": "Called when test has an error",
+            "itemtype": "method",
+            "name": "testError",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 172,
+            "description": "Called when test has passed",
+            "itemtype": "method",
+            "name": "testPassed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 183,
+            "description": "Called when test is undefined",
+            "itemtype": "method",
+            "name": "testUndefined",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 194,
+            "description": "Called when test is skipped",
+            "itemtype": "method",
+            "name": "testSkipped",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/event.js",
+            "line": 206,
+            "description": "Called when test is incomplete",
+            "itemtype": "method",
+            "name": "testIncomplete",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "EventReporter"
+        },
+        {
+            "file": "lib/reporter/jenkinsSauceLabs.js",
+            "line": 17,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "JenkinsSauceLabsReporter"
+        },
+        {
+            "file": "lib/reporter/jenkinsSauceLabs.js",
+            "line": 38,
+            "description": "Gets the web-driver session id\n\nIt tries to get it from a couple different places:\n- itemData of the root as \"sessionId\"\n- reporter configuration as \"sessionId\"\n- environment variable \"SELENIUM_SESSION_ID\"\n\n#method getSessionId",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "JenkinsSauceLabsReporter"
+        },
+        {
+            "file": "lib/reporter/jenkinsSauceLabs.js",
+            "line": 69,
+            "description": "Gets the job-name, binding the name to the session\n\nIt tries to get it from a couple different places:\n- itemData of the root as \"jobName\"\n- reporter configuration as \"jobName\"\n- environment variables with format \"APP_NAME (#BUILD_NUMBER)\"",
+            "itemtype": "method",
+            "name": "getJobName",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "JenkinsSauceLabsReporter"
+        },
+        {
+            "file": "lib/reporter/jenkinsSauceLabs.js",
+            "line": 103,
+            "description": "Called when reporting stops",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "JenkinsSauceLabsReporter"
+        },
+        {
+            "file": "lib/reporter/json.js",
+            "line": 14,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "JsonReporter"
+        },
+        {
+            "file": "lib/reporter/json.js",
+            "line": 31,
+            "description": "Gets the collected output",
+            "itemtype": "method",
+            "name": "getOutput",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "JsonReporter"
+        },
+        {
+            "file": "lib/reporter/junit.js",
+            "line": 17,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "JUnitReporter"
+        },
+        {
+            "file": "lib/reporter/junit.js",
+            "line": 34,
+            "description": "Gets the collected output",
+            "itemtype": "method",
+            "name": "getOutput",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "JUnitReporter"
+        },
+        {
+            "file": "lib/reporter/junit.js",
+            "line": 53,
+            "description": "Create sub-tree for xml output",
+            "itemtype": "method",
+            "name": "_createObjectTree",
+            "params": [
+                {
+                    "name": "inputTreeNode",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "outputTreeNode",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "JUnitReporter"
+        },
+        {
+            "file": "lib/reporter/lineSummary.js",
+            "line": 14,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "LineSummaryReporter"
+        },
+        {
+            "file": "lib/reporter/lineSummary.js",
+            "line": 31,
+            "description": "Called when reporting stops",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "LineSummaryReporter"
+        },
+        {
+            "file": "lib/reporter/list.js",
+            "line": 18,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "ListReporter"
+        },
+        {
+            "file": "lib/reporter/list.js",
+            "line": 35,
+            "description": "Spacing",
+            "itemtype": "method",
+            "name": "_spacing",
+            "params": [
+                {
+                    "name": "count",
+                    "description": "",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "ListReporter"
+        },
+        {
+            "file": "lib/reporter/list.js",
+            "line": 48,
+            "description": "Called when reporting starts",
+            "itemtype": "method",
+            "name": "start",
+            "class": "ListReporter"
+        },
+        {
+            "file": "lib/reporter/list.js",
+            "line": 60,
+            "description": "Called when reporting stops",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "ListReporter"
+        },
+        {
+            "file": "lib/reporter/list.js",
+            "line": 108,
+            "description": "Called when test fails",
+            "itemtype": "method",
+            "name": "testFailed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "ListReporter"
+        },
+        {
+            "file": "lib/reporter/list.js",
+            "line": 130,
+            "description": "Called when test has an error",
+            "itemtype": "method",
+            "name": "testError",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "ListReporter"
+        },
+        {
+            "file": "lib/reporter/list.js",
+            "line": 152,
+            "description": "Called when test is undefined",
+            "itemtype": "method",
+            "name": "testUndefined",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "ListReporter"
+        },
+        {
+            "file": "lib/reporter/list.js",
+            "line": 172,
+            "description": "Called when test is skipped",
+            "itemtype": "method",
+            "name": "testSkipped",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "ListReporter"
+        },
+        {
+            "file": "lib/reporter/plain.js",
+            "line": 15,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "PlainReporter"
+        },
+        {
+            "file": "lib/reporter/plain.js",
+            "line": 32,
+            "description": "Escape message",
+            "itemtype": "method",
+            "name": "_escape",
+            "params": [
+                {
+                    "name": "msg",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "PlainReporter"
+        },
+        {
+            "file": "lib/reporter/plain.js",
+            "line": 48,
+            "description": "Called when reporting stops",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "PlainReporter"
+        },
+        {
+            "file": "lib/reporter/plain.js",
+            "line": 58,
+            "description": "Called when suite starts",
+            "itemtype": "method",
+            "name": "suiteStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "suiteName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PlainReporter"
+        },
+        {
+            "file": "lib/reporter/plain.js",
+            "line": 71,
+            "description": "Called when suite ends",
+            "itemtype": "method",
+            "name": "suiteEnd",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PlainReporter"
+        },
+        {
+            "file": "lib/reporter/plain.js",
+            "line": 83,
+            "description": "Called when any item has custom data",
+            "itemtype": "method",
+            "name": "itemData",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "json",
+                    "description": "JSON-data",
+                    "type": "String"
+                }
+            ],
+            "class": "PlainReporter"
+        },
+        {
+            "file": "lib/reporter/plain.js",
+            "line": 99,
+            "description": "Called when any item has a custom message",
+            "itemtype": "method",
+            "name": "itemMessage",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PlainReporter"
+        },
+        {
+            "file": "lib/reporter/plain.js",
+            "line": 116,
+            "description": "Called when test starts",
+            "itemtype": "method",
+            "name": "testStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "testName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PlainReporter"
+        },
+        {
+            "file": "lib/reporter/plain.js",
+            "line": 130,
+            "description": "Called when test fails",
+            "itemtype": "method",
+            "name": "testFailed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "PlainReporter"
+        },
+        {
+            "file": "lib/reporter/plain.js",
+            "line": 147,
+            "description": "Called when test has an error",
+            "itemtype": "method",
+            "name": "testError",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "PlainReporter"
+        },
+        {
+            "file": "lib/reporter/plain.js",
+            "line": 164,
+            "description": "Called when test has passed",
+            "itemtype": "method",
+            "name": "testPassed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PlainReporter"
+        },
+        {
+            "file": "lib/reporter/plain.js",
+            "line": 179,
+            "description": "Called when test is undefined",
+            "itemtype": "method",
+            "name": "testUndefined",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PlainReporter"
+        },
+        {
+            "file": "lib/reporter/plain.js",
+            "line": 194,
+            "description": "Called when test is skipped",
+            "itemtype": "method",
+            "name": "testSkipped",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "PlainReporter"
+        },
+        {
+            "file": "lib/reporter/plain.js",
+            "line": 210,
+            "description": "Called when test is incomplete",
+            "itemtype": "method",
+            "name": "testIncomplete",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PlainReporter"
+        },
+        {
+            "file": "lib/reporter/preceptor.js",
+            "line": 18,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "PreceptorReporter"
+        },
+        {
+            "file": "lib/reporter/preceptor.js",
+            "line": 40,
+            "description": "Called when reporting starts",
+            "itemtype": "method",
+            "name": "start",
+            "class": "PreceptorReporter"
+        },
+        {
+            "file": "lib/reporter/preceptor.js",
+            "line": 51,
+            "description": "Called when any item has custom data",
+            "itemtype": "method",
+            "name": "itemData",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "json",
+                    "description": "JSON-data",
+                    "type": "String"
+                }
+            ],
+            "class": "PreceptorReporter"
+        },
+        {
+            "file": "lib/reporter/preceptor.js",
+            "line": 63,
+            "description": "Called when any item has a custom message",
+            "itemtype": "method",
+            "name": "itemMessage",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PreceptorReporter"
+        },
+        {
+            "file": "lib/reporter/preceptor.js",
+            "line": 76,
+            "description": "Called when suite starts",
+            "itemtype": "method",
+            "name": "suiteStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "suiteName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PreceptorReporter"
+        },
+        {
+            "file": "lib/reporter/preceptor.js",
+            "line": 89,
+            "description": "Called when suite ends",
+            "itemtype": "method",
+            "name": "suiteEnd",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PreceptorReporter"
+        },
+        {
+            "file": "lib/reporter/preceptor.js",
+            "line": 101,
+            "description": "Called when test starts",
+            "itemtype": "method",
+            "name": "testStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "testName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PreceptorReporter"
+        },
+        {
+            "file": "lib/reporter/preceptor.js",
+            "line": 115,
+            "description": "Called when test fails",
+            "itemtype": "method",
+            "name": "testFailed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorReporter"
+        },
+        {
+            "file": "lib/reporter/preceptor.js",
+            "line": 128,
+            "description": "Called when test has an error",
+            "itemtype": "method",
+            "name": "testError",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorReporter"
+        },
+        {
+            "file": "lib/reporter/preceptor.js",
+            "line": 141,
+            "description": "Called when test has passed",
+            "itemtype": "method",
+            "name": "testPassed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PreceptorReporter"
+        },
+        {
+            "file": "lib/reporter/preceptor.js",
+            "line": 152,
+            "description": "Called when test is undefined",
+            "itemtype": "method",
+            "name": "testUndefined",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PreceptorReporter"
+        },
+        {
+            "file": "lib/reporter/preceptor.js",
+            "line": 163,
+            "description": "Called when test is skipped",
+            "itemtype": "method",
+            "name": "testSkipped",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "PreceptorReporter"
+        },
+        {
+            "file": "lib/reporter/preceptor.js",
+            "line": 175,
+            "description": "Called when test is incomplete",
+            "itemtype": "method",
+            "name": "testIncomplete",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PreceptorReporter"
+        },
+        {
+            "file": "lib/reporter/spec.js",
+            "line": 16,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "SpecReporter"
+        },
+        {
+            "file": "lib/reporter/spec.js",
+            "line": 33,
+            "description": "Spacing for object",
+            "itemtype": "method",
+            "name": "_spacing",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "SpecReporter"
+        },
+        {
+            "file": "lib/reporter/spec.js",
+            "line": 46,
+            "description": "Called when reporting starts",
+            "itemtype": "method",
+            "name": "start",
+            "class": "SpecReporter"
+        },
+        {
+            "file": "lib/reporter/spec.js",
+            "line": 57,
+            "description": "Called when reporting stops",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "SpecReporter"
+        },
+        {
+            "file": "lib/reporter/spec.js",
+            "line": 68,
+            "description": "Called when suite starts",
+            "itemtype": "method",
+            "name": "suiteStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "suiteName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "SpecReporter"
+        },
+        {
+            "file": "lib/reporter/spec.js",
+            "line": 81,
+            "description": "Called when suite ends",
+            "itemtype": "method",
+            "name": "suiteEnd",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "SpecReporter"
+        },
+        {
+            "file": "lib/reporter/spec.js",
+            "line": 92,
+            "description": "Called when test fails",
+            "itemtype": "method",
+            "name": "testFailed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "SpecReporter"
+        },
+        {
+            "file": "lib/reporter/spec.js",
+            "line": 114,
+            "description": "Called when test has an error",
+            "itemtype": "method",
+            "name": "testError",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "SpecReporter"
+        },
+        {
+            "file": "lib/reporter/spec.js",
+            "line": 136,
+            "description": "Called when test has passed",
+            "itemtype": "method",
+            "name": "testPassed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "SpecReporter"
+        },
+        {
+            "file": "lib/reporter/spec.js",
+            "line": 157,
+            "description": "Called when test is undefined",
+            "itemtype": "method",
+            "name": "testUndefined",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "SpecReporter"
+        },
+        {
+            "file": "lib/reporter/spec.js",
+            "line": 177,
+            "description": "Called when test is skipped",
+            "itemtype": "method",
+            "name": "testSkipped",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "SpecReporter"
+        },
+        {
+            "file": "lib/reporter/spec.js",
+            "line": 198,
+            "description": "Called when test is incomplete",
+            "itemtype": "method",
+            "name": "testIncomplete",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "SpecReporter"
+        },
+        {
+            "file": "lib/reporter/summary.js",
+            "line": 14,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "SummaryReporter"
+        },
+        {
+            "file": "lib/reporter/summary.js",
+            "line": 31,
+            "description": "Called when reporting stops",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "SummaryReporter"
+        },
+        {
+            "file": "lib/reporter/tap.js",
+            "line": 15,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "TapReporter"
+        },
+        {
+            "file": "lib/reporter/tap.js",
+            "line": 32,
+            "description": "Gets the collected output",
+            "itemtype": "method",
+            "name": "getOutput",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "TapReporter"
+        },
+        {
+            "file": "lib/reporter/tap.js",
+            "line": 77,
+            "description": "Escape message",
+            "itemtype": "method",
+            "name": "_escape",
+            "params": [
+                {
+                    "name": "msg",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "TapReporter"
+        },
+        {
+            "file": "lib/reporter/tap.js",
+            "line": 93,
+            "description": "Adds a test result to the list",
+            "itemtype": "method",
+            "name": "_addTestResult",
+            "params": [
+                {
+                    "name": "testResults",
+                    "description": "",
+                    "type": "String[]"
+                },
+                {
+                    "name": "parentTitle",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "test",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "TapReporter"
+        },
+        {
+            "file": "lib/reporter/tap.js",
+            "line": 125,
+            "description": "Build all test results from the node downwards",
+            "itemtype": "method",
+            "name": "_buildTestResults",
+            "params": [
+                {
+                    "name": "testResults",
+                    "description": "",
+                    "type": "String[]"
+                },
+                {
+                    "name": "parentTitle",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "treeNode",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "TapReporter"
+        },
+        {
+            "file": "lib/reporter/teamCity.js",
+            "line": 17,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "TeamCityReporter"
+        },
+        {
+            "file": "lib/reporter/teamCity.js",
+            "line": 39,
+            "description": "Called when suite starts",
+            "itemtype": "method",
+            "name": "suiteStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "suiteName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "TeamCityReporter"
+        },
+        {
+            "file": "lib/reporter/teamCity.js",
+            "line": 52,
+            "description": "Called when suite ends",
+            "itemtype": "method",
+            "name": "suiteEnd",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "TeamCityReporter"
+        },
+        {
+            "file": "lib/reporter/teamCity.js",
+            "line": 64,
+            "description": "Called when test starts",
+            "itemtype": "method",
+            "name": "testStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "testName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "TeamCityReporter"
+        },
+        {
+            "file": "lib/reporter/teamCity.js",
+            "line": 78,
+            "description": "Called when test fails",
+            "itemtype": "method",
+            "name": "testFailed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "TeamCityReporter"
+        },
+        {
+            "file": "lib/reporter/teamCity.js",
+            "line": 96,
+            "description": "Called when test has an error",
+            "itemtype": "method",
+            "name": "testError",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "TeamCityReporter"
+        },
+        {
+            "file": "lib/reporter/teamCity.js",
+            "line": 114,
+            "description": "Called when test has passed",
+            "itemtype": "method",
+            "name": "testPassed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "TeamCityReporter"
+        },
+        {
+            "file": "lib/reporter/teamCity.js",
+            "line": 129,
+            "description": "Called when test is undefined",
+            "itemtype": "method",
+            "name": "testUndefined",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "TeamCityReporter"
+        },
+        {
+            "file": "lib/reporter/teamCity.js",
+            "line": 145,
+            "description": "Called when test is skipped",
+            "itemtype": "method",
+            "name": "testSkipped",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "TeamCityReporter"
+        },
+        {
+            "file": "lib/reporter/teamCity.js",
+            "line": 162,
+            "description": "Called when test is incomplete",
+            "itemtype": "method",
+            "name": "testIncomplete",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "TeamCityReporter"
+        },
+        {
+            "file": "lib/reporterHooks/cucumber.js",
+            "line": 19,
+            "description": "Hook function for sub-system",
+            "return": {
+                "description": "",
+                "type": "Function"
+            },
+            "class": "Hooks"
+        },
+        {
+            "file": "lib/reporterHooks/mocha.js",
+            "line": 19,
+            "description": "Hook function for sub-system",
+            "params": [
+                {
+                    "name": "runner",
+                    "description": "Mocha test-runner",
+                    "type": "*"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Function"
+            },
+            "class": "Hooks"
+        },
+        {
+            "file": "lib/abstractListener.js",
+            "line": 21,
+            "description": "Abstract listener constructor",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "configuration",
+                            "description": "",
+                            "type": "Object",
+                            "optional": true
+                        },
+                        {
+                            "name": "placeholder",
+                            "description": "",
+                            "type": "Object",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "is_constructor": 1,
+            "class": "AbstractListener"
+        },
+        {
+            "file": "lib/abstractListener.js",
+            "line": 38,
+            "description": "Initializes the instance",
+            "class": "AbstractListener"
+        },
+        {
+            "file": "lib/abstractListener.js",
+            "line": 46,
+            "description": "Gets the options",
+            "itemtype": "method",
+            "name": "getOptions",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "AbstractListener"
+        },
+        {
+            "file": "lib/abstractListener.js",
+            "line": 57,
+            "description": "Gets the configuration supplied",
+            "itemtype": "method",
+            "name": "getConfiguration",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "AbstractListener"
+        },
+        {
+            "file": "lib/abstractListener.js",
+            "line": 67,
+            "description": "Gets the placeholder and their replacements",
+            "itemtype": "method",
+            "name": "getPlaceholder",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "AbstractListener"
+        },
+        {
+            "file": "lib/abstractListener.js",
+            "line": 78,
+            "description": "Triggers a message",
+            "itemtype": "method",
+            "name": "triggerMessage",
+            "params": [
+                {
+                    "name": "messageType",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "*[]"
+                }
+            ],
+            "class": "AbstractListener"
+        },
+        {
+            "file": "lib/abstractListener.js",
+            "line": 90,
+            "description": "Parses a string and extracts message information",
+            "itemtype": "method",
+            "name": "parse",
+            "params": [
+                {
+                    "name": "text",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "placeholder",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "AbstractListener"
+        },
+        {
+            "file": "lib/abstractListener.js",
+            "line": 103,
+            "description": "Processes a text with the placeholder",
+            "itemtype": "method",
+            "name": "processPlaceholder",
+            "params": [
+                {
+                    "name": "text",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "placeholder",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "AbstractListener"
+        },
+        {
+            "file": "lib/abstractListener.js",
+            "line": 136,
+            "itemtype": "property",
+            "name": "TYPE",
+            "type": "{string}",
+            "static": 1,
+            "class": "AbstractListener"
+        },
+        {
+            "file": "lib/abstractMessenger.js",
+            "line": 21,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "output",
+                            "description": "",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "is_constructor": 1,
+            "class": "AbstractMessenger"
+        },
+        {
+            "file": "lib/abstractMessenger.js",
+            "line": 35,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "AbstractMessenger"
+        },
+        {
+            "file": "lib/abstractMessenger.js",
+            "line": 45,
+            "description": "Gets the options",
+            "itemtype": "method",
+            "name": "getOptions",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "AbstractMessenger"
+        },
+        {
+            "file": "lib/abstractMessenger.js",
+            "line": 55,
+            "description": "Should the messages be printed?",
+            "itemtype": "method",
+            "name": "shouldOutput",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "AbstractMessenger"
+        },
+        {
+            "file": "lib/abstractMessenger.js",
+            "line": 66,
+            "description": "Triggers a message",
+            "itemtype": "method",
+            "name": "trigger",
+            "params": [
+                {
+                    "name": "msg",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "AbstractMessenger"
+        },
+        {
+            "file": "lib/abstractMessenger.js",
+            "line": 82,
+            "description": "Outputs data to stdout",
+            "itemtype": "method",
+            "name": "output",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "AbstractMessenger"
+        },
+        {
+            "file": "lib/abstractMessenger.js",
+            "line": 94,
+            "itemtype": "property",
+            "name": "TYPE",
+            "type": "{string}",
+            "static": 1,
+            "class": "AbstractMessenger"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 20,
+            "description": "Abstract reporter constructor",
+            "params": [
+                {
+                    "name": "container",
+                    "description": "",
+                    "type": "ReportContainer"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "is_constructor": 1,
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 37,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 49,
+            "description": "Gets the options",
+            "itemtype": "method",
+            "name": "getOptions",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 59,
+            "description": "Gets the type of reporter",
+            "itemtype": "method",
+            "name": "getType",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 69,
+            "description": "Gets the configuration supplied",
+            "itemtype": "method",
+            "name": "getConfiguration",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 79,
+            "description": "Gets the container",
+            "itemtype": "method",
+            "name": "getContainer",
+            "return": {
+                "description": "",
+                "type": "ReportContainer"
+            },
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 89,
+            "description": "Output path",
+            "itemtype": "method",
+            "name": "getPath",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 99,
+            "description": "Should reporter use color?",
+            "itemtype": "method",
+            "name": "useColor",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 109,
+            "description": "Should the reporter output the data?",
+            "itemtype": "method",
+            "name": "shouldOutput",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 119,
+            "description": "Should the reporter show progress?",
+            "itemtype": "method",
+            "name": "shouldShowProgress",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 130,
+            "description": "Sends data to stdout",
+            "itemtype": "method",
+            "name": "console",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "msgType",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "msg",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 160,
+            "description": "Outputs data to stdout",
+            "itemtype": "method",
+            "name": "output",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 171,
+            "description": "Called when reporting starts",
+            "itemtype": "method",
+            "name": "start",
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 180,
+            "description": "Called when reporting stops",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 190,
+            "description": "Reporting is completed",
+            "itemtype": "method",
+            "name": "complete",
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 210,
+            "description": "Called when suite starts",
+            "itemtype": "method",
+            "name": "suiteStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "suiteName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 222,
+            "description": "Called when suite ends",
+            "itemtype": "method",
+            "name": "suiteEnd",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 233,
+            "description": "Called when any item has custom data",
+            "itemtype": "method",
+            "name": "itemData",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "json",
+                    "description": "JSON-data",
+                    "type": "String"
+                }
+            ],
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 244,
+            "description": "Called when any item has a custom message",
+            "itemtype": "method",
+            "name": "itemMessage",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 256,
+            "description": "Called when test starts",
+            "itemtype": "method",
+            "name": "testStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "testName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 269,
+            "description": "Called when test fails",
+            "itemtype": "method",
+            "name": "testFailed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 281,
+            "description": "Called when test has an error",
+            "itemtype": "method",
+            "name": "testError",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 293,
+            "description": "Called when test has passed",
+            "itemtype": "method",
+            "name": "testPassed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 303,
+            "description": "Called when test is undefined",
+            "itemtype": "method",
+            "name": "testUndefined",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 313,
+            "description": "Called when test is skipped",
+            "itemtype": "method",
+            "name": "testSkipped",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 324,
+            "description": "Called when test is incomplete",
+            "itemtype": "method",
+            "name": "testIncomplete",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 335,
+            "description": "Gets the collected output",
+            "itemtype": "method",
+            "name": "getOutput",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 379,
+            "description": "Exports data to a string",
+            "itemtype": "method",
+            "name": "toString",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 389,
+            "description": "Writes the data into an output file",
+            "itemtype": "method",
+            "name": "write",
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/abstractReporter.js",
+            "line": 403,
+            "itemtype": "property",
+            "name": "TYPE",
+            "type": "{string}",
+            "static": 1,
+            "class": "AbstractReporter"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 21,
+            "description": "Called when reporting starts",
+            "itemtype": "method",
+            "name": "start",
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 42,
+            "description": "Called when reporting stops",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 63,
+            "description": "Reporting is completed",
+            "itemtype": "method",
+            "name": "complete",
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 72,
+            "description": "Called when suite starts",
+            "itemtype": "method",
+            "name": "suiteStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "suiteName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 103,
+            "description": "Called when suite ends",
+            "itemtype": "method",
+            "name": "suiteEnd",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 125,
+            "description": "Called when any item has custom data",
+            "itemtype": "method",
+            "name": "itemData",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "json",
+                    "description": "JSON-data",
+                    "type": "String"
+                }
+            ],
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 138,
+            "description": "Called when any item has a custom message",
+            "itemtype": "method",
+            "name": "itemMessage",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 150,
+            "description": "Called when test starts",
+            "itemtype": "method",
+            "name": "testStart",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "testName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 181,
+            "description": "Called when test fails",
+            "itemtype": "method",
+            "name": "testFailed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 197,
+            "description": "Called when test has an error",
+            "itemtype": "method",
+            "name": "testError",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 213,
+            "description": "Called when test has passed",
+            "itemtype": "method",
+            "name": "testPassed",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 225,
+            "description": "Called when test is undefined",
+            "itemtype": "method",
+            "name": "testUndefined",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 237,
+            "description": "Called when test is skipped",
+            "itemtype": "method",
+            "name": "testSkipped",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "reason",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 251,
+            "description": "Called when test is incomplete",
+            "itemtype": "method",
+            "name": "testIncomplete",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 264,
+            "description": "Completes a test",
+            "itemtype": "method",
+            "name": "_completeTestAction",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Action",
+                "type": "Object"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 290,
+            "description": "Gets action by id",
+            "itemtype": "method",
+            "name": "getAction",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 320,
+            "description": "Gets the sequence of actions by the sequential list of ids",
+            "itemtype": "method",
+            "name": "getSequence",
+            "return": {
+                "description": "",
+                "type": "String[]"
+            },
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 330,
+            "description": "Gets the action tree",
+            "itemtype": "method",
+            "name": "getTree",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 341,
+            "description": "Gathers all test outcomes for a node",
+            "itemtype": "method",
+            "name": "gatherTestOutcomes",
+            "params": [
+                {
+                    "name": "treeNode",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Of `{tests: int, failed: int, disabled: int, error: int}`",
+                "type": "Object"
+            },
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 364,
+            "description": "Counts a specific outcome downwards from the current tree-point",
+            "itemtype": "method",
+            "name": "_countOutcomes",
+            "params": [
+                {
+                    "name": "treeNode",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "sumObj",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 388,
+            "description": "Gets the full name of an object",
+            "itemtype": "method",
+            "name": "getFullName",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/container.js",
+            "line": 409,
+            "itemtype": "property",
+            "name": "TYPE",
+            "type": "{string}",
+            "static": 1,
+            "class": "ReportContainer"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 33,
+            "description": "Reporter manager constructor",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "collect",
+                            "description": "",
+                            "type": "Object",
+                            "optional": true,
+                            "optdefault": "true"
+                        },
+                        {
+                            "name": "container",
+                            "description": "",
+                            "type": "ReportContainer",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "is_constructor": 1,
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 66,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 81,
+            "description": "Initializes the reporter registry",
+            "itemtype": "method",
+            "name": "_initializeReporterRegistry",
+            "access": "private",
+            "tagname": "",
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 114,
+            "description": "Initializes the listener registry",
+            "itemtype": "method",
+            "name": "_initializeListenerRegistry",
+            "access": "private",
+            "tagname": "",
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 136,
+            "description": "Should report-manager collect events?",
+            "itemtype": "method",
+            "name": "shouldCollect",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 147,
+            "description": "Gets the options",
+            "itemtype": "method",
+            "name": "getOptions",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 157,
+            "description": "Gets the container of messages",
+            "itemtype": "method",
+            "name": "getContainer",
+            "return": {
+                "description": "",
+                "type": "ReportContainer"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 168,
+            "description": "Gets all the active reporter",
+            "itemtype": "method",
+            "name": "getActiveReporter",
+            "return": {
+                "description": "",
+                "type": "AbstractReporter[]"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 178,
+            "description": "Gets a dictionary of registered reporter",
+            "itemtype": "method",
+            "name": "getReporterList",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 189,
+            "description": "Checks if a reporter is registered",
+            "itemtype": "method",
+            "name": "hasReporter",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 200,
+            "description": "Gets a specific registered reporter",
+            "itemtype": "method",
+            "name": "getReporter",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Function"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 211,
+            "description": "Registers a reporter",
+            "itemtype": "method",
+            "name": "registerReporter",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "contr",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 222,
+            "description": "Registers a list of reporters",
+            "itemtype": "method",
+            "name": "registerReporterRange",
+            "params": [
+                {
+                    "name": "list",
+                    "description": "Of `{ name: <string>, fn: <function> }`",
+                    "type": "Object[]"
+                }
+            ],
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 236,
+            "description": "Adds a new reporter to the list of active reporters",
+            "itemtype": "method",
+            "name": "addReporter",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "AbstractReporter"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 262,
+            "description": "Adds a new reporter to the list of active reporters",
+            "itemtype": "method",
+            "name": "addReporterRange",
+            "params": [
+                {
+                    "name": "reporter",
+                    "description": "",
+                    "type": "String|string[]|object|object[]"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "AbstractReporter[]"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 281,
+            "description": "Normalizes the reporter",
+            "itemtype": "method",
+            "name": "_normalizeReporter",
+            "params": [
+                {
+                    "name": "reporter",
+                    "description": "",
+                    "type": "String|string[]|object|object[]"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object[]"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 321,
+            "description": "Gets all the active listener",
+            "itemtype": "method",
+            "name": "getActiveListener",
+            "return": {
+                "description": "",
+                "type": "AbstractListener[]"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 331,
+            "description": "Gets a dictionary of registered listener",
+            "itemtype": "method",
+            "name": "getListenerList",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 342,
+            "description": "Checks if a listener is registered",
+            "itemtype": "method",
+            "name": "hasListener",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 353,
+            "description": "Gets a specific registered listener",
+            "itemtype": "method",
+            "name": "getListener",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Function"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 364,
+            "description": "Registers a listener",
+            "itemtype": "method",
+            "name": "registerListener",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "contr",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 375,
+            "description": "Registers a list of listeners",
+            "itemtype": "method",
+            "name": "registerListenerRange",
+            "params": [
+                {
+                    "name": "list",
+                    "description": "`{ name: <string>, fn: <function> }`",
+                    "type": "Object[]"
+                }
+            ],
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 389,
+            "description": "Adds a new listener to the list of active listeners",
+            "itemtype": "method",
+            "name": "addListener",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "AbstractListener"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 418,
+            "description": "Adds a new listener to the list of active listeners",
+            "itemtype": "method",
+            "name": "addListenerRange",
+            "params": [
+                {
+                    "name": "listener",
+                    "description": "",
+                    "type": "String|string[]|object|object[]"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "AbstractListener[]"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 437,
+            "description": "Normalizes the listener",
+            "itemtype": "method",
+            "name": "_normalizeListener",
+            "params": [
+                {
+                    "name": "listener",
+                    "description": "",
+                    "type": "String|string[]|object|object[]"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object[]"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 476,
+            "description": "Gets a list of allowed messages",
+            "itemtype": "method",
+            "name": "getAllowedMessages",
+            "return": {
+                "description": "",
+                "type": "String[]"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 501,
+            "description": "Processes a message by sending it to all attached reporter",
+            "itemtype": "method",
+            "name": "processMessage",
+            "params": [
+                {
+                    "name": "messageType",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "*[]"
+                }
+            ],
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 527,
+            "description": "Returns a convenience object to trigger messages",
+            "itemtype": "method",
+            "name": "message",
+            "return": {
+                "description": "",
+                "type": "Event"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 538,
+            "description": "Parses a string to see if any listener can receive messages from it",
+            "itemtype": "method",
+            "name": "parse",
+            "params": [
+                {
+                    "name": "text",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "placeholder",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 556,
+            "description": "Loads a reporter hook and returns the system specific function to be supplied to the system",
+            "itemtype": "method",
+            "name": "loadHook",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "reportId",
+                    "description": "",
+                    "type": "String|undefined"
+                },
+                {
+                    "name": "finishedCallback",
+                    "description": "",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Function"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 576,
+            "description": "Clears all run-data",
+            "itemtype": "method",
+            "name": "clear",
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 591,
+            "var": "string",
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 598,
+            "itemtype": "property",
+            "name": "AbstractListener",
+            "type": "{AbstractListener}",
+            "static": 1,
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 605,
+            "itemtype": "property",
+            "name": "AbstractMessenger",
+            "type": "{AbstractMessenger}",
+            "static": 1,
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 612,
+            "itemtype": "property",
+            "name": "AbstractReporter",
+            "type": "{AbstractReporter}",
+            "static": 1,
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 620,
+            "description": "Gets a list of messengers",
+            "static": 1,
+            "itemtype": "method",
+            "name": "getMessengers",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 635,
+            "description": "Gets a list of reporter-hooks",
+            "static": 1,
+            "itemtype": "method",
+            "name": "getReporterHooks",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 649,
+            "description": "Gets the module version",
+            "static": 1,
+            "itemtype": "method",
+            "name": "version",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "ReportManager"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: var",
+            "line": " lib/manager.js:591"
+        },
+        {
+            "message": "Missing item type\nGets the web-driver session id\n\nIt tries to get it from a couple different places:\n- itemData of the root as \"sessionId\"\n- reporter configuration as \"sessionId\"\n- environment variable \"SELENIUM_SESSION_ID\"\n\n#method getSessionId",
+            "line": " lib/reporter/jenkinsSauceLabs.js:38"
+        },
+        {
+            "message": "Missing item type\nHook function for sub-system",
+            "line": " lib/reporterHooks/cucumber.js:19"
+        },
+        {
+            "message": "Missing item type\nHook function for sub-system",
+            "line": " lib/reporterHooks/mocha.js:19"
+        },
+        {
+            "message": "Missing item type\nAbstract listener constructor",
+            "line": " lib/abstractListener.js:21"
+        },
+        {
+            "message": "Missing item type\nInitializes the instance",
+            "line": " lib/abstractListener.js:38"
+        },
+        {
+            "message": "Missing item type",
+            "line": " lib/abstractMessenger.js:21"
+        },
+        {
+            "message": "Missing item type\nAbstract reporter constructor",
+            "line": " lib/abstractReporter.js:20"
+        },
+        {
+            "message": "Missing item type\nReporter manager constructor",
+            "line": " lib/manager.js:33"
+        },
+        {
+            "message": "Missing item type",
+            "line": " lib/manager.js:591"
+        }
+    ]
+}
