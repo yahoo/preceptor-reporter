@@ -9,6 +9,11 @@ Reporting library for the preceptor test-runner and aggregator.
 [![NPM](https://nodei.co/npm/preceptor-reporter.png?downloads=true)](https://nodei.co/npm/preceptor-reporter/)
 
 
+[API-Documentation](http://yahoo.github.io/preceptor-reporter/docs/)
+
+[Coverage Report](http://yahoo.github.io/preceptor-reporter/coverage/lcov-report/)
+
+
 **Table of Contents**
 * [Usage](#usage)
     * [Configuration](#configuration)
