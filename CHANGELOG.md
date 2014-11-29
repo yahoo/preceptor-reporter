@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-v0.9.1
+v0.9.1 - 11/29/14
 * Added loader feature
 * Added JUnit loader
 * Added TAP loader
