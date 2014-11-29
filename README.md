@@ -43,10 +43,14 @@ Reporting library for the preceptor test-runner and aggregator.
         * [Preceptor](#preceptor-1)
         * [TeamCity](#teamcity-1)
         * [Custom Plugin](#customplugin-1)
-    * [Messenger](#messenger)
+    * [Loader](#loader)
         * [Common configuration](#common-configuration-2)
         * [Example](#example)
         * [Custom Plugin](#customplugin-2)
+    * [Messenger](#messenger)
+        * [Common configuration](#common-configuration-3)
+        * [Example](#example-1)
+        * [Custom Plugin](#customplugin-3)
     * [Hooks](#hooks)
 * [API-Documentation](#api-documentation)
 * [Tests](#tests)
@@ -564,6 +568,45 @@ The parse method will be called with text that needs to be parsed. This is usual
 
 See the above mentioned plugins for examples.
 
+###Loader
+Loader plugins are objects that import common test-report files, and they can be used independently by other projects since they are exposed by the ```getLoaders``` method on the Manager object constructor.
+
+The following loaders are available:
+* ```junit``` - Object that imports JUnit xml test-report files
+* ```tap``` - Object that imports TAP test-report files
+
+####Common configuration
+All loaders have a common set of configuration options:
+* ```type``` - Type of loader
+* ```configuration``` - Custom configuration options for a specific loader
+* ```path``` - Glob path to files that should be imported
+
+####Example
+```javascript
+var junit = new Preceptor.getLoaders().junit({
+	path: __dirname + "/*.xml"
+);
+
+junit.on('message', function (areaType, messageType, params) {
+	console.log(areaType, messageType, params);
+});
+```
+
+####Custom Plugin
+You can create your own loader plugin by using the exposed ```AbstractLoader``` object that is a property on the manager object.
+
+```javascript
+var ReportManager = require('preceptor-reporter');
+
+var CustomLoader = ReportManager.AbstractLoader.extend(
+	{
+		// ...
+	}
+);
+```
+
+See the above mentioned plugins for examples.
+
 ###Messenger
 Messenger plugins are objects that create low-level messages for external systems, and they can be used independently by other projects since they are exposed by the ```getMessengers``` method on the Manager object constructor.
 
@@ -640,8 +683,11 @@ The following third-party libraries are used by this module:
 
 ###Dependencies
 * preceptor-core: https://github.com/yahoo/preceptor-core
+* glob: https://github.com/isaacs/node-glob
 * underscore: http://underscorejs.org
 * xmlbuilder: http://github.com/oozcitak/xmlbuilder-js
+* promise: https://github.com/then/promise
+* sax: https://github.com/isaacs/sax-js
 
 ###Dev-Dependencies
 * chai: http://chaijs.com

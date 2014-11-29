@@ -1,10 +1,8 @@
 {
   "name": "preceptor-reporter",
-  "version": "0.9.0",
-
+  "version": "0.9.1",
   "description": "Reporting library for the preceptor test-runner and aggregator",
   "license": "MIT",
-
   "main": "index.js",
   "scripts": {
     "test": "istanbul cover -- _mocha --reporter spec",
@@ -31,7 +29,10 @@
     "email": "erz@yahoo-inc.com"
   },
   "dependencies": {
-    "preceptor-core": "~0.9.0",
+    "glob": "3.2.3",
+    "preceptor-core": ">=0.9.1",
+    "sax": "0.6.1",
+    "promise": "6.0.0",
     "underscore": "1.7.0",
     "xmlbuilder": "2.4.4"
   },
