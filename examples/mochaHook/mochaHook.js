@@ -7,8 +7,8 @@ var ReportManager = require('../../');
 
 var manager = new ReportManager();
 
-manager.addReporter('Spec');
-manager.addReporter('Json', { output: true });
+manager.addReporter('spec');
+manager.addReporter('json', { output: true });
 
 manager.message().start();
 
