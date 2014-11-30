@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.9.0</em>
+            <em>API Docs for: 0.9.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -43,6 +43,8 @@
             
                 <li><a href="../classes/AbstractListener.html">AbstractListener</a></li>
             
+                <li><a href="../classes/AbstractLoader.html">AbstractLoader</a></li>
+            
                 <li><a href="../classes/AbstractMessenger.html">AbstractMessenger</a></li>
             
                 <li><a href="../classes/AbstractReporter.html">AbstractReporter</a></li>
@@ -60,6 +62,8 @@
                 <li><a href="../classes/JenkinsSauceLabsReporter.html">JenkinsSauceLabsReporter</a></li>
             
                 <li><a href="../classes/JsonReporter.html">JsonReporter</a></li>
+            
+                <li><a href="../classes/JUnitLoader.html">JUnitLoader</a></li>
             
                 <li><a href="../classes/JUnitReporter.html">JUnitReporter</a></li>
             
@@ -82,6 +86,8 @@
                 <li><a href="../classes/SpecReporter.html">SpecReporter</a></li>
             
                 <li><a href="../classes/SummaryReporter.html">SummaryReporter</a></li>
+            
+                <li><a href="../classes/TapLoader.html">TapLoader</a></li>
             
                 <li><a href="../classes/TapReporter.html">TapReporter</a></li>
             
@@ -212,13 +218,17 @@ var ReportContainer = Base.extend(
 		 * @param {string} id
 		 * @param {string} parentId
 		 * @param {string} suiteName
+		 * @param {object} [options]
+		 * @param {int} [options.startTime]
 		 */
-		suiteStart: function (id, parentId, suiteName) {
+		suiteStart: function (id, parentId, suiteName, options) {
 			var parent;
+
+			options = options || {};
 
 			this._actions[id] = {
 				id: id,
-				startTime: +(new Date()),
+				startTime: options.startTime || +(new Date()),
 				pending: true,
 				type: &#x27;suite&#x27;,
 				name: suiteName,
@@ -241,9 +251,13 @@ var ReportContainer = Base.extend(
 		 *
 		 * @method suiteEnd
 		 * @param {string} id
+		 * @param {object} [options]
+		 * @param {int} [options.endTime]
 		 */
-		suiteEnd: function (id) {
+		suiteEnd: function (id, options) {
 			var action = this.getAction(id);
+
+			options = options || {};
 
 			if (action.type !== &#x27;suite&#x27;) {
 				throw new Error(&quot;Type of reporter action was expected to be &#x27;suite&#x27; but was &#x27;&quot; + action.type + &quot;&#x27;.&quot;)
@@ -252,7 +266,7 @@ var ReportContainer = Base.extend(
 				throw new Error(&quot;Reporter action for suite was already closed.&quot;);
 			}
 
-			action.endTime = +(new Date());
+			action.endTime = options.startTime || +(new Date());
 			action.duration = action.endTime - action.startTime;
 			action.pending = false;
 		},
@@ -290,13 +304,17 @@ var ReportContainer = Base.extend(
 		 * @param {string} id
 		 * @param {string} parentId
 		 * @param {string} testName
+		 * @param {object} [options]
+		 * @param {int} [options.startTime]
 		 */
-		testStart: function (id, parentId, testName) {
+		testStart: function (id, parentId, testName, options) {
 			var parent;
+
+			options = options || {};
 
 			this._actions[id] = {
 				id: id,
-				startTime: +(new Date()),
+				startTime: options.startTime || +(new Date()),
 				pending: true,
 				type: &#x27;test&#x27;,
 				name: testName,
@@ -321,9 +339,11 @@ var ReportContainer = Base.extend(
 		 * @param {string} id
 		 * @param {string} [message]
 		 * @param {string} [reason]
+		 * @param {object} [options]
+		 * @param {int} [options.endTime]
 		 */
-		testFailed: function (id, message, reason) {
-			var action = this._completeTestAction(id);
+		testFailed: function (id, message, reason, options) {
+			var action = this._completeTestAction(id, options);
 
 			action.outcome = &#x27;failed&#x27;;
 			action.message = message || &#x27;FAILED&#x27;;
@@ -337,9 +357,10 @@ var ReportContainer = Base.extend(
 		 * @param {string} id
 		 * @param {string} [message]
 		 * @param {string} [reason]
+		 * @param {object} [options]
 		 */
-		testError: function (id, message, reason) {
-			var action = this._completeTestAction(id);
+		testError: function (id, message, reason, options) {
+			var action = this._completeTestAction(id, options);
 
 			action.outcome = &#x27;error&#x27;;
 			action.message = message || &#x27;ERROR&#x27;;
@@ -351,9 +372,10 @@ var ReportContainer = Base.extend(
 		 *
 		 * @method testPassed
 		 * @param {string} id
+		 * @param {object} [options]
 		 */
-		testPassed: function (id) {
-			var action = this._completeTestAction(id);
+		testPassed: function (id, options) {
+			var action = this._completeTestAction(id, options);
 
 			action.outcome = &#x27;passed&#x27;;
 		},
@@ -363,9 +385,10 @@ var ReportContainer = Base.extend(
 		 *
 		 * @method testUndefined
 		 * @param {string} id
+		 * @param {object} [options]
 		 */
-		testUndefined: function (id) {
-			var action = this._completeTestAction(id);
+		testUndefined: function (id, options) {
+			var action = this._completeTestAction(id, options);
 
 			action.outcome = &#x27;undefined&#x27;;
 		},
@@ -376,9 +399,10 @@ var ReportContainer = Base.extend(
 		 * @method testSkipped
 		 * @param {string} id
 		 * @param {string} [reason]
+		 * @param {object} [options]
 		 */
-		testSkipped: function (id, reason) {
-			var action = this._completeTestAction(id);
+		testSkipped: function (id, reason, options) {
+			var action = this._completeTestAction(id, options);
 
 			action.outcome = &#x27;skipped&#x27;;
 			action.reason = reason || &#x27;SKIPPED&#x27;;
@@ -389,9 +413,10 @@ var ReportContainer = Base.extend(
 		 *
 		 * @method testIncomplete
 		 * @param {string} id
+		 * @param {object} [options]
 		 */
-		testIncomplete: function (id) {
-			var action = this._completeTestAction(id);
+		testIncomplete: function (id, options) {
+			var action = this._completeTestAction(id, options);
 
 			action.outcome = &#x27;incomplete&#x27;;
 		},
@@ -402,11 +427,15 @@ var ReportContainer = Base.extend(
 		 *
 		 * @method _completeTestAction
 		 * @param {string} id
+		 * @param {object} [options]
+		 * @param {int} [options.endTime]
 		 * @return {object} Action
 		 * @private
 		 */
-		_completeTestAction: function (id) {
+		_completeTestAction: function (id, options) {
 			var action = this.getAction(id);
+
+			options = options || {};
 
 			if (action.type !== &#x27;test&#x27;) {
 				throw new Error(&quot;Type of reporter action was expected to be &#x27;test&#x27; but was &#x27;&quot; + action.type + &quot;&#x27;.&quot;)
@@ -415,7 +444,7 @@ var ReportContainer = Base.extend(
 				throw new Error(&quot;Reporter action for test was already closed.&quot;);
 			}
 
-			action.endTime = +(new Date());
+			action.endTime = options.endTime || +(new Date());
 			action.duration = action.endTime - action.startTime;
 			action.pending = false;
 

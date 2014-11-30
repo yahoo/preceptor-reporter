@@ -2,7 +2,7 @@
     "project": {
         "name": "preceptor-reporter",
         "description": "Reporting library for the preceptor test-runner and aggregator",
-        "version": "0.9.0"
+        "version": "0.9.1"
     },
     "files": {
         "lib/listener/preceptor.js": {
@@ -19,6 +19,24 @@
             "modules": {},
             "classes": {
                 "TeamCity listener": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/loader/junit.js": {
+            "name": "lib/loader/junit.js",
+            "modules": {},
+            "classes": {
+                "JUnitLoader": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/loader/tap.js": {
+            "name": "lib/loader/tap.js",
+            "modules": {},
+            "classes": {
+                "TapLoader": 1
             },
             "fors": {},
             "namespaces": {}
@@ -201,6 +219,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "lib/abstractLoader.js": {
+            "name": "lib/abstractLoader.js",
+            "modules": {},
+            "classes": {
+                "AbstractLoader": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "lib/abstractMessenger.js": {
             "name": "lib/abstractMessenger.js",
             "modules": {},
@@ -265,6 +292,36 @@
             "line": 7,
             "extends": "AbstractListener",
             "is_constructor": 1
+        },
+        "JUnitLoader": {
+            "name": "JUnitLoader",
+            "shortname": "JUnitLoader",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/loader/junit.js",
+            "line": 9,
+            "extends": "AbstractLoader",
+            "is_constructor": 1,
+            "itemtype": "property",
+            "type": "Object"
+        },
+        "TapLoader": {
+            "name": "TapLoader",
+            "shortname": "TapLoader",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/loader/tap.js",
+            "line": 9,
+            "extends": "AbstractLoader",
+            "is_constructor": 1,
+            "itemtype": "property",
+            "type": "Int"
         },
         "Jenkins Sauce-Labs messenger": {
             "name": "Jenkins Sauce-Labs messenger",
@@ -554,6 +611,32 @@
                 }
             ]
         },
+        "AbstractLoader": {
+            "name": "AbstractLoader",
+            "shortname": "AbstractLoader",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/abstractLoader.js",
+            "line": 13,
+            "extends": "Base",
+            "itemtype": "property",
+            "type": "Object",
+            "params": [
+                {
+                    "name": "_reporter",
+                    "description": "",
+                    "type": "EventReporter"
+                },
+                {
+                    "name": "_id",
+                    "description": "",
+                    "type": "Int"
+                }
+            ]
+        },
         "AbstractMessenger": {
             "name": "AbstractMessenger",
             "shortname": "AbstractMessenger",
@@ -607,7 +690,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "lib/manager.js",
-            "line": 16,
+            "line": 17,
             "extends": "Base",
             "itemtype": "property",
             "type": "Object",
@@ -847,6 +930,146 @@
             "access": "private",
             "tagname": "",
             "class": "TeamCity listener"
+        },
+        {
+            "file": "lib/loader/junit.js",
+            "line": 19,
+            "description": "Starts the current entry",
+            "itemtype": "method",
+            "name": "_startEntry",
+            "params": [
+                {
+                    "name": "reporter",
+                    "description": "",
+                    "type": "EventReporter"
+                },
+                {
+                    "name": "entry",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "parentIds",
+                    "description": "",
+                    "type": "String[]"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "JUnitLoader"
+        },
+        {
+            "file": "lib/loader/junit.js",
+            "line": 43,
+            "description": "Completes the current entry",
+            "itemtype": "method",
+            "name": "_completeEntry",
+            "params": [
+                {
+                    "name": "reporter",
+                    "description": "",
+                    "type": "EventReporter"
+                },
+                {
+                    "name": "stack",
+                    "description": "",
+                    "type": "Object[]"
+                },
+                {
+                    "name": "parentIds",
+                    "description": "",
+                    "type": "String[]"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "JUnitLoader"
+        },
+        {
+            "file": "lib/loader/junit.js",
+            "line": 92,
+            "description": "Creates a new stub",
+            "itemtype": "method",
+            "name": "_createNewStub",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "JUnitLoader"
+        },
+        {
+            "file": "lib/loader/junit.js",
+            "line": 108,
+            "description": "Processes a single file",
+            "itemtype": "method",
+            "name": "_processFile",
+            "params": [
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "file",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "JUnitLoader"
+        },
+        {
+            "file": "lib/loader/tap.js",
+            "line": 20,
+            "description": "Processes a single file",
+            "itemtype": "method",
+            "name": "_processFile",
+            "params": [
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "file",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "TapLoader"
+        },
+        {
+            "file": "lib/loader/tap.js",
+            "line": 73,
+            "description": "Process a single line",
+            "params": [
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "line",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "TapLoader"
         },
         {
             "file": "lib/messenger/jenkinsSauceLabs.js",
@@ -3282,6 +3505,194 @@
             "class": "AbstractListener"
         },
         {
+            "file": "lib/abstractLoader.js",
+            "line": 23,
+            "description": "Abstract loader constructor",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "is_constructor": 1,
+            "class": "AbstractLoader"
+        },
+        {
+            "file": "lib/abstractLoader.js",
+            "line": 39,
+            "description": "Initializes the instance",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "AbstractLoader"
+        },
+        {
+            "file": "lib/abstractLoader.js",
+            "line": 54,
+            "description": "Create a new id",
+            "itemtype": "method",
+            "name": "newId",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "AbstractLoader"
+        },
+        {
+            "file": "lib/abstractLoader.js",
+            "line": 64,
+            "description": "Gets the options",
+            "itemtype": "method",
+            "name": "getOptions",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "AbstractLoader"
+        },
+        {
+            "file": "lib/abstractLoader.js",
+            "line": 74,
+            "description": "Gets the type of reporter",
+            "itemtype": "method",
+            "name": "getType",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "AbstractLoader"
+        },
+        {
+            "file": "lib/abstractLoader.js",
+            "line": 84,
+            "description": "Gets the configuration supplied",
+            "itemtype": "method",
+            "name": "getConfiguration",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "AbstractLoader"
+        },
+        {
+            "file": "lib/abstractLoader.js",
+            "line": 94,
+            "description": "Output path",
+            "itemtype": "method",
+            "name": "getPath",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "AbstractLoader"
+        },
+        {
+            "file": "lib/abstractLoader.js",
+            "line": 104,
+            "description": "Gets the reporter instance",
+            "itemtype": "method",
+            "name": "getReporter",
+            "return": {
+                "description": "",
+                "type": "EventReporter"
+            },
+            "class": "AbstractLoader"
+        },
+        {
+            "file": "lib/abstractLoader.js",
+            "line": 115,
+            "description": "Starts the loading process",
+            "itemtype": "method",
+            "name": "process",
+            "params": [
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "AbstractLoader"
+        },
+        {
+            "file": "lib/abstractLoader.js",
+            "line": 128,
+            "description": "Gathers all files that is selected by the glob",
+            "itemtype": "method",
+            "name": "_gatherFiles",
+            "return": {
+                "description": "",
+                "type": "String[]"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "AbstractLoader"
+        },
+        {
+            "file": "lib/abstractLoader.js",
+            "line": 139,
+            "description": "Processes a list of files",
+            "itemtype": "method",
+            "name": "_processFiles",
+            "params": [
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "files",
+                    "description": "",
+                    "type": "String[]"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "AbstractLoader"
+        },
+        {
+            "file": "lib/abstractLoader.js",
+            "line": 163,
+            "description": "Processes a single file",
+            "itemtype": "method",
+            "name": "_processFile",
+            "params": [
+                {
+                    "name": "parentId",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "file",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "AbstractLoader"
+        },
+        {
+            "file": "lib/abstractLoader.js",
+            "line": 178,
+            "itemtype": "property",
+            "name": "TYPE",
+            "type": "{string}",
+            "static": 1,
+            "class": "AbstractLoader"
+        },
+        {
             "file": "lib/abstractMessenger.js",
             "line": 21,
             "params": [
@@ -3879,13 +4290,27 @@
                     "name": "suiteName",
                     "description": "",
                     "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "startTime",
+                            "description": "",
+                            "type": "Int",
+                            "optional": true
+                        }
+                    ]
                 }
             ],
             "class": "ReportContainer"
         },
         {
             "file": "lib/container.js",
-            "line": 103,
+            "line": 107,
             "description": "Called when suite ends",
             "itemtype": "method",
             "name": "suiteEnd",
@@ -3894,13 +4319,27 @@
                     "name": "id",
                     "description": "",
                     "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "endTime",
+                            "description": "",
+                            "type": "Int",
+                            "optional": true
+                        }
+                    ]
                 }
             ],
             "class": "ReportContainer"
         },
         {
             "file": "lib/container.js",
-            "line": 125,
+            "line": 133,
             "description": "Called when any item has custom data",
             "itemtype": "method",
             "name": "itemData",
@@ -3920,7 +4359,7 @@
         },
         {
             "file": "lib/container.js",
-            "line": 138,
+            "line": 146,
             "description": "Called when any item has a custom message",
             "itemtype": "method",
             "name": "itemMessage",
@@ -3940,7 +4379,7 @@
         },
         {
             "file": "lib/container.js",
-            "line": 150,
+            "line": 158,
             "description": "Called when test starts",
             "itemtype": "method",
             "name": "testStart",
@@ -3959,13 +4398,27 @@
                     "name": "testName",
                     "description": "",
                     "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "startTime",
+                            "description": "",
+                            "type": "Int",
+                            "optional": true
+                        }
+                    ]
                 }
             ],
             "class": "ReportContainer"
         },
         {
             "file": "lib/container.js",
-            "line": 181,
+            "line": 193,
             "description": "Called when test fails",
             "itemtype": "method",
             "name": "testFailed",
@@ -3986,13 +4439,27 @@
                     "description": "",
                     "type": "String",
                     "optional": true
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "endTime",
+                            "description": "",
+                            "type": "Int",
+                            "optional": true
+                        }
+                    ]
                 }
             ],
             "class": "ReportContainer"
         },
         {
             "file": "lib/container.js",
-            "line": 197,
+            "line": 211,
             "description": "Called when test has an error",
             "itemtype": "method",
             "name": "testError",
@@ -4013,13 +4480,19 @@
                     "description": "",
                     "type": "String",
                     "optional": true
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
                 }
             ],
             "class": "ReportContainer"
         },
         {
             "file": "lib/container.js",
-            "line": 213,
+            "line": 228,
             "description": "Called when test has passed",
             "itemtype": "method",
             "name": "testPassed",
@@ -4028,13 +4501,19 @@
                     "name": "id",
                     "description": "",
                     "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
                 }
             ],
             "class": "ReportContainer"
         },
         {
             "file": "lib/container.js",
-            "line": 225,
+            "line": 241,
             "description": "Called when test is undefined",
             "itemtype": "method",
             "name": "testUndefined",
@@ -4043,13 +4522,19 @@
                     "name": "id",
                     "description": "",
                     "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
                 }
             ],
             "class": "ReportContainer"
         },
         {
             "file": "lib/container.js",
-            "line": 237,
+            "line": 254,
             "description": "Called when test is skipped",
             "itemtype": "method",
             "name": "testSkipped",
@@ -4064,13 +4549,19 @@
                     "description": "",
                     "type": "String",
                     "optional": true
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
                 }
             ],
             "class": "ReportContainer"
         },
         {
             "file": "lib/container.js",
-            "line": 251,
+            "line": 269,
             "description": "Called when test is incomplete",
             "itemtype": "method",
             "name": "testIncomplete",
@@ -4079,13 +4570,19 @@
                     "name": "id",
                     "description": "",
                     "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
                 }
             ],
             "class": "ReportContainer"
         },
         {
             "file": "lib/container.js",
-            "line": 264,
+            "line": 283,
             "description": "Completes a test",
             "itemtype": "method",
             "name": "_completeTestAction",
@@ -4094,6 +4591,20 @@
                     "name": "id",
                     "description": "",
                     "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "endTime",
+                            "description": "",
+                            "type": "Int",
+                            "optional": true
+                        }
+                    ]
                 }
             ],
             "return": {
@@ -4106,7 +4617,7 @@
         },
         {
             "file": "lib/container.js",
-            "line": 290,
+            "line": 313,
             "description": "Gets action by id",
             "itemtype": "method",
             "name": "getAction",
@@ -4125,7 +4636,7 @@
         },
         {
             "file": "lib/container.js",
-            "line": 320,
+            "line": 343,
             "description": "Gets the sequence of actions by the sequential list of ids",
             "itemtype": "method",
             "name": "getSequence",
@@ -4137,7 +4648,7 @@
         },
         {
             "file": "lib/container.js",
-            "line": 330,
+            "line": 353,
             "description": "Gets the action tree",
             "itemtype": "method",
             "name": "getTree",
@@ -4149,7 +4660,7 @@
         },
         {
             "file": "lib/container.js",
-            "line": 341,
+            "line": 364,
             "description": "Gathers all test outcomes for a node",
             "itemtype": "method",
             "name": "gatherTestOutcomes",
@@ -4168,7 +4679,7 @@
         },
         {
             "file": "lib/container.js",
-            "line": 364,
+            "line": 387,
             "description": "Counts a specific outcome downwards from the current tree-point",
             "itemtype": "method",
             "name": "_countOutcomes",
@@ -4190,7 +4701,7 @@
         },
         {
             "file": "lib/container.js",
-            "line": 388,
+            "line": 411,
             "description": "Gets the full name of an object",
             "itemtype": "method",
             "name": "getFullName",
@@ -4209,7 +4720,7 @@
         },
         {
             "file": "lib/container.js",
-            "line": 409,
+            "line": 432,
             "itemtype": "property",
             "name": "TYPE",
             "type": "{string}",
@@ -4218,7 +4729,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 33,
+            "line": 34,
             "description": "Reporter manager constructor",
             "params": [
                 {
@@ -4248,7 +4759,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 66,
+            "line": 67,
             "description": "Initializes the instance",
             "itemtype": "method",
             "name": "initialize",
@@ -4256,7 +4767,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 81,
+            "line": 82,
             "description": "Initializes the reporter registry",
             "itemtype": "method",
             "name": "_initializeReporterRegistry",
@@ -4266,7 +4777,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 114,
+            "line": 115,
             "description": "Initializes the listener registry",
             "itemtype": "method",
             "name": "_initializeListenerRegistry",
@@ -4276,7 +4787,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 136,
+            "line": 137,
             "description": "Should report-manager collect events?",
             "itemtype": "method",
             "name": "shouldCollect",
@@ -4288,7 +4799,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 147,
+            "line": 148,
             "description": "Gets the options",
             "itemtype": "method",
             "name": "getOptions",
@@ -4300,7 +4811,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 157,
+            "line": 158,
             "description": "Gets the container of messages",
             "itemtype": "method",
             "name": "getContainer",
@@ -4312,7 +4823,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 168,
+            "line": 169,
             "description": "Gets all the active reporter",
             "itemtype": "method",
             "name": "getActiveReporter",
@@ -4324,7 +4835,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 178,
+            "line": 179,
             "description": "Gets a dictionary of registered reporter",
             "itemtype": "method",
             "name": "getReporterList",
@@ -4336,7 +4847,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 189,
+            "line": 190,
             "description": "Checks if a reporter is registered",
             "itemtype": "method",
             "name": "hasReporter",
@@ -4355,7 +4866,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 200,
+            "line": 201,
             "description": "Gets a specific registered reporter",
             "itemtype": "method",
             "name": "getReporter",
@@ -4374,7 +4885,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 211,
+            "line": 212,
             "description": "Registers a reporter",
             "itemtype": "method",
             "name": "registerReporter",
@@ -4394,7 +4905,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 222,
+            "line": 223,
             "description": "Registers a list of reporters",
             "itemtype": "method",
             "name": "registerReporterRange",
@@ -4409,7 +4920,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 236,
+            "line": 237,
             "description": "Adds a new reporter to the list of active reporters",
             "itemtype": "method",
             "name": "addReporter",
@@ -4434,7 +4945,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 262,
+            "line": 263,
             "description": "Adds a new reporter to the list of active reporters",
             "itemtype": "method",
             "name": "addReporterRange",
@@ -4453,7 +4964,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 281,
+            "line": 282,
             "description": "Normalizes the reporter",
             "itemtype": "method",
             "name": "_normalizeReporter",
@@ -4474,7 +4985,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 321,
+            "line": 322,
             "description": "Gets all the active listener",
             "itemtype": "method",
             "name": "getActiveListener",
@@ -4486,7 +4997,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 331,
+            "line": 332,
             "description": "Gets a dictionary of registered listener",
             "itemtype": "method",
             "name": "getListenerList",
@@ -4498,7 +5009,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 342,
+            "line": 343,
             "description": "Checks if a listener is registered",
             "itemtype": "method",
             "name": "hasListener",
@@ -4517,7 +5028,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 353,
+            "line": 354,
             "description": "Gets a specific registered listener",
             "itemtype": "method",
             "name": "getListener",
@@ -4536,7 +5047,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 364,
+            "line": 365,
             "description": "Registers a listener",
             "itemtype": "method",
             "name": "registerListener",
@@ -4556,7 +5067,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 375,
+            "line": 376,
             "description": "Registers a list of listeners",
             "itemtype": "method",
             "name": "registerListenerRange",
@@ -4571,7 +5082,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 389,
+            "line": 390,
             "description": "Adds a new listener to the list of active listeners",
             "itemtype": "method",
             "name": "addListener",
@@ -4596,7 +5107,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 418,
+            "line": 419,
             "description": "Adds a new listener to the list of active listeners",
             "itemtype": "method",
             "name": "addListenerRange",
@@ -4615,7 +5126,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 437,
+            "line": 438,
             "description": "Normalizes the listener",
             "itemtype": "method",
             "name": "_normalizeListener",
@@ -4636,7 +5147,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 476,
+            "line": 477,
             "description": "Gets a list of allowed messages",
             "itemtype": "method",
             "name": "getAllowedMessages",
@@ -4648,7 +5159,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 501,
+            "line": 502,
             "description": "Processes a message by sending it to all attached reporter",
             "itemtype": "method",
             "name": "processMessage",
@@ -4668,7 +5179,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 527,
+            "line": 528,
             "description": "Returns a convenience object to trigger messages",
             "itemtype": "method",
             "name": "message",
@@ -4680,7 +5191,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 538,
+            "line": 539,
             "description": "Parses a string to see if any listener can receive messages from it",
             "itemtype": "method",
             "name": "parse",
@@ -4705,7 +5216,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 556,
+            "line": 557,
             "description": "Loads a reporter hook and returns the system specific function to be supplied to the system",
             "itemtype": "method",
             "name": "loadHook",
@@ -4735,7 +5246,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 576,
+            "line": 577,
             "description": "Clears all run-data",
             "itemtype": "method",
             "name": "clear",
@@ -4743,13 +5254,13 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 591,
+            "line": 592,
             "var": "string",
             "class": "ReportManager"
         },
         {
             "file": "lib/manager.js",
-            "line": 598,
+            "line": 599,
             "itemtype": "property",
             "name": "AbstractListener",
             "type": "{AbstractListener}",
@@ -4758,7 +5269,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 605,
+            "line": 606,
             "itemtype": "property",
             "name": "AbstractMessenger",
             "type": "{AbstractMessenger}",
@@ -4767,7 +5278,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 612,
+            "line": 613,
             "itemtype": "property",
             "name": "AbstractReporter",
             "type": "{AbstractReporter}",
@@ -4777,6 +5288,15 @@
         {
             "file": "lib/manager.js",
             "line": 620,
+            "itemtype": "property",
+            "name": "AbstractLoader",
+            "type": "{AbstractLoader}",
+            "static": 1,
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 628,
             "description": "Gets a list of messengers",
             "static": 1,
             "itemtype": "method",
@@ -4789,7 +5309,20 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 635,
+            "line": 643,
+            "description": "Gets a list of loaders",
+            "static": 1,
+            "itemtype": "method",
+            "name": "getLoaders",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "ReportManager"
+        },
+        {
+            "file": "lib/manager.js",
+            "line": 657,
             "description": "Gets a list of reporter-hooks",
             "static": 1,
             "itemtype": "method",
@@ -4802,7 +5335,7 @@
         },
         {
             "file": "lib/manager.js",
-            "line": 649,
+            "line": 671,
             "description": "Gets the module version",
             "static": 1,
             "itemtype": "method",
@@ -4817,7 +5350,11 @@
     "warnings": [
         {
             "message": "unknown tag: var",
-            "line": " lib/manager.js:591"
+            "line": " lib/manager.js:592"
+        },
+        {
+            "message": "Missing item type\nProcess a single line",
+            "line": " lib/loader/tap.js:73"
         },
         {
             "message": "Missing item type\nGets the web-driver session id\n\nIt tries to get it from a couple different places:\n- itemData of the root as \"sessionId\"\n- reporter configuration as \"sessionId\"\n- environment variable \"SELENIUM_SESSION_ID\"\n\n#method getSessionId",
@@ -4840,6 +5377,10 @@
             "line": " lib/abstractListener.js:38"
         },
         {
+            "message": "Missing item type\nAbstract loader constructor",
+            "line": " lib/abstractLoader.js:23"
+        },
+        {
             "message": "Missing item type",
             "line": " lib/abstractMessenger.js:21"
         },
@@ -4849,11 +5390,11 @@
         },
         {
             "message": "Missing item type\nReporter manager constructor",
-            "line": " lib/manager.js:33"
+            "line": " lib/manager.js:34"
         },
         {
             "message": "Missing item type",
-            "line": " lib/manager.js:591"
+            "line": " lib/manager.js:592"
         }
     ]
 }

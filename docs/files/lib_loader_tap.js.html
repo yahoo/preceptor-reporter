@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Hooks - preceptor-reporter</title>
+    <title>lib/loader/tap.js - preceptor-reporter</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -136,63 +136,157 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Hooks Class</h1>
-<div class="box meta">
-    
+                        <h1 class="file-heading">File: lib/loader/tap.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+// Copyright 2014, Yahoo! Inc.
+// Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/lib_reporterHooks_mocha.js.html#l4"><code>lib&#x2F;reporterHooks&#x2F;mocha.js:4</code></a>
-        </div>
-    
+var AbstractLoader = require(&#x27;../abstractLoader&#x27;);
+var fs = require(&#x27;fs&#x27;);
+var Promise = require(&#x27;promise&#x27;);
+var _ = require(&#x27;underscore&#x27;);
 
-    
+/**
+ * @class TapLoader
+ * @extends AbstractLoader
+ * @constructor
+ *
+ * @property {int} _length Length of test
+ * @property {int} _counter Current number of tests found
+ */
+var TapLoader = AbstractLoader.extend(
 
-    
-</div>
+	{
+		/**
+		 * Processes a single file
+		 *
+		 * @method _processFile
+		 * @param {string} parentId
+		 * @param {string} file
+		 * @return {Promise}
+		 * @private
+		 */
+		_processFile: function (parentId, file) {
+
+			this._length = 0;
+			this._counter = 0;
+
+			return new Promise(function (resolve, reject) {
+
+				fs.readFile(file, function (err, data) {
+
+					var lines,
+						i, len,
+						id,
+						reporter;
+
+					if (err) {
+						reject(err);
+
+					} else {
+						lines = data.toString().split(&quot;\n&quot;);
+
+						_.each(lines, function (line) {
+							this._processLine(parentId, line);
+						}, this);
 
 
+						// Make sure that missing tests will also be reported
+						reporter = this.getReporter();
 
-<div class="box intro">
-    <p>Reporter hook for mocha</p>
+						len = this._length - this._counter;
+						for(i = 0; i &lt; len; i++) {
 
-</div>
+							id = this.newId() + &#x27;&#x27;;
 
+							reporter.testStart(id, parentId, &#x27;Untitled Test&#x27;);
+							reporter.testFailed(id, &#x27;Failed&#x27;);
+						}
 
+						resolve();
+					}
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+				}.bind(this));
+			}.bind(this));
+		},
 
-        
-        
-        
-        
-    </ul>
+		/**
+		 * Process a single line
+		 *
+		 * @param {string} parentId
+		 * @param {string} line
+		 * @private
+		 */
+		_processLine: function (parentId, line) {
 
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
+			var matches,
+				success,
+				name,
+				state,
+				message,
 
-            
+				id,
+				reporter,
 
-            
+				planRegex = /\s*(\d+)(\.{2})(\d+)\s*(#\s*(SKIP|skip)\s*([^#]+))?\s*(#\s*(.*))?/,
+				resultRegex = /\s*(ok|not ok)\s*(\d*)\s*([^#]*)?\s*(#\s*(SKIP|skip|TODO|todo)\s*([^#]+))?\s*(#\s*(.*))?/;
 
-            
+			if (line.match(planRegex)) {
+				matches = line.match(planRegex);
+				this._length = parseInt(matches[3], 10) - parseInt(matches[1], 10) + 1;
 
-            
-        </div>
+			} else if (line.match(resultRegex)) {
+				matches = line.match(resultRegex);
 
-        
+				// Get values
+				success = (matches[1].toLowerCase() === &#x27;ok&#x27;);
+				name = (matches[3] || &#x27;&#x27;).trim() || &#x27;Untitled Test&#x27;;
+				state = (matches[5] || &#x27;&#x27;).trim().toLowerCase();
+				message = (matches[6] || &#x27;&#x27;).trim();
 
-        
+				// Prepare values
+				id = this.newId() + &#x27;&#x27;;
+				reporter = this.getReporter();
 
-        
+				// Start test
+				reporter.testStart(id, parentId, name);
 
-        
-    </div>
+				this._counter++;
+
+				// Complete test
+				if (success) { // On success
+
+					if (state === &#x27;skip&#x27;) { // When skipped
+						reporter.testSkipped(id, message.length ? message : &#x27;Skipped&#x27;);
+
+					} else if (state === &#x27;todo&#x27;) { // When incomplete
+						reporter.testIncomplete(id);
+
+					} else {
+						reporter.testPassed(id);
+					}
+
+				} else { // On failure
+
+					if (state === &#x27;skip&#x27;) { // When skipped
+						reporter.testSkipped(id, message.length ? message : &#x27;Skipped&#x27;);
+
+					} else if (state === &#x27;todo&#x27;) { // When incomplete
+						reporter.testIncomplete(id);
+
+					} else { // When really failed
+						reporter.testFailed(id, message.length ? message : &#x27;Failed&#x27;);
+					}
+				}
+			}
+		}
+	});
+
+module.exports = TapLoader;
+
+    </pre>
 </div>
 
                     </div>

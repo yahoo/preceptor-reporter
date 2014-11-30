@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.9.0</em>
+            <em>API Docs for: 0.9.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -43,6 +43,8 @@
             
                 <li><a href="../classes/AbstractListener.html">AbstractListener</a></li>
             
+                <li><a href="../classes/AbstractLoader.html">AbstractLoader</a></li>
+            
                 <li><a href="../classes/AbstractMessenger.html">AbstractMessenger</a></li>
             
                 <li><a href="../classes/AbstractReporter.html">AbstractReporter</a></li>
@@ -60,6 +62,8 @@
                 <li><a href="../classes/JenkinsSauceLabsReporter.html">JenkinsSauceLabsReporter</a></li>
             
                 <li><a href="../classes/JsonReporter.html">JsonReporter</a></li>
+            
+                <li><a href="../classes/JUnitLoader.html">JUnitLoader</a></li>
             
                 <li><a href="../classes/JUnitReporter.html">JUnitReporter</a></li>
             
@@ -82,6 +86,8 @@
                 <li><a href="../classes/SpecReporter.html">SpecReporter</a></li>
             
                 <li><a href="../classes/SummaryReporter.html">SummaryReporter</a></li>
+            
+                <li><a href="../classes/TapLoader.html">TapLoader</a></li>
             
                 <li><a href="../classes/TapReporter.html">TapReporter</a></li>
             
@@ -208,8 +214,7 @@ var JUnitReporter = AbstractReporter.extend(
 					&#x27;@tests&#x27;: testOutcomes.tests,
 					&#x27;@failures&#x27;: testOutcomes.failed + testOutcomes.undef,
 					&#x27;@disabled&#x27;: testOutcomes.incomplete + testOutcomes.skipped,
-					&#x27;@errors&#x27;: testOutcomes.error,
-					&#x27;#list&#x27;: []
+					&#x27;@errors&#x27;: testOutcomes.error
 				};
 
 				// Add sub-trees
@@ -228,11 +233,13 @@ var JUnitReporter = AbstractReporter.extend(
 					&#x27;@skipped&#x27;: testOutcomes.skipped,
 					&#x27;@errors&#x27;: testOutcomes.error,
 					&#x27;@hostname&#x27;: os.hostname(),
-					&#x27;@timestamp&#x27;: (new Date(inputTreeNode.startTime)).toISOString(),
-					&#x27;#list&#x27;: []
+					&#x27;@timestamp&#x27;: (new Date(inputTreeNode.startTime)).toISOString()
 				};
 
 				// Add attributes and plain elements
+				if (!outputTreeNode[&#x27;#list&#x27;]) {
+					outputTreeNode[&#x27;#list&#x27;] = [];
+				}
 				outputTreeNode[&#x27;#list&#x27;].push({ testsuite: newNode });
 
 				// Add sub-trees
@@ -279,6 +286,9 @@ var JUnitReporter = AbstractReporter.extend(
 				}
 
 				// Add attributes and plain elements
+				if (!outputTreeNode[&#x27;#list&#x27;]) {
+					outputTreeNode[&#x27;#list&#x27;] = [];
+				}
 				outputTreeNode[&#x27;#list&#x27;].push({ testcase: newNode });
 			}
 		}

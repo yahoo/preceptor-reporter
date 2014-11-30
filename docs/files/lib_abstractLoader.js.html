@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Hooks - preceptor-reporter</title>
+    <title>lib/abstractLoader.js - preceptor-reporter</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -136,63 +136,198 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Hooks Class</h1>
-<div class="box meta">
-    
+                        <h1 class="file-heading">File: lib/abstractLoader.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+// Copyright 2014, Yahoo! Inc.
+// Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/lib_reporterHooks_mocha.js.html#l4"><code>lib&#x2F;reporterHooks&#x2F;mocha.js:4</code></a>
-        </div>
-    
+var Base = require(&#x27;preceptor-core&#x27;).Base;
+var utils = require(&#x27;preceptor-core&#x27;).utils;
+var _ = require(&#x27;underscore&#x27;);
+var glob = require(&#x27;glob&#x27;);
+var Promise = require(&#x27;promise&#x27;);
+var EventReporter = require(&#x27;./reporter/event&#x27;);
 
-    
+var defaultsLoader = require(&#x27;./defaults/loader&#x27;);
 
-    
-</div>
+/**
+ * @class AbstractLoader
+ * @extends Base
+ *
+ * @property {object} _options
+ * @property {EventReporter} _reporter
+ * @property {int} _id
+ */
+var AbstractLoader = Base.extend(
+
+	/**
+	 * Abstract loader constructor
+	 *
+	 * @param {object} options
+	 * @constructor
+	 */
+	function (options) {
+		this.__super();
+
+		this._options = utils.deepExtend({}, [defaultsLoader, options || {}]);
+		this._reporter = new EventReporter();
+
+		this.initialize();
+	},
+
+	{
+		/**
+		 * Initializes the instance
+		 *
+		 * @method initialize
+		 */
+		initialize: function () {
+
+			this._id = +(new Date()) + Math.floor(Math.random() * 100000);
+
+			this.getReporter().on(&#x27;message&#x27;, function (areaType, messageType, params) {
+				this.emit(&#x27;message&#x27;, areaType, messageType, params);
+			}.bind(this));
+		},
 
 
+		/**
+		 * Create a new id
+		 *
+		 * @method newId
+		 * @return {int}
+		 */
+		newId: function () {
+			return this._id++;
+		},
 
-<div class="box intro">
-    <p>Reporter hook for mocha</p>
+		/**
+		 * Gets the options
+		 *
+		 * @method getOptions
+		 * @return {object}
+		 */
+		getOptions: function () {
+			return this._options;
+		},
 
-</div>
+		/**
+		 * Gets the type of reporter
+		 *
+		 * @method getType
+		 * @return {string}
+		 */
+		getType: function () {
+			return this.getOptions().type;
+		},
+
+		/**
+		 * Gets the configuration supplied
+		 *
+		 * @method getConfiguration
+		 * @return {object}
+		 */
+		getConfiguration: function () {
+			return this.getOptions().configuration;
+		},
+
+		/**
+		 * Output path
+		 *
+		 * @method getPath
+		 * @return {string}
+		 */
+		getPath: function () {
+			return this.getOptions().path;
+		},
+
+		/**
+		 * Gets the reporter instance
+		 *
+		 * @method getReporter
+		 * @return {EventReporter}
+		 */
+		getReporter: function () {
+			return this._reporter;
+		},
 
 
+		/**
+		 * Starts the loading process
+		 *
+		 * @method process
+		 * @param {string} parentId
+		 * @return {Promise}
+		 */
+		process: function (parentId) {
+			var files = this._gatherFiles();
+			return this._processFiles(parentId, files);
+		},
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
 
-        
-        
-        
-        
-    </ul>
+		/**
+		 * Gathers all files that is selected by the glob
+		 *
+		 * @method _gatherFiles
+		 * @return {string[]}
+		 * @private
+		 */
+		_gatherFiles: function () {
+			return glob.sync(this.getPath());
+		},
 
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
+		/**
+		 * Processes a list of files
+		 *
+		 * @method _processFiles
+		 * @param {string} parentId
+		 * @param {string[]} files
+		 * @return {Promise}
+		 * @private
+		 */
+		_processFiles: function (parentId, files) {
 
-            
+			var promise = Promise.resolve();
 
-            
+			_.each(files, function (file) {
+				promise = promise.then(function () {
+					return this._processFile(parentId, file);
+				}.bind(this));
+			}, this);
 
-            
+			return promise.then(null, function (err) {
+				console.err(err.stack);
+			});
+		},
 
-            
-        </div>
+		/**
+		 * Processes a single file
+		 *
+		 * @method _processFile
+		 * @param {string} parentId
+		 * @param {string} file
+		 * @return {Promise}
+		 * @private
+		 */
+		_processFile: function (parentId, file) {
+			throw new Error(&#x27;Unimplemented loader method &quot;_processFile&quot;.&#x27;);
+		}
+	},
 
-        
+	{
+		/**
+		 * @property TYPE
+		 * @type {string}
+		 * @static
+		 */
+		TYPE: &#x27;AbstractLoader&#x27;
+	});
 
-        
+module.exports = AbstractLoader;
 
-        
-
-        
-    </div>
+    </pre>
 </div>
 
                     </div>

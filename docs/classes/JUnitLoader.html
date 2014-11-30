@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>TeamCity listener - preceptor-reporter</title>
+    <title>JUnitLoader - preceptor-reporter</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -136,19 +136,19 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>TeamCity listener Class</h1>
+                        <h1>JUnitLoader Class</h1>
 <div class="box meta">
     
 
     
         <div class="extends">
-            Extends <a href="../classes/AbstractListener.html" class="crosslink">AbstractListener</a>
+            Extends <a href="../classes/AbstractLoader.html" class="crosslink">AbstractLoader</a>
         </div>
     
 
     
         <div class="foundat">
-            Defined in: <a href="../files/lib_listener_teamCity.js.html#l7"><code>lib&#x2F;listener&#x2F;teamCity.js:7</code></a>
+            Defined in: <a href="../files/lib_loader_junit.js.html#l9"><code>lib&#x2F;loader&#x2F;junit.js:9</code></a>
         </div>
     
 
@@ -166,8 +166,8 @@
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_TeamCity listener" class="method item">
-    <h3 class="name"><code>TeamCity listener</code></h3>
+        <div id="method_JUnitLoader" class="method item">
+    <h3 class="name"><code>JUnitLoader</code></h3>
 
     
         <span class="paren">()</span>
@@ -198,7 +198,7 @@
             
         
         
-        <a href="../files/lib_listener_teamCity.js.html#l7"><code>lib&#x2F;listener&#x2F;teamCity.js:7</code></a>
+        <a href="../files/lib_loader_junit.js.html#l9"><code>lib&#x2F;loader&#x2F;junit.js:9</code></a>
         
         </p>
 
@@ -245,28 +245,42 @@
                     <ul class="index-list methods extends">
                         
                             <li class="index-item method private">
-                                <a href="#method__castAttribute">_castAttribute</a>
+                                <a href="#method__completeEntry">_completeEntry</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method private">
-                                <a href="#method__parseAttribute">_parseAttribute</a>
+                                <a href="#method__createNewStub">_createNewStub</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private inherited">
+                                <a href="#method__gatherFiles">_gatherFiles</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private inherited">
+                                <a href="#method__processFile">_processFile</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private inherited">
+                                <a href="#method__processFiles">_processFiles</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method private">
-                                <a href="#method__parseAttributes">_parseAttributes</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method private">
-                                <a href="#method__unescape">_unescape</a>
+                                <a href="#method__startEntry">_startEntry</a>
 
                                 
                                 
@@ -279,13 +293,6 @@
                                 
                             </li>
                         
-                            <li class="index-item method">
-                                <a href="#method_getMessageMapping">getMessageMapping</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method inherited">
                                 <a href="#method_getOptions">getOptions</a>
 
@@ -293,43 +300,43 @@
                                 
                             </li>
                         
-                            <li class="index-item method">
-                                <a href="#method_getParentId">getParentId</a>
+                            <li class="index-item method inherited">
+                                <a href="#method_getPath">getPath</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_getPlaceholder">getPlaceholder</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_getRelayedMessages">getRelayedMessages</a>
+                                <a href="#method_getReporter">getReporter</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_parse">parse</a>
+                                <a href="#method_getType">getType</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_processPlaceholder">processPlaceholder</a>
+                                <a href="#method_initialize">initialize</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_triggerMessage">triggerMessage</a>
+                                <a href="#method_newId">newId</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_process">process</a>
 
                                 
                                 
@@ -351,8 +358,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method__castAttribute" class="method item private">
-    <h3 class="name"><code>_castAttribute</code></h3>
+                    <div id="method__completeEntry" class="method item private">
+    <h3 class="name"><code>_completeEntry</code></h3>
 
     
         <div class="args">
@@ -360,13 +367,19 @@
             
                 <li class="arg">
                     
-                        <code>value</code>
+                        <code>reporter</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>type</code>
+                        <code>stack</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>parentIds</code>
                     
                 </li>
             
@@ -374,10 +387,6 @@
         </div>
     
 
-    
-        <span class="returns-inline">
-            <span class="type"></span>
-        </span>
     
 
     
@@ -405,7 +414,7 @@
             
         
         
-        <a href="../files/lib_listener_teamCity.js.html#l227"><code>lib&#x2F;listener&#x2F;teamCity.js:227</code></a>
+        <a href="../files/lib_loader_junit.js.html#l43"><code>lib&#x2F;loader&#x2F;junit.js:43</code></a>
         
         </p>
 
@@ -416,7 +425,7 @@
     </div>
 
     <div class="description">
-        <p>Casts the attribute value to the correct data-type</p>
+        <p>Completes the current entry</p>
 
     </div>
 
@@ -428,8 +437,8 @@
             
                 <li class="param">
                     
-                        <code class="param-name">value</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        <code class="param-name">reporter</code>
+                        <span class="type"><a href="../classes/EventReporter.html" class="crosslink">EventReporter</a></span>
                     
 
                     
@@ -443,282 +452,7 @@
             
                 <li class="param">
                     
-                        <code class="param-name">type</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"></span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method__parseAttribute" class="method item private">
-    <h3 class="name"><code>_parseAttribute</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>attributes</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>attributeName</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>defaultValue</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"></span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_listener_teamCity.js.html#l207"><code>lib&#x2F;listener&#x2F;teamCity.js:207</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Parses a specific attribute</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">attributes</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">attributeName</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">defaultValue</code>
-                        <span class="type"></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"></span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method__parseAttributes" class="method item private">
-    <h3 class="name"><code>_parseAttributes</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>attributes</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>parameters</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"></span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_listener_teamCity.js.html#l184"><code>lib&#x2F;listener&#x2F;teamCity.js:184</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Parses all attributes and returns a list of attributes in the correct order</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">attributes</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">parameters</code>
+                        <code class="param-name">stack</code>
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object[]</a></span>
                     
 
@@ -731,48 +465,41 @@
                     
                 </li>
             
+                <li class="param">
+                    
+                        <code class="param-name">parentIds</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
             </ul>
         </div>
     
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"></span>:
-                    
-                
-            </div>
-        </div>
     
 
     
 </div>
 
                 
-                    <div id="method__unescape" class="method item private">
-    <h3 class="name"><code>_unescape</code></h3>
+                    <div id="method__createNewStub" class="method item private">
+    <h3 class="name"><code>_createNewStub</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>msg</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
         <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
         </span>
     
 
@@ -801,7 +528,7 @@
             
         
         
-        <a href="../files/lib_listener_teamCity.js.html#l26"><code>lib&#x2F;listener&#x2F;teamCity.js:26</code></a>
+        <a href="../files/lib_loader_junit.js.html#l92"><code>lib&#x2F;loader&#x2F;junit.js:92</code></a>
         
         </p>
 
@@ -812,7 +539,166 @@
     </div>
 
     <div class="description">
-        <p>Unescapes teamcity messages</p>
+        <p>Creates a new stub</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method__gatherFiles" class="method item private inherited">
+    <h3 class="name"><code>_gatherFiles</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String[]</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/AbstractLoader.html#method__gatherFiles">AbstractLoader</a>:
+            
+        
+        
+        <a href="../files/lib_abstractLoader.js.html#l128"><code>lib&#x2F;abstractLoader.js:128</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gathers all files that is selected by the glob</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String[]</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method__processFile" class="method item private">
+    <h3 class="name"><code>_processFile</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>parentId</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>file</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Promise</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/AbstractLoader.html#method__processFile">
+                AbstractLoader
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/lib_loader_junit.js.html#l108"><code>lib&#x2F;loader&#x2F;junit.js:108</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Processes a single file</p>
 
     </div>
 
@@ -824,7 +710,22 @@
             
                 <li class="param">
                     
-                        <code class="param-name">msg</code>
+                        <code class="param-name">parentId</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">file</code>
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                     
 
@@ -848,11 +749,267 @@
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                        <span class="type">Promise</span>:
                     
                 
             </div>
         </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method__processFiles" class="method item private inherited">
+    <h3 class="name"><code>_processFiles</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>parentId</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>files</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Promise</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/AbstractLoader.html#method__processFiles">AbstractLoader</a>:
+            
+        
+        
+        <a href="../files/lib_abstractLoader.js.html#l139"><code>lib&#x2F;abstractLoader.js:139</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Processes a list of files</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">parentId</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">files</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Promise</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method__startEntry" class="method item private">
+    <h3 class="name"><code>_startEntry</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>reporter</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>entry</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>parentIds</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_loader_junit.js.html#l19"><code>lib&#x2F;loader&#x2F;junit.js:19</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Starts the current entry</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">reporter</code>
+                        <span class="type"><a href="../classes/EventReporter.html" class="crosslink">EventReporter</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">entry</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">parentIds</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String[]</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
     
 
     
@@ -888,11 +1045,11 @@
         
             
                 <p>Inherited from
-                <a href="../classes/AbstractListener.html#method_getConfiguration">AbstractListener</a>:
+                <a href="../classes/AbstractLoader.html#method_getConfiguration">AbstractLoader</a>:
             
         
         
-        <a href="../files/lib_abstractListener.js.html#l57"><code>lib&#x2F;abstractListener.js:57</code></a>
+        <a href="../files/lib_abstractLoader.js.html#l84"><code>lib&#x2F;abstractLoader.js:84</code></a>
         
         </p>
 
@@ -917,77 +1074,6 @@
                 
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_getMessageMapping" class="method item">
-    <h3 class="name"><code>getMessageMapping</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object[]</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_listener_teamCity.js.html#l83"><code>lib&#x2F;listener&#x2F;teamCity.js:83</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Gets the mapping from TeamCity into Preceptor format</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object[]</a></span>:
                     
                 
             </div>
@@ -1027,11 +1113,11 @@
         
             
                 <p>Inherited from
-                <a href="../classes/AbstractListener.html#method_getOptions">AbstractListener</a>:
+                <a href="../classes/AbstractLoader.html#method_getOptions">AbstractLoader</a>:
             
         
         
-        <a href="../files/lib_abstractListener.js.html#l46"><code>lib&#x2F;abstractListener.js:46</code></a>
+        <a href="../files/lib_abstractLoader.js.html#l64"><code>lib&#x2F;abstractLoader.js:64</code></a>
         
         </p>
 
@@ -1066,8 +1152,8 @@
 </div>
 
                 
-                    <div id="method_getParentId" class="method item">
-    <h3 class="name"><code>getParentId</code></h3>
+                    <div id="method_getPath" class="method item inherited">
+    <h3 class="name"><code>getPath</code></h3>
 
     
         <span class="paren">()</span>
@@ -1094,15 +1180,12 @@
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/AbstractLoader.html#method_getPath">AbstractLoader</a>:
             
         
         
-        <a href="../files/lib_listener_teamCity.js.html#l15"><code>lib&#x2F;listener&#x2F;teamCity.js:15</code></a>
+        <a href="../files/lib_abstractLoader.js.html#l94"><code>lib&#x2F;abstractLoader.js:94</code></a>
         
         </p>
 
@@ -1113,7 +1196,7 @@
     </div>
 
     <div class="description">
-        <p>Gets the parent-id of the team-city root messages</p>
+        <p>Output path</p>
 
     </div>
 
@@ -1137,8 +1220,8 @@
 </div>
 
                 
-                    <div id="method_getPlaceholder" class="method item inherited">
-    <h3 class="name"><code>getPlaceholder</code></h3>
+                    <div id="method_getReporter" class="method item inherited">
+    <h3 class="name"><code>getReporter</code></h3>
 
     
         <span class="paren">()</span>
@@ -1146,7 +1229,7 @@
 
     
         <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+            <span class="type"><a href="../classes/EventReporter.html" class="crosslink">EventReporter</a></span>
         </span>
     
 
@@ -1166,11 +1249,11 @@
         
             
                 <p>Inherited from
-                <a href="../classes/AbstractListener.html#method_getPlaceholder">AbstractListener</a>:
+                <a href="../classes/AbstractLoader.html#method_getReporter">AbstractLoader</a>:
             
         
         
-        <a href="../files/lib_abstractListener.js.html#l67"><code>lib&#x2F;abstractListener.js:67</code></a>
+        <a href="../files/lib_abstractLoader.js.html#l104"><code>lib&#x2F;abstractLoader.js:104</code></a>
         
         </p>
 
@@ -1181,7 +1264,7 @@
     </div>
 
     <div class="description">
-        <p>Gets the placeholder and their replacements</p>
+        <p>Gets the reporter instance</p>
 
     </div>
 
@@ -1194,7 +1277,7 @@
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                        <span class="type"><a href="../classes/EventReporter.html" class="crosslink">EventReporter</a></span>:
                     
                 
             </div>
@@ -1205,98 +1288,11 @@
 </div>
 
                 
-                    <div id="method_getRelayedMessages" class="method item">
-    <h3 class="name"><code>getRelayedMessages</code></h3>
+                    <div id="method_getType" class="method item inherited">
+    <h3 class="name"><code>getType</code></h3>
 
     
         <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_listener_teamCity.js.html#l45"><code>lib&#x2F;listener&#x2F;teamCity.js:45</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Gets a list of relayed messages</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_parse" class="method item">
-    <h3 class="name"><code>parse</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>text</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[placeholder]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
     
 
     
@@ -1319,16 +1315,13 @@
 
     <div class="meta">
         
-            <p>Inherited from
-            <a href="../classes/AbstractListener.html#method_parse">
-                AbstractListener
-            </a>
             
-            but overwritten in
+                <p>Inherited from
+                <a href="../classes/AbstractLoader.html#method_getType">AbstractLoader</a>:
             
         
         
-        <a href="../files/lib_listener_teamCity.js.html#l101"><code>lib&#x2F;listener&#x2F;teamCity.js:101</code></a>
+        <a href="../files/lib_abstractLoader.js.html#l74"><code>lib&#x2F;abstractLoader.js:74</code></a>
         
         </p>
 
@@ -1339,7 +1332,205 @@
     </div>
 
     <div class="description">
-        <p>Parses a string and extracts message information</p>
+        <p>Gets the type of reporter</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_initialize" class="method item inherited">
+    <h3 class="name"><code>initialize</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/AbstractLoader.html#method_initialize">AbstractLoader</a>:
+            
+        
+        
+        <a href="../files/lib_abstractLoader.js.html#l39"><code>lib&#x2F;abstractLoader.js:39</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Initializes the instance</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_newId" class="method item inherited">
+    <h3 class="name"><code>newId</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/AbstractLoader.html#method_newId">AbstractLoader</a>:
+            
+        
+        
+        <a href="../files/lib_abstractLoader.js.html#l54"><code>lib&#x2F;abstractLoader.js:54</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Create a new id</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Int</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_process" class="method item inherited">
+    <h3 class="name"><code>process</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>parentId</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Promise</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/AbstractLoader.html#method_process">AbstractLoader</a>:
+            
+        
+        
+        <a href="../files/lib_abstractLoader.js.html#l115"><code>lib&#x2F;abstractLoader.js:115</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Starts the loading process</p>
 
     </div>
 
@@ -1351,7 +1542,7 @@
             
                 <li class="param">
                     
-                        <code class="param-name">text</code>
+                        <code class="param-name">parentId</code>
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                     
 
@@ -1364,22 +1555,6 @@
                     
                 </li>
             
-                <li class="param">
-                    
-                        <code class="param-name optional">[placeholder]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
             </ul>
         </div>
     
@@ -1391,240 +1566,11 @@
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                        <span class="type">Promise</span>:
                     
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_processPlaceholder" class="method item inherited">
-    <h3 class="name"><code>processPlaceholder</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>text</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[placeholder]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/AbstractListener.html#method_processPlaceholder">AbstractListener</a>:
-            
-        
-        
-        <a href="../files/lib_abstractListener.js.html#l103"><code>lib&#x2F;abstractListener.js:103</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Processes a text with the placeholder</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">text</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[placeholder]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_triggerMessage" class="method item inherited">
-    <h3 class="name"><code>triggerMessage</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>messageType</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>data</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/AbstractListener.html#method_triggerMessage">AbstractListener</a>:
-            
-        
-        
-        <a href="../files/lib_abstractListener.js.html#l78"><code>lib&#x2F;abstractListener.js:78</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Triggers a message</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">messageType</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">data</code>
-                        <span class="type"></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
     
 
     

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Hooks - preceptor-reporter</title>
+    <title>lib/loader/junit.js - preceptor-reporter</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -136,63 +136,182 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Hooks Class</h1>
-<div class="box meta">
-    
+                        <h1 class="file-heading">File: lib/loader/junit.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+// Copyright 2014, Yahoo! Inc.
+// Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/lib_reporterHooks_mocha.js.html#l4"><code>lib&#x2F;reporterHooks&#x2F;mocha.js:4</code></a>
-        </div>
-    
+var AbstractLoader = require(&#x27;../abstractLoader&#x27;);
+var sax = require(&#x27;sax&#x27;);
+var fs = require(&#x27;fs&#x27;);
+var Promise = require(&#x27;promise&#x27;);
 
-    
+/**
+ * @class JUnitLoader
+ * @extends AbstractLoader
+ * @constructor
+ *
+ * @property {object} _childNode
+ */
+var JUnitLoader = AbstractLoader.extend(
 
-    
-</div>
+	{
+		/**
+		 * Starts the current entry
+		 *
+		 * @method _startEntry
+		 * @param {EventReporter} reporter
+		 * @param {object} entry
+		 * @param {string[]} parentIds
+		 * @private
+		 */
+		_startEntry: function (reporter, entry, parentIds) {
+
+			var parentId = parentIds[parentIds.length - 1];
+
+			if ([&#x27;testsuites&#x27;, &#x27;testsuite&#x27;].indexOf(entry.name) !== -1) {
+				reporter.suiteStart(entry.id, parentId, entry.attributes.name || &#x27;Untitled Suite&#x27;);
+			}
+			else if (&#x27;testcase&#x27; === entry.name) {
+				this._childNode = null;
+				reporter.testStart(entry.id, parentId, entry.attributes.name || &#x27;Untitled Test&#x27;);
+			}
+
+			parentIds.push(entry.id);
+		},
+
+		/**
+		 * Completes the current entry
+		 *
+		 * @method _completeEntry
+		 * @param {EventReporter} reporter
+		 * @param {object[]} stack
+		 * @param {string[]} parentIds
+		 * @private
+		 */
+		_completeEntry: function (reporter, stack, parentIds) {
+
+			var entry = stack.pop();
+
+			parentIds.pop();
+
+			if ([&#x27;testsuites&#x27;, &#x27;testsuite&#x27;].indexOf(entry.name) !== -1) {
+				reporter.suiteEnd(entry.id);
+
+			} else if (entry.name === &#x27;testcase&#x27;) {
+
+				if (this._childNode &amp;&amp; ([&#x27;failure&#x27;, &#x27;error&#x27;, &#x27;skipped&#x27;].indexOf(this._childNode.name) !== -1)) {
+
+					if (this._childNode.name === &#x27;failure&#x27;) {
+						reporter.testFailed(entry.id, this._childNode.attributes.type, this._childNode.attributes.message);
+
+					} else if (this._childNode.name === &#x27;error&#x27;) {
+						reporter.testError(entry.id, this._childNode.attributes.type, this._childNode.attributes.message);
+
+					} else if (this._childNode.name === &#x27;skipped&#x27;) {
+
+						if (this._childNode.attributes.type === &#x27;undefined&#x27;) {
+							reporter.testUndefined(entry.id);
+
+						} else if (this._childNode.attributes.type === &#x27;incomplete&#x27;) {
+							reporter.testIncomplete(entry.id);
+
+						} else {
+							reporter.testSkipped(entry.id, this._childNode.attributes.message || this._childNode.attributes.type);
+						}
+					}
+				} else {
+					reporter.testPassed(entry.id);
+				}
+
+			} else {
+				this._childNode = entry;
+			}
+		},
+
+		/**
+		 * Creates a new stub
+		 *
+		 * @method _createNewStub
+		 * @return {object}
+		 * @private
+		 */
+		_createNewStub: function () {
+			return {
+				id: this.newId() + &#x27;&#x27;,
+				attributes: {},
+				name: null
+			};
+		},
 
 
+		/**
+		 * Processes a single file
+		 *
+		 * @method _processFile
+		 * @param {string} parentId
+		 * @param {string} file
+		 * @return {Promise}
+		 * @private
+		 */
+		_processFile: function (parentId, file) {
 
-<div class="box intro">
-    <p>Reporter hook for mocha</p>
+			var reporter = this.getReporter();
 
-</div>
+			this._childNode = null;
 
+			return new Promise(function (resolve, reject) {
 
+				fs.readFile(file, function (err, data) {
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+					var parser,
+						stack = [],
+						parentIds = [parentId],
+						entry = this._createNewStub();
 
-        
-        
-        
-        
-    </ul>
+					if (err) {
+						reject(err);
 
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
+					} else {
 
-            
+						parser = sax.parser(true);
 
-            
+						parser.onerror = function (e) {
+							reject(e);
+						}.bind(this);
 
-            
+						parser.onopentag = function (node) {
 
-            
-        </div>
+							entry = this._createNewStub();
+							stack.push(entry);
 
-        
+							entry.name = node.name;
+							entry.attributes = node.attributes;
 
-        
+							this._startEntry(reporter, entry, parentIds);
 
-        
+						}.bind(this);
 
-        
-    </div>
+						parser.onclosetag = function () {
+							this._completeEntry(reporter, stack, parentIds);
+						}.bind(this);
+
+						parser.onend = function () {
+							resolve();
+						}.bind(this);
+
+						parser.write(data.toString(&#x27;utf-8&#x27;)).close();
+					}
+				}.bind(this));
+			}.bind(this));
+		}
+	});
+
+module.exports = JUnitLoader;
+
+    </pre>
 </div>
 
                     </div>

@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">preceptor-reporter/lib/manager.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">61.43% <small>(86 / 140)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">61.81% <small>(89 / 144)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">30.77% <small>(16 / 52)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">66.67% <small>(30 / 45)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">65.22% <small>(30 / 46)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">61.43% <small>(86 / 140)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">61.81% <small>(89 / 144)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -874,7 +874,29 @@
 656
 657
 658
-659</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -885,6 +907,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -1497,12 +1520,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1546,6 +1590,7 @@ var EventReporter = require('./reporter/event');
 var AbstractListener = require('./abstractListener');
 var AbstractMessenger = require('./abstractMessenger');
 var AbstractReporter = require('./abstractReporter');
+var AbstractLoader = require('./abstractLoader');
 &nbsp;
 /**
  * @class ReportManager
@@ -1620,21 +1665,21 @@ var ReportManager = Base.extend(
 		 */
 		_initializeReporterRegistry: function () {
 			var defaultElements = [
-				{ name: 'Dot', fileName: 'dot' },
-				{ name: 'Duration', fileName: 'duration' },
-				{ name: 'Event', fileName: 'event' },
-				{ name: 'JenkinsSauceLabs', fileName: 'jenkinsSauceLabs' },
-				{ name: 'Json', fileName: 'json' },
-				{ name: 'Junit', fileName: 'junit' },
-				{ name: 'LineSummary', fileName: 'lineSummary' },
-				{ name: 'List', fileName: 'list' },
-				{ name: 'Plain', fileName: 'plain' },
-				{ name: 'Preceptor', fileName: 'preceptor' },
-				{ name: 'Spec', fileName: 'spec' },
-				{ name: 'Summary', fileName: 'summary' },
-				{ name: 'Tap', fileName: 'tap' },
-				{ name: 'TeamCity', fileName: 'teamCity' },
-				{ name: 'Intellij', fileName: 'teamCity' }
+				{ name: 'dot', fileName: 'dot' },
+				{ name: 'duration', fileName: 'duration' },
+				{ name: 'event', fileName: 'event' },
+				{ name: 'jenkinssaucelabs', fileName: 'jenkinsSauceLabs' },
+				{ name: 'json', fileName: 'json' },
+				{ name: 'junit', fileName: 'junit' },
+				{ name: 'linesummary', fileName: 'lineSummary' },
+				{ name: 'list', fileName: 'list' },
+				{ name: 'plain', fileName: 'plain' },
+				{ name: 'preceptor', fileName: 'preceptor' },
+				{ name: 'spec', fileName: 'spec' },
+				{ name: 'summary', fileName: 'summary' },
+				{ name: 'tap', fileName: 'tap' },
+				{ name: 'teamcity', fileName: 'teamCity' },
+				{ name: 'intellij', fileName: 'teamCity' }
 			];
 &nbsp;
 			_.each(defaultElements, function (entry) {
@@ -1653,9 +1698,9 @@ var ReportManager = Base.extend(
 		 */
 		_initializeListenerRegistry: function () {
 			var defaultElements = [
-				{ name: 'Preceptor', fileName: 'preceptor' },
-				{ name: 'TeamCity', fileName: 'teamCity' },
-				{ name: 'Intellij', fileName: 'teamCity' }
+				{ name: 'preceptor', fileName: 'preceptor' },
+				{ name: 'teamcity', fileName: 'teamCity' },
+				{ name: 'intellij', fileName: 'teamCity' }
 			];
 &nbsp;
 			_.each(defaultElements, function (entry) {
@@ -1728,7 +1773,7 @@ var ReportManager = Base.extend(
 		 * @return {boolean}
 		 */
 		hasReporter: <span class="fstat-no" title="function not covered" >function (name) {</span>
-<span class="cstat-no" title="statement not covered" >			return !!this._reporterList[name];</span>
+<span class="cstat-no" title="statement not covered" >			return !!this._reporterList[name.toLowerCase()];</span>
 		},
 &nbsp;
 		/**
@@ -1739,7 +1784,7 @@ var ReportManager = Base.extend(
 		 * @return {function}
 		 */
 		getReporter: function (name) {
-			return this._reporterList[name];
+			return this._reporterList[name.toLowerCase()];
 		},
 &nbsp;
 		/**
@@ -1750,7 +1795,7 @@ var ReportManager = Base.extend(
 		 * @param {function} contr
 		 */
 		registerReporter: function (name, contr) {
-			this._reporterList[name] = contr;
+			this._reporterList[name.toLowerCase()] = contr;
 		},
 &nbsp;
 		/**
@@ -1881,7 +1926,7 @@ var ReportManager = Base.extend(
 		 * @return {boolean}
 		 */
 		hasListener: <span class="fstat-no" title="function not covered" >function (name) {</span>
-<span class="cstat-no" title="statement not covered" >			return !!this._listenerList[name];</span>
+<span class="cstat-no" title="statement not covered" >			return !!this._listenerList[name.toLowerCase()];</span>
 		},
 &nbsp;
 		/**
@@ -1892,7 +1937,7 @@ var ReportManager = Base.extend(
 		 * @return {function}
 		 */
 		getListener: function (name) {
-			return this._listenerList[name];
+			return this._listenerList[name.toLowerCase()];
 		},
 &nbsp;
 		/**
@@ -1903,7 +1948,7 @@ var ReportManager = Base.extend(
 		 * @param {function} contr
 		 */
 		registerListener: function (name, contr) {
-			this._listenerList[name] = contr;
+			this._listenerList[name.toLowerCase()] = contr;
 		},
 &nbsp;
 		/**
@@ -2150,6 +2195,13 @@ ReportManager.AbstractMessenger = AbstractMessenger;
  */
 ReportManager.AbstractReporter = AbstractReporter;
 &nbsp;
+/**
+ * @property AbstractLoader
+ * @type {AbstractLoader}
+ * @static
+ */
+ReportManager.AbstractLoader = AbstractLoader;
+&nbsp;
 &nbsp;
 /**
  * Gets a list of messengers
@@ -2163,6 +2215,20 @@ ReportManager.getMessengers = function () {
 		"JenkinsSauceLabs": require('./messenger/jenkinsSauceLabs'),
 		"TeamCity": require('./messenger/teamCity'),
 		"Preceptor": require('./messenger/preceptor')
+	};
+};
+&nbsp;
+/**
+ * Gets a list of loaders
+ *
+ * @static
+ * @method getLoaders
+ * @return {object}
+ */
+ReportManager.getLoaders = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >	return {</span>
+		"junit": require('./loader/junit'),
+		"tap": require('./loader/tap')
 	};
 };
 &nbsp;
@@ -2195,7 +2261,7 @@ module.exports = ReportManager;
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 04 2014 12:56:10 GMT-0800 (PST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Nov 29 2014 16:37:27 GMT-0800 (PST)</div>
 </div>
 
 <script src="../../prettify.js"></script>
