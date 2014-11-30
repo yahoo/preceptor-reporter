@@ -95,12 +95,21 @@
 </ul>
 </li>
 <li>
-<a href="#messenger">Messenger</a>
+<a href="#loader">Loader</a>
 
 <ul>
 <li><a href="#common-configuration-2">Common configuration</a></li>
 <li><a href="#example">Example</a></li>
 <li><a href="#customplugin-2">Custom Plugin</a></li>
+</ul>
+</li>
+<li>
+<a href="#messenger">Messenger</a>
+
+<ul>
+<li><a href="#common-configuration-3">Common configuration</a></li>
+<li><a href="#example-1">Example</a></li>
+<li><a href="#customplugin-3">Custom Plugin</a></li>
 </ul>
 </li>
 <li><a href="#hooks">Hooks</a></li>
@@ -118,22 +127,21 @@
 <p>This module is bundled with Preceptor by default and does not need to be included in the <code>plugins</code> list of the global configuration section in the Preceptor configuration file.
 However, you need to define the reporters that should be attached to the Preceptor test-events. You can add multiple reporters at the same time, all of which receive the same events from the Preceptor clients. Here is an example adding the <code>Junit</code>, the <code>List</code> and the <code>Spec</code> reporter plugin to the reporter list:</p>
 
-<div class="highlight highlight-javascript"><pre><span class="s2">"configuration"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-javascript"><pre><span class="pl-s1"><span class="pl-pds">"</span>configuration<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
 
-    <span class="c1">// ...</span>
+    <span class="pl-c">// ...</span>
 
-    <span class="s2">"reportManager"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"listener"</span><span class="o">:</span> <span class="p">[],</span>
-        <span class="s2">"reporter"</span><span class="o">:</span> <span class="p">[</span>
-            <span class="p">{</span> <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"Spec"</span> <span class="p">},</span>
-            <span class="p">{</span> <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"List"</span><span class="p">,</span> <span class="s2">"progress"</span><span class="o">:</span> <span class="kc">false</span> <span class="p">},</span>
-            <span class="p">{</span> <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"Junit"</span><span class="p">,</span> <span class="s2">"path"</span><span class="o">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s2">"/test-results.xml"</span> <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">}</span>
+    <span class="pl-s1"><span class="pl-pds">"</span>reportManager<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>listener<span class="pl-pds">"</span></span><span class="pl-k">:</span> [],
+        <span class="pl-s1"><span class="pl-pds">"</span>reporter<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+            { <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Spec<span class="pl-pds">"</span></span> },
+            { <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>List<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>progress<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span> },
+            { <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Junit<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-sv">__dirname</span> <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">"</span>/test-results.xml<span class="pl-pds">"</span></span> }
+        ]
+    }
 
-    <span class="c1">// ...</span>
-<span class="p">}</span>
-</pre></div>
+    <span class="pl-c">// ...</span>
+}</pre></div>
 
 <h3>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h3>
@@ -473,180 +481,179 @@ However, you need to define the reporters that should be attached to the Precept
 
 <p>You can create your own reporter plugin by using the exposed <code>AbstractReporter</code> object that is a property on the manager object.</p>
 
-<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">ReportManager</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'preceptor-reporter'</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">manager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ReportManager</span><span class="p">();</span>
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> ReportManager <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>preceptor-reporter<span class="pl-pds">'</span></span>);
+<span class="pl-s">var</span> manager <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">ReportManager</span>();
 
-<span class="kd">var</span> <span class="nx">CustomReporter</span> <span class="o">=</span> <span class="nx">ReportManager</span><span class="p">.</span><span class="nx">AbstractReporter</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span>
-    <span class="p">{</span>
-        <span class="cm">/**</span>
-<span class="cm">         * Initializes the instance</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method initialize</span>
-<span class="cm">         */</span>
-        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
-
-
-        <span class="cm">/**</span>
-<span class="cm">         * Called when reporting starts</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method start</span>
-<span class="cm">         */</span>
-        <span class="nx">start</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
-
-        <span class="cm">/**</span>
-<span class="cm">         * Called when reporting stops</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method stop</span>
-<span class="cm">         */</span>
-        <span class="nx">stop</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
+<span class="pl-s">var</span> CustomReporter <span class="pl-k">=</span> ReportManager.AbstractReporter.extend(
+    {
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Initializes the instance</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method initialize</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">initialize</span>: <span class="pl-st">function</span> () {
+            <span class="pl-c">// ...</span>
+        },
 
 
-        <span class="cm">/**</span>
-<span class="cm">         * Called when suite starts</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method suiteStart</span>
-<span class="cm">         * @param {string} id</span>
-<span class="cm">         * @param {string} parentId</span>
-<span class="cm">         * @param {string} suiteName</span>
-<span class="cm">         */</span>
-        <span class="nx">suiteStart</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">parentId</span><span class="p">,</span> <span class="nx">suiteName</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Called when reporting starts</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method start</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">start</span>: <span class="pl-st">function</span> () {
+            <span class="pl-c">// ...</span>
+        },
 
-        <span class="cm">/**</span>
-<span class="cm">         * Called when suite ends</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method suiteEnd</span>
-<span class="cm">         * @param {string} id</span>
-<span class="cm">         */</span>
-        <span class="nx">suiteEnd</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Called when reporting stops</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method stop</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">stop</span>: <span class="pl-st">function</span> () {
+            <span class="pl-c">// ...</span>
+        },
 
 
-        <span class="cm">/**</span>
-<span class="cm">         * Called when any item has custom data</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method itemData</span>
-<span class="cm">         * @param {string} id</span>
-<span class="cm">         * @param {string} json JSON-data</span>
-<span class="cm">         */</span>
-        <span class="nx">itemData</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Called when suite starts</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method suiteStart</span>
+<span class="pl-c">         * @param {string} id</span>
+<span class="pl-c">         * @param {string} parentId</span>
+<span class="pl-c">         * @param {string} suiteName</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">suiteStart</span>: <span class="pl-st">function</span> (<span class="pl-vpf">id</span>, <span class="pl-vpf">parentId</span>, <span class="pl-vpf">suiteName</span>) {
+            <span class="pl-c">// ...</span>
+        },
 
-        <span class="cm">/**</span>
-<span class="cm">         * Called when any item has a custom message</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method itemMessage</span>
-<span class="cm">         * @param {string} id</span>
-<span class="cm">         * @param {string} message</span>
-<span class="cm">         */</span>
-        <span class="nx">itemMessage</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
-
-
-        <span class="cm">/**</span>
-<span class="cm">         * Called when test starts</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method testStart</span>
-<span class="cm">         * @param {string} id</span>
-<span class="cm">         * @param {string} parentId</span>
-<span class="cm">         * @param {string} testName</span>
-<span class="cm">         */</span>
-        <span class="nx">testStart</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">parentId</span><span class="p">,</span> <span class="nx">testName</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Called when suite ends</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method suiteEnd</span>
+<span class="pl-c">         * @param {string} id</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">suiteEnd</span>: <span class="pl-st">function</span> (<span class="pl-vpf">id</span>) {
+            <span class="pl-c">// ...</span>
+        },
 
 
-        <span class="cm">/**</span>
-<span class="cm">         * Called when test fails</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method testFailed</span>
-<span class="cm">         * @param {string} id</span>
-<span class="cm">         * @param {string} [message]</span>
-<span class="cm">         * @param {string} [reason]</span>
-<span class="cm">         */</span>
-        <span class="nx">testFailed</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">message</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Called when any item has custom data</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method itemData</span>
+<span class="pl-c">         * @param {string} id</span>
+<span class="pl-c">         * @param {string} json JSON-data</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">itemData</span>: <span class="pl-st">function</span> (<span class="pl-vpf">id</span>, <span class="pl-vpf">json</span>) {
+            <span class="pl-c">// ...</span>
+        },
 
-        <span class="cm">/**</span>
-<span class="cm">         * Called when test has an error</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method testError</span>
-<span class="cm">         * @param {string} id</span>
-<span class="cm">         * @param {string} [message]</span>
-<span class="cm">         * @param {string} [reason]</span>
-<span class="cm">         */</span>
-        <span class="nx">testError</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">message</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
-
-        <span class="cm">/**</span>
-<span class="cm">         * Called when test has passed</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method testPassed</span>
-<span class="cm">         * @param {string} id</span>
-<span class="cm">         */</span>
-        <span class="nx">testPassed</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
-
-        <span class="cm">/**</span>
-<span class="cm">         * Called when test is undefined</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method testUndefined</span>
-<span class="cm">         * @param {string} id</span>
-<span class="cm">         */</span>
-        <span class="nx">testUndefined</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
-
-        <span class="cm">/**</span>
-<span class="cm">         * Called when test is skipped</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method testSkipped</span>
-<span class="cm">         * @param {string} id</span>
-<span class="cm">         * @param {string} [reason]</span>
-<span class="cm">         */</span>
-        <span class="nx">testSkipped</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
-
-        <span class="cm">/**</span>
-<span class="cm">         * Called when test is incomplete</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method testIncomplete</span>
-<span class="cm">         * @param {string} id</span>
-<span class="cm">         */</span>
-        <span class="nx">testIncomplete</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Called when any item has a custom message</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method itemMessage</span>
+<span class="pl-c">         * @param {string} id</span>
+<span class="pl-c">         * @param {string} message</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">itemMessage</span>: <span class="pl-st">function</span> (<span class="pl-vpf">id</span>, <span class="pl-vpf">message</span>) {
+            <span class="pl-c">// ...</span>
+        },
 
 
-        <span class="cm">/**</span>
-<span class="cm">         * Gets the collected output</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method getOutput</span>
-<span class="cm">         * @return {string}</span>
-<span class="cm">         */</span>
-        <span class="nx">getOutput</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_output</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">);</span>
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Called when test starts</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method testStart</span>
+<span class="pl-c">         * @param {string} id</span>
+<span class="pl-c">         * @param {string} parentId</span>
+<span class="pl-c">         * @param {string} testName</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">testStart</span>: <span class="pl-st">function</span> (<span class="pl-vpf">id</span>, <span class="pl-vpf">parentId</span>, <span class="pl-vpf">testName</span>) {
+            <span class="pl-c">// ...</span>
+        },
 
-<span class="nx">manager</span><span class="p">.</span><span class="nx">registerReporter</span><span class="p">(</span><span class="s1">'custom1'</span><span class="p">,</span> <span class="nx">CustomReporter</span><span class="p">);</span>
-<span class="nx">manager</span><span class="p">.</span><span class="nx">addReporter</span><span class="p">(</span><span class="s1">'custom1'</span><span class="p">,</span> <span class="p">{</span> <span class="cm">/* Options */</span> <span class="p">});</span>
-</pre></div>
+
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Called when test fails</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method testFailed</span>
+<span class="pl-c">         * @param {string} id</span>
+<span class="pl-c">         * @param {string} [message]</span>
+<span class="pl-c">         * @param {string} [reason]</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">testFailed</span>: <span class="pl-st">function</span> (<span class="pl-vpf">id</span>, <span class="pl-vpf">message</span>, <span class="pl-vpf">reason</span>) {
+            <span class="pl-c">// ...</span>
+        },
+
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Called when test has an error</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method testError</span>
+<span class="pl-c">         * @param {string} id</span>
+<span class="pl-c">         * @param {string} [message]</span>
+<span class="pl-c">         * @param {string} [reason]</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">testError</span>: <span class="pl-st">function</span> (<span class="pl-vpf">id</span>, <span class="pl-vpf">message</span>, <span class="pl-vpf">reason</span>) {
+            <span class="pl-c">// ...</span>
+        },
+
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Called when test has passed</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method testPassed</span>
+<span class="pl-c">         * @param {string} id</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">testPassed</span>: <span class="pl-st">function</span> (<span class="pl-vpf">id</span>) {
+            <span class="pl-c">// ...</span>
+        },
+
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Called when test is undefined</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method testUndefined</span>
+<span class="pl-c">         * @param {string} id</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">testUndefined</span>: <span class="pl-st">function</span> (<span class="pl-vpf">id</span>) {
+            <span class="pl-c">// ...</span>
+        },
+
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Called when test is skipped</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method testSkipped</span>
+<span class="pl-c">         * @param {string} id</span>
+<span class="pl-c">         * @param {string} [reason]</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">testSkipped</span>: <span class="pl-st">function</span> (<span class="pl-vpf">id</span>, <span class="pl-vpf">reason</span>) {
+            <span class="pl-c">// ...</span>
+        },
+
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Called when test is incomplete</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method testIncomplete</span>
+<span class="pl-c">         * @param {string} id</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">testIncomplete</span>: <span class="pl-st">function</span> (<span class="pl-vpf">id</span>) {
+            <span class="pl-c">// ...</span>
+        },
+
+
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Gets the collected output</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method getOutput</span>
+<span class="pl-c">         * @return {string}</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">getOutput</span>: <span class="pl-st">function</span> () {
+            <span class="pl-k">return</span> <span class="pl-v">this</span>._output;
+        }
+    }
+);
+
+manager.registerReporter(<span class="pl-s1"><span class="pl-pds">'</span>custom1<span class="pl-pds">'</span></span>, CustomReporter);
+manager.addReporter(<span class="pl-s1"><span class="pl-pds">'</span>custom1<span class="pl-pds">'</span></span>, { <span class="pl-c">/* Options */</span> });</pre></div>
 
 <p>There are a couple of terms that might need clarification:</p>
 
@@ -666,8 +673,7 @@ However, you need to define the reporters that should be attached to the Precept
 
 <p>All test-results and actions are saved in the test-container object.</p>
 
-<div class="highlight highlight-javascript"><pre><span class="k">this</span><span class="p">.</span><span class="nx">getContainer</span><span class="p">().</span><span class="nx">getAction</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">name</span>
-</pre></div>
+<div class="highlight highlight-javascript"><pre><span class="pl-v">this</span>.getContainer().getAction(id).<span class="pl-sc">name</span></pre></div>
 
 <p>The following items are saved for each action-type and can be accessed the same way as describe above:</p>
 
@@ -765,40 +771,93 @@ However, you need to define the reporters that should be attached to the Precept
 
 <p>You can create your own listener plugin by using the exposed <code>AbstractListener</code> object that is a property on the manager object.</p>
 
-<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">ReportManager</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'preceptor-reporter'</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">manager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ReportManager</span><span class="p">();</span>
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> ReportManager <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>preceptor-reporter<span class="pl-pds">'</span></span>);
+<span class="pl-s">var</span> manager <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">ReportManager</span>();
 
-<span class="kd">var</span> <span class="nx">CustomListener</span> <span class="o">=</span> <span class="nx">ReportManager</span><span class="p">.</span><span class="nx">AbstractListener</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span>
-    <span class="p">{</span>
-        <span class="cm">/**</span>
-<span class="cm">         * Initializes the instance</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method initialize</span>
-<span class="cm">         */</span>
-        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">},</span>
+<span class="pl-s">var</span> CustomListener <span class="pl-k">=</span> ReportManager.AbstractListener.extend(
+    {
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Initializes the instance</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method initialize</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">initialize</span>: <span class="pl-st">function</span> () {
+            <span class="pl-c">// ...</span>
+        },
 
 
-        <span class="cm">/**</span>
-<span class="cm">         * Parses a string and extracts message information</span>
-<span class="cm">         *</span>
-<span class="cm">         * @method parse</span>
-<span class="cm">         * @param {string} text</span>
-<span class="cm">         * @param {object} [placeholder]</span>
-<span class="cm">         * @return {string}</span>
-<span class="cm">         */</span>
-        <span class="nx">parse</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">placeholder</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">);</span>
+        <span class="pl-c">/**</span>
+<span class="pl-c">         * Parses a string and extracts message information</span>
+<span class="pl-c">         *</span>
+<span class="pl-c">         * @method parse</span>
+<span class="pl-c">         * @param {string} text</span>
+<span class="pl-c">         * @param {object} [placeholder]</span>
+<span class="pl-c">         * @return {string}</span>
+<span class="pl-c">         */</span>
+        <span class="pl-en">parse</span>: <span class="pl-st">function</span> (<span class="pl-vpf">text</span>, <span class="pl-vpf">placeholder</span>) {
+            <span class="pl-c">// ...</span>
+        }
+    }
+);
 
-<span class="nx">manager</span><span class="p">.</span><span class="nx">registerListener</span><span class="p">(</span><span class="s1">'custom1'</span><span class="p">,</span> <span class="nx">CustomListener</span><span class="p">);</span>
-<span class="nx">manager</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s1">'custom1'</span><span class="p">,</span> <span class="p">{</span> <span class="cm">/* Options */</span> <span class="p">});</span>
-</pre></div>
+manager.registerListener(<span class="pl-s1"><span class="pl-pds">'</span>custom1<span class="pl-pds">'</span></span>, CustomListener);
+manager.addListener(<span class="pl-s1"><span class="pl-pds">'</span>custom1<span class="pl-pds">'</span></span>, { <span class="pl-c">/* Options */</span> });</pre></div>
 
 <p>The parse method will be called with text that needs to be parsed. This is usually output of a process. The placeholder might have key-value pairs of text that needs to be replaced within the messages.</p>
+
+<p>See the above mentioned plugins for examples.</p>
+
+<h3>
+<a id="loader" class="anchor" href="#loader" aria-hidden="true"><span class="octicon octicon-link"></span></a>Loader</h3>
+
+<p>Loader plugins are objects that import common test-report files, and they can be used independently by other projects since they are exposed by the <code>getLoaders</code> method on the Manager object constructor.</p>
+
+<p>The following loaders are available:</p>
+
+<ul>
+<li>
+<code>junit</code> - Object that imports JUnit xml test-report files</li>
+<li>
+<code>tap</code> - Object that imports TAP test-report files</li>
+</ul>
+
+<h4>
+<a id="common-configuration-2" class="anchor" href="#common-configuration-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common configuration</h4>
+
+<p>All loaders have a common set of configuration options:</p>
+
+<ul>
+<li>
+<code>type</code> - Type of loader</li>
+<li>
+<code>configuration</code> - Custom configuration options for a specific loader</li>
+<li>
+<code>path</code> - Glob path to files that should be imported</li>
+</ul>
+
+<h4>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> junit <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Preceptor.getLoaders</span>().junit({
+    path<span class="pl-k">:</span> <span class="pl-sv">__dirname</span> <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">"</span>/*.xml<span class="pl-pds">"</span></span>
+);
+
+junit.on(<span class="pl-s1"><span class="pl-pds">'</span>message<span class="pl-pds">'</span></span>, <span class="pl-st">function</span> (<span class="pl-vpf">areaType</span>, <span class="pl-vpf">messageType</span>, <span class="pl-vpf">params</span>) {
+    <span class="pl-en">console</span><span class="pl-s3">.log</span>(areaType, messageType, params);
+});</pre></div>
+
+<h4>
+<a id="custom-plugin-2" class="anchor" href="#custom-plugin-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Plugin</h4>
+
+<p>You can create your own loader plugin by using the exposed <code>AbstractLoader</code> object that is a property on the manager object.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> ReportManager <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>preceptor-reporter<span class="pl-pds">'</span></span>);
+
+<span class="pl-s">var</span> CustomLoader <span class="pl-k">=</span> ReportManager.AbstractLoader.extend(
+    {
+        <span class="pl-c">// ...</span>
+    }
+);</pre></div>
 
 <p>See the above mentioned plugins for examples.</p>
 
@@ -821,7 +880,7 @@ However, you need to define the reporters that should be attached to the Precept
 <p>It is important to note that these messengers have no consistent interface as they represent low-level objects. However, messengers trigger always an event on the messenger itself with the event-name <code>message</code> that is the exact message that is created for the external system.</p>
 
 <h4>
-<a id="common-configuration-2" class="anchor" href="#common-configuration-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common configuration</h4>
+<a id="common-configuration-3" class="anchor" href="#common-configuration-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common configuration</h4>
 
 <p>All messenger have a common set of configuration options:</p>
 
@@ -835,35 +894,33 @@ However, you need to define the reporters that should be attached to the Precept
 </ul>
 
 <h4>
-<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h4>
+<a id="example-1" class="anchor" href="#example-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h4>
 
-<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">messengers</span> <span class="o">=</span> <span class="nx">Preceptor</span><span class="p">.</span><span class="nx">getMessengers</span><span class="p">();</span>
-<span class="kd">var</span> <span class="nx">teamCityMessenger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">messengers</span><span class="p">.</span><span class="nx">TeamCity</span><span class="p">();</span>
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> messengers <span class="pl-k">=</span> Preceptor.getMessengers();
+<span class="pl-s">var</span> teamCityMessenger <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">messengers.TeamCity</span>();
 
-<span class="nx">teamCityMessenger</span><span class="p">.</span><span class="nx">testSuiteStarted</span><span class="p">(</span><span class="s2">"Suite #1"</span><span class="p">);</span>
+teamCityMessenger.testSuiteStarted(<span class="pl-s1"><span class="pl-pds">"</span>Suite #1<span class="pl-pds">"</span></span>);
 
-<span class="nx">teamCityMessenger</span><span class="p">.</span><span class="nx">testStarted</span><span class="p">(</span><span class="s2">"Test #1"</span><span class="p">);</span>
-<span class="nx">teamCityMessenger</span><span class="p">.</span><span class="nx">testFinished</span><span class="p">(</span><span class="s2">"Test #1"</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+teamCityMessenger.testStarted(<span class="pl-s1"><span class="pl-pds">"</span>Test #1<span class="pl-pds">"</span></span>);
+teamCityMessenger.testFinished(<span class="pl-s1"><span class="pl-pds">"</span>Test #1<span class="pl-pds">"</span></span>, <span class="pl-c1">20</span>);
 
-<span class="nx">teamCityMessenger</span><span class="p">.</span><span class="nx">testStarted</span><span class="p">(</span><span class="s2">"Test #2"</span><span class="p">);</span>
-<span class="nx">teamCityMessenger</span><span class="p">.</span><span class="nx">testFailed</span><span class="p">(</span><span class="s2">"Test #2"</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"Division by zero."</span><span class="p">,</span> <span class="s2">"..."</span><span class="p">);</span>
+teamCityMessenger.testStarted(<span class="pl-s1"><span class="pl-pds">"</span>Test #2<span class="pl-pds">"</span></span>);
+teamCityMessenger.testFailed(<span class="pl-s1"><span class="pl-pds">"</span>Test #2<span class="pl-pds">"</span></span>, <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>Division by zero.<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>...<span class="pl-pds">"</span></span>);
 
-<span class="nx">teamCityMessenger</span><span class="p">.</span><span class="nx">testSuiteFinished</span><span class="p">(</span><span class="s2">"Suite #1"</span><span class="p">);</span>
-</pre></div>
+teamCityMessenger.testSuiteFinished(<span class="pl-s1"><span class="pl-pds">"</span>Suite #1<span class="pl-pds">"</span></span>);</pre></div>
 
 <h4>
-<a id="custom-plugin-2" class="anchor" href="#custom-plugin-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Plugin</h4>
+<a id="custom-plugin-3" class="anchor" href="#custom-plugin-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Plugin</h4>
 
 <p>You can create your own messenger plugin by using the exposed <code>AbstractMessenger</code> object that is a property on the manager object.</p>
 
-<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">ReportManager</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'preceptor-reporter'</span><span class="p">);</span>
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> ReportManager <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>preceptor-reporter<span class="pl-pds">'</span></span>);
 
-<span class="kd">var</span> <span class="nx">CustomMessenger</span> <span class="o">=</span> <span class="nx">ReportManager</span><span class="p">.</span><span class="nx">AbstractMessenger</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span>
-    <span class="p">{</span>
-        <span class="c1">// ...</span>
-    <span class="p">}</span>
-<span class="p">);</span>
-</pre></div>
+<span class="pl-s">var</span> CustomMessenger <span class="pl-k">=</span> ReportManager.AbstractMessenger.extend(
+    {
+        <span class="pl-c">// ...</span>
+    }
+);</pre></div>
 
 <p>See the above mentioned plugins for examples.</p>
 
@@ -886,8 +943,7 @@ However, you need to define the reporters that should be attached to the Precept
 
 <p>Generate the documentation with following command:</p>
 
-<div class="highlight highlight-shell"><pre>npm run docs
-</pre></div>
+<div class="highlight highlight-shell"><pre>npm run docs</pre></div>
 
 <p>The documentation will be generated in the <code>docs</code> folder of the module root.</p>
 
@@ -896,8 +952,7 @@ However, you need to define the reporters that should be attached to the Precept
 
 <p>Run the tests with the following command:</p>
 
-<div class="highlight highlight-shell"><pre>npm run <span class="nb">test</span>
-</pre></div>
+<div class="highlight highlight-shell"><pre>npm run <span class="pl-s3">test</span></pre></div>
 
 <p>The code-coverage will be written to the <code>coverage</code> folder in the module root.</p>
 
@@ -912,9 +967,15 @@ However, you need to define the reporters that should be attached to the Precept
 <ul>
 <li>preceptor-core: <a href="https://github.com/yahoo/preceptor-core">https://github.com/yahoo/preceptor-core</a>
 </li>
+<li>glob: <a href="https://github.com/isaacs/node-glob">https://github.com/isaacs/node-glob</a>
+</li>
 <li>underscore: <a href="http://underscorejs.org">http://underscorejs.org</a>
 </li>
 <li>xmlbuilder: <a href="http://github.com/oozcitak/xmlbuilder-js">http://github.com/oozcitak/xmlbuilder-js</a>
+</li>
+<li>promise: <a href="https://github.com/then/promise">https://github.com/then/promise</a>
+</li>
+<li>sax: <a href="https://github.com/isaacs/sax-js">https://github.com/isaacs/sax-js</a>
 </li>
 </ul>
 
