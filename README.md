@@ -45,6 +45,8 @@ Reporting library for the preceptor test-runner and aggregator.
         * [Custom Plugin](#customplugin-1)
     * [Loader](#loader)
         * [Common configuration](#common-configuration-2)
+        * [Junit](#junit-1)
+        * [Tap](#tap-1)
         * [Example](#example)
         * [Custom Plugin](#customplugin-2)
     * [Messenger](#messenger)
@@ -577,14 +579,24 @@ The following loaders are available:
 
 ####Common configuration
 All loaders have a common set of configuration options:
-* ```type``` - Type of loader
+* ```type``` - Type of loader (currently not used)
 * ```configuration``` - Custom configuration options for a specific loader
 * ```path``` - Glob path to files that should be imported
+
+####JUnit
+The JUnit loader has the following configuration options:
+* ```topLevel``` - Flag that indicates if the ```testsuites``` level should be imported. (default: false)
+
+####TAP
+The TAP loader currently does not have custom configuration options.
 
 ####Example
 ```javascript
 var junit = new Preceptor.getLoaders().junit({
-	path: __dirname + "/*.xml"
+	path: __dirname + "/*.xml",
+	configuration: {
+		topLevel: true
+	}
 );
 
 junit.on('message', function (areaType, messageType, params) {
