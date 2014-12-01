@@ -99,6 +99,8 @@
 
 <ul>
 <li><a href="#common-configuration-2">Common configuration</a></li>
+<li><a href="#junit-1">Junit</a></li>
+<li><a href="#tap-1">Tap</a></li>
 <li><a href="#example">Example</a></li>
 <li><a href="#customplugin-2">Custom Plugin</a></li>
 </ul>
@@ -828,7 +830,7 @@ manager.addListener(<span class="pl-s1"><span class="pl-pds">'</span>custom1<spa
 
 <ul>
 <li>
-<code>type</code> - Type of loader</li>
+<code>type</code> - Type of loader (currently not used)</li>
 <li>
 <code>configuration</code> - Custom configuration options for a specific loader</li>
 <li>
@@ -836,10 +838,28 @@ manager.addListener(<span class="pl-s1"><span class="pl-pds">'</span>custom1<spa
 </ul>
 
 <h4>
+<a id="junit-1" class="anchor" href="#junit-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>JUnit</h4>
+
+<p>The JUnit loader has the following configuration options:</p>
+
+<ul>
+<li>
+<code>topLevel</code> - Flag that indicates if the <code>testsuites</code> level should be imported. (default: false)</li>
+</ul>
+
+<h4>
+<a id="tap-1" class="anchor" href="#tap-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>TAP</h4>
+
+<p>The TAP loader currently does not have custom configuration options.</p>
+
+<h4>
 <a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h4>
 
 <div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> junit <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Preceptor.getLoaders</span>().junit({
-    path<span class="pl-k">:</span> <span class="pl-sv">__dirname</span> <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">"</span>/*.xml<span class="pl-pds">"</span></span>
+    path<span class="pl-k">:</span> <span class="pl-sv">__dirname</span> <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">"</span>/*.xml<span class="pl-pds">"</span></span>,
+    configuration<span class="pl-k">:</span> {
+        topLevel<span class="pl-k">:</span> <span class="pl-c1">true</span>
+    }
 );
 
 junit.on(<span class="pl-s1"><span class="pl-pds">'</span>message<span class="pl-pds">'</span></span>, <span class="pl-st">function</span> (<span class="pl-vpf">areaType</span>, <span class="pl-vpf">messageType</span>, <span class="pl-vpf">params</span>) {
