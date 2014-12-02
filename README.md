@@ -593,7 +593,7 @@ The JUnit loader has the following configuration options:
 The TAP loader currently does not have custom configuration options.
 
 ####Istanbul
-The Istanbul loader currently does not have custom configuration options.
+* ```mapping``` - List of mapping objects that hav property ```from``` and ```to```. ```from``` is a regular expression (as string), and ```to``` is a string.
 
 ####Example
 ```javascript
