@@ -1,6 +1,6 @@
 {
   "name": "preceptor-reporter",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Reporting library for the preceptor test-runner and aggregator",
   "license": "MIT",
   "main": "index.js",
