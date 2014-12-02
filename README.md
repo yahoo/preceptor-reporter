@@ -47,6 +47,7 @@ Reporting library for the preceptor test-runner and aggregator.
         * [Common configuration](#common-configuration-2)
         * [Junit](#junit-1)
         * [Tap](#tap-1)
+        * [Istanbul](#istanbul)
         * [Example](#example)
         * [Custom Plugin](#customplugin-2)
     * [Messenger](#messenger)
@@ -571,11 +572,12 @@ The parse method will be called with text that needs to be parsed. This is usual
 See the above mentioned plugins for examples.
 
 ###Loader
-Loader plugins are objects that import common test-report files, and they can be used independently by other projects since they are exposed by the ```getLoaders``` method on the Manager object constructor.
+Loader plugins are objects that import common test and coverage reports, and they can be used independently by other projects since they are exposed by the ```getLoaders``` method on the Manager object constructor.
 
 The following loaders are available:
 * ```junit``` - Object that imports JUnit xml test-report files
 * ```tap``` - Object that imports TAP test-report files
+* ```istanbul``` - Object that imports Istanbul JSON coverage files
 
 ####Common configuration
 All loaders have a common set of configuration options:
@@ -589,6 +591,9 @@ The JUnit loader has the following configuration options:
 
 ####TAP
 The TAP loader currently does not have custom configuration options.
+
+####Istanbul
+The Istanbul loader currently does not have custom configuration options.
 
 ####Example
 ```javascript

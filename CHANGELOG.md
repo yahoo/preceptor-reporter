@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+v0.9.3 - 12/02/14
+* Added Istanbul coverage loader
+
 v0.9.2 - 11/30/14
 * Added JUnit loader custom configuration option (topLevel)
 
