@@ -699,17 +699,19 @@ The code-coverage will be written to the ```coverage``` folder in the module roo
 The following third-party libraries are used by this module:
 
 ###Dependencies
-* preceptor-core: https://github.com/yahoo/preceptor-core
 * glob: https://github.com/isaacs/node-glob
+* preceptor-core: https://github.com/yahoo/preceptor-core
+* sax: https://github.com/isaacs/sax-js
+* promise: https://github.com/then/promise
 * underscore: http://underscorejs.org
 * xmlbuilder: http://github.com/oozcitak/xmlbuilder-js
-* promise: https://github.com/then/promise
-* sax: https://github.com/isaacs/sax-js
 
 ###Dev-Dependencies
 * chai: http://chaijs.com
+* coveralls: https://github.com/cainus/node-coveralls
 * istanbul: https://github.com/gotwarlost/istanbul
 * mocha: https://github.com/visionmedia/mocha
+* cucumber: http://github.com/cucumber/cucumber-js
 * yuidocjs: https://github.com/yui/yuidoc
 
 ##License
