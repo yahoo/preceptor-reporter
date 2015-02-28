@@ -1,4 +1,4 @@
-// Copyright 2014, Yahoo! Inc.
+// Copyright 2014-2015, Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
 var ReportManager = require('../');
@@ -13,7 +13,7 @@ var fs = require('fs');
 	manager.addListener('Preceptor');
 
 	manager.addReporter('Spec');
-	manager.addReporter('Json', { output: true });
+	manager.addReporter('Json', {output: true});
 
 	data = fs.readFileSync(__dirname + '/preceptor-listener.txt');
 
@@ -36,7 +36,7 @@ var fs = require('fs');
 	manager.addListener('TeamCity');
 
 	manager.addReporter('Spec');
-	manager.addReporter('Json', { output: true });
+	manager.addReporter('Json', {output: true});
 
 	data = fs.readFileSync(__dirname + '/teamcity-listener.txt');
 

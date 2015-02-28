@@ -1,4 +1,4 @@
-// Copyright 2014, Yahoo! Inc.
+// Copyright 2014-2015, Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
 var ReportManager = require('../');
@@ -14,9 +14,9 @@ describe('Messenger', function () {
 	describe('Jenkins Sauce-Labs', function () {
 
 		beforeEach(function () {
-			var Class = this.messengers.JenkinsSauceLabs;
+			var Class = this.messengers.jenkinssaucelabs;
 
-			this.instance = new Class({ output: true });
+			this.instance = new Class({output: true});
 			this.instance.on('message', function (msg) {
 				this.eventList.push(msg);
 			}.bind(this));
@@ -35,9 +35,9 @@ describe('Messenger', function () {
 	describe('Preceptor', function () {
 
 		beforeEach(function () {
-			var Class = this.messengers.Preceptor;
+			var Class = this.messengers.preceptor;
 
-			this.instance = new Class({ output: true });
+			this.instance = new Class({output: true});
 			this.instance.on('message', function (msg) {
 				this.eventList.push(msg);
 			}.bind(this));
@@ -49,7 +49,7 @@ describe('Messenger', function () {
 			this.instance.itemData('123', ["listItem"]);
 			this.instance.itemData('123', 23);
 			this.instance.itemData('123', "only-string");
-			this.instance.itemData('123', { obj: 23 });
+			this.instance.itemData('123', {obj: 23});
 
 			this.instance.itemMessage('123', "This is a test-message.");
 
@@ -71,9 +71,9 @@ describe('Messenger', function () {
 	describe('TeamCity', function () {
 
 		beforeEach(function () {
-			var Class = this.messengers.TeamCity;
+			var Class = this.messengers.teamcity;
 
-			this.instance = new Class({ output: true });
+			this.instance = new Class({output: true});
 			this.instance.on('message', function (msg) {
 				this.eventList.push(msg);
 			}.bind(this));

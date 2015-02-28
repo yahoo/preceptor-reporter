@@ -1,11 +1,13 @@
 CHANGELOG
 =========
 
+v0.9.6
+
 v0.9.5 - 12/02/14
 * Bugfix: Istanbul coverage mapping - path
 
 v0.9.4 - 12/02/14
-* Added istanbul coverage mapping
+* Added Istanbul coverage mapping
 
 v0.9.3 - 12/02/14
 * Added Istanbul coverage loader

@@ -1,4 +1,4 @@
-// Copyright 2014, Yahoo! Inc.
+// Copyright 2014-2015, Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
 var ReportManager = require('../');
@@ -14,7 +14,7 @@ var messengers = ReportManager.getMessengers();
 	console.log("\n\n\nJenkins SauceLabs Messenger\n\n");
 
 	Class = messengers.JenkinsSauceLabs;
-	instance = new Class({ output: true });
+	instance = new Class({output: true});
 
 	instance.sendBuildInfo('session-1234', 'job-5678');
 
@@ -29,14 +29,14 @@ var messengers = ReportManager.getMessengers();
 	console.log("\n\n\nPreceptor Messenger\n\n");
 
 	Class = messengers.Preceptor;
-	instance = new Class({ output: true });
+	instance = new Class({output: true});
 
 	instance.version();
 
 	instance.itemData('123', ["listItem"]);
 	instance.itemData('123', 23);
 	instance.itemData('123', "only-string");
-	instance.itemData('123', { obj: 23 });
+	instance.itemData('123', {obj: 23});
 
 	instance.itemMessage('123', "This is a test-message.");
 
@@ -77,7 +77,7 @@ var messengers = ReportManager.getMessengers();
 	console.log("\n\n\nTeamCity Messenger\n\n");
 
 	Class = messengers.TeamCity;
-	instance = new Class({ output: true });
+	instance = new Class({output: true});
 
 	instance.testSuiteStarted("test-suite");
 	instance.testStarted("test-case");

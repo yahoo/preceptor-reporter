@@ -1,4 +1,4 @@
-// Copyright 2014, Yahoo! Inc.
+// Copyright 2014-2015, Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
 var ReportManager = require('../');
@@ -51,7 +51,7 @@ describe('Manager', function () {
 		describe('Jenkins Sauce-Labs', function () {
 
 			beforeEach(function () {
-				this.manager.addReporter('JenkinsSauceLabs', { configuration: { sessionId:"23", jobName:"24" }});
+				this.manager.addReporter('JenkinsSauceLabs', {configuration: {sessionId: "23", jobName: "24"}});
 			});
 
 			it('should output', function () {
@@ -63,7 +63,7 @@ describe('Manager', function () {
 		describe('JSON', function () {
 
 			beforeEach(function () {
-				this.manager.addReporter('Json', { output: true, path: __dirname + '/data.json' });
+				this.manager.addReporter('Json', {output: true, path: __dirname + '/data.json'});
 			});
 
 			it('should output', function () {
@@ -75,7 +75,7 @@ describe('Manager', function () {
 		describe('JUnit', function () {
 
 			beforeEach(function () {
-				this.manager.addReporter('Junit', { output: true, path: __dirname + '/junit.xml' });
+				this.manager.addReporter('Junit', {output: true, path: __dirname + '/junit.xml'});
 			});
 
 			it('should output', function () {
@@ -111,7 +111,7 @@ describe('Manager', function () {
 		describe('Plain', function () {
 
 			beforeEach(function () {
-				this.manager.addReporter('Plain', { path: __dirname + '/plain.txt' });
+				this.manager.addReporter('Plain', {path: __dirname + '/plain.txt'});
 			});
 
 			it('should output', function () {
@@ -159,7 +159,7 @@ describe('Manager', function () {
 		describe('TAP', function () {
 
 			beforeEach(function () {
-				this.manager.addReporter('Tap', { output: true, path: __dirname + '/tap.txt' });
+				this.manager.addReporter('Tap', {output: true, path: __dirname + '/tap.txt'});
 			});
 
 			it('should output', function () {
@@ -184,9 +184,9 @@ describe('Manager', function () {
 
 			beforeEach(function () {
 				this.manager.addReporter('Dot');
-				this.manager.addReporter('Spec', { progress: false });
+				this.manager.addReporter('Spec', {progress: false});
 				this.manager.addReporter('List');
-				this.manager.addReporter('Summary', { color:false });
+				this.manager.addReporter('Summary', {color: false});
 				this.manager.addReporter('Duration');
 				this.manager.addReporter('LineSummary');
 			});
@@ -206,7 +206,7 @@ describe('Manager', function () {
 				this.manager.addListener('Preceptor');
 
 				this.manager.addReporter('Spec');
-				this.manager.addReporter('Json', { output: true });
+				this.manager.addReporter('Json', {output: true});
 
 				this.manager.message().start();
 			});
@@ -214,8 +214,7 @@ describe('Manager', function () {
 			it('should output', function () {
 				process.stdout.write("Preceptor Listener with JSON output:\n");
 
-				var data = fs.readFileSync(__dirname + '/preceptor-listener.txt'),
-					resultOutput = this.manager.parse(data.toString());
+				var data = fs.readFileSync(__dirname + '/preceptor-listener.txt'), resultOutput = this.manager.parse(data.toString());
 
 				this.manager.message().stop();
 				this.manager.message().complete();
@@ -230,7 +229,7 @@ describe('Manager', function () {
 				this.manager.addListener('TeamCity');
 
 				this.manager.addReporter('Spec');
-				this.manager.addReporter('Json', { output: true });
+				this.manager.addReporter('Json', {output: true});
 
 				this.manager.message().start();
 			});
@@ -238,8 +237,7 @@ describe('Manager', function () {
 			it('should output', function () {
 				process.stdout.write("TeamCity Listener with JSON output:\n");
 
-				var data = fs.readFileSync(__dirname + '/teamCity-listener.txt'),
-					resultOutput = this.manager.parse(data.toString());
+				var data = fs.readFileSync(__dirname + '/teamCity-listener.txt'), resultOutput = this.manager.parse(data.toString());
 
 				this.manager.message().stop();
 				this.manager.message().complete();

@@ -1,4 +1,4 @@
-// Copyright 2014, Yahoo! Inc.
+// Copyright 2014-2015, Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
 var ReportManager = require('../');
@@ -47,7 +47,7 @@ var fs = require('fs');
 	console.log("\n\n\nJenkins Sauce-Labs Reporter\n\n");
 
 	manager = new ReportManager();
-	manager.addReporter('JenkinsSauceLabs', { configuration: { sessionId:"23", jobName:"24" }});
+	manager.addReporter('JenkinsSauceLabs', {configuration: {sessionId: "23", jobName: "24"}});
 
 	runSequence(manager);
 }());
@@ -58,7 +58,7 @@ var fs = require('fs');
 	console.log("\n\n\nJson Reporter\n\n");
 
 	manager = new ReportManager();
-	manager.addReporter('Json', { output: true, path: __dirname + '/data.json' });
+	manager.addReporter('Json', {output: true, path: __dirname + '/data.json'});
 
 	runSequence(manager);
 }());
@@ -69,7 +69,7 @@ var fs = require('fs');
 	console.log("\n\n\nJunit Reporter\n\n");
 
 	manager = new ReportManager();
-	manager.addReporter('Junit', { output: true, path: __dirname + '/junit.xml' });
+	manager.addReporter('Junit', {output: true, path: __dirname + '/junit.xml'});
 
 	runSequence(manager);
 }());
@@ -102,7 +102,7 @@ var fs = require('fs');
 	console.log("\n\n\nPlain Reporter\n\n");
 
 	manager = new ReportManager();
-	manager.addReporter('Plain', { path: __dirname + '/plain.txt' });
+	manager.addReporter('Plain', {path: __dirname + '/plain.txt'});
 
 	runSequence(manager);
 }());
@@ -146,7 +146,7 @@ var fs = require('fs');
 	console.log("\n\n\nTap Reporter\n\n");
 
 	manager = new ReportManager();
-	manager.addReporter('Tap', { output: true, path: __dirname + '/tap.txt' });
+	manager.addReporter('Tap', {output: true, path: __dirname + '/tap.txt'});
 
 	runSequence(manager);
 }());
@@ -169,9 +169,9 @@ var fs = require('fs');
 
 	manager = new ReportManager();
 	manager.addReporter('Dot');
-	manager.addReporter('Spec', { progress: false });
+	manager.addReporter('Spec', {progress: false});
 	manager.addReporter('List');
-	manager.addReporter('Summary', { color:false });
+	manager.addReporter('Summary', {color: false});
 	manager.addReporter('Duration');
 	manager.addReporter('LineSummary');
 

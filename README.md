@@ -712,10 +712,12 @@ The following third-party libraries are used by this module:
 * istanbul: https://github.com/gotwarlost/istanbul
 * mocha: https://github.com/visionmedia/mocha
 * cucumber: http://github.com/cucumber/cucumber-js
+* sinon: http://sinonjs.org
+* sinon-chai: https://github.com/domenic/sinon-chai
 * yuidocjs: https://github.com/yui/yuidoc
 
 ##License
 
 The MIT License
 
-Copyright 2014 Yahoo Inc.
+Copyright 2014-2015 Yahoo Inc.
