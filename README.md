@@ -7,6 +7,7 @@ Reporting library for the preceptor test-runner and aggregator.
 [![npm version](https://badge.fury.io/js/preceptor-reporter.svg)](http://badge.fury.io/js/preceptor-reporter)
 
 [![NPM](https://nodei.co/npm/preceptor-reporter.png?downloads=true)](https://nodei.co/npm/preceptor-reporter/)
+[![NPM](https://nodei.co/npm-dl/preceptor-reporter.png?months=3&height=2)](https://nodei.co/npm/preceptor-reporter/)
 
 
 [API-Documentation](http://yahoo.github.io/preceptor-reporter/docs/)
