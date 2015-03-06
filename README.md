@@ -3,17 +3,20 @@ Preceptor-Reporter
 
 Reporting library for the preceptor test-runner and aggregator.
 
-[![Build Status](https://secure.travis-ci.org/yahoo/preceptor-reporter.png)](http://travis-ci.org/yahoo/preceptor-reporter)
-[![npm version](https://badge.fury.io/js/preceptor-reporter.svg)](http://badge.fury.io/js/preceptor-reporter)
+[![Build Status](https://img.shields.io/travis/yahoo/preceptor-reporter.svg)](http://travis-ci.org/yahoo/preceptor-reporter)
+[![Coveralls Coverage](https://img.shields.io/coveralls/yahoo/preceptor-reporter.svg)](https://coveralls.io/r/yahoo/preceptor-reporter)
+[![Code Climate Grade](https://img.shields.io/codeclimate/github/yahoo/preceptor-reporter.svg)](https://codeclimate.com/github/yahoo/preceptor-reporter)
 
-[![NPM](https://nodei.co/npm/preceptor-reporter.png?downloads=true)](https://nodei.co/npm/preceptor-reporter/)
-[![NPM](https://nodei.co/npm-dl/preceptor-reporter.png?months=3&height=2)](https://nodei.co/npm/preceptor-reporter/)
+[![NPM version](https://badge.fury.io/js/preceptor-reporter.svg)](https://www.npmjs.com/package/preceptor-reporter)
+[![NPM License](https://img.shields.io/npm/l/preceptor-reporter.svg)](https://www.npmjs.com/package/preceptor-reporter)
 
+[![NPM](https://nodei.co/npm/preceptor-reporter.png?downloads=true&stars=true)](https://www.npmjs.com/package/preceptor-reporter)
+[![NPM](https://nodei.co/npm-dl/preceptor-reporter.png?months=3&height=2)](https://www.npmjs.com/package/preceptor-reporter)
 
-[API-Documentation](http://yahoo.github.io/preceptor-reporter/docs/)
+[![Coverage Report](https://img.shields.io/badge/Coverage_Report-Available-blue.svg)](http://yahoo.github.io/preceptor-reporter/coverage/lcov-report/)
+[![API Documentation](https://img.shields.io/badge/API_Documentation-Available-blue.svg)](http://yahoo.github.io/preceptor-reporter/docs/)
 
-[Coverage Report](http://yahoo.github.io/preceptor-reporter/coverage/lcov-report/)
-
+[![Gitter Support](https://img.shields.io/badge/Support-Gitter_IM-yellow.svg)](https://gitter.im/preceptorjs/support)
 
 **Table of Contents**
 * [Usage](#usage)
