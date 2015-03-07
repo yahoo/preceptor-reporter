@@ -5,19 +5,13 @@ var expect = require('chai').expect;
 var sinon = require('sinon');
 
 var ReportManager = require('../../');
-
-function createContainerStub () {
-	return {
-		getAction: function () {},
-		getTree: function () {}
-	};
-}
+var helper = require('./helper');
 
 describe('Abstract', function () {
 
 	beforeEach(function () {
 		this.Class = ReportManager.AbstractReporter;
-		this.container = createContainerStub();
+		this.container = helper.createContainerStub();
 
 		this.sandbox = sinon.sandbox.create();
 	});
