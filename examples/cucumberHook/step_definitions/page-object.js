@@ -3,7 +3,7 @@
 
 module.exports = function () {
 
-	this.Given(/^take a screenshot with error$/, function (done) {
+	this.Given(/^take a screenshot with error$/, function () {
 		throw new Error('An error just happened for some reason');
 	});
 

@@ -2,8 +2,6 @@
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
 var ReportManager = require('../');
-var fs = require('fs');
-
 
 (function () {
 	var manager;
