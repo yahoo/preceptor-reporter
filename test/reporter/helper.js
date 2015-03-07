@@ -9,7 +9,8 @@ module.exports = {
 	createContainerStub: function () {
 		return {
 			getAction: function () {},
-			getTree: function () {}
+			getTree: function () {},
+			gatherTestOutcomes: function () {}
 		};
 	}
 };
