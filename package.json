@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "preceptor-core": "~0.10.0",
-    "glob": "3.2.3",
+    "glob": "7.1.2",
     "sax": "0.6.1",
     "promise": "6.0.0",
     "underscore": "1.7.0",
